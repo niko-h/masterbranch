@@ -70,17 +70,20 @@ class App extends Component {
       filteredEntrys = filteredEntrys.filter(entry => !entry.private);
     }
 
+    id=0;
     return filteredEntrys.map((entry) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
       const canEdit = entry.owner === currentUserId;
       const updated = typeof(entry.lastEditAt) === 'object';
- 
+      const entryCountByUser = canEdit ? id+=1 : 0;
+
       return (
         <Entry
           key={entry._id}
           entry={entry}
           canEdit={canEdit}
           updated={updated}
+          entryCountByUser={entryCountByUser}
         />
       );
     });
