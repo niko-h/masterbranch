@@ -32,9 +32,7 @@ class App extends Component {
 
     if (text.length>0) {
       Meteor.call('entrys.insert', text);
-      this.setState({
-        edited: false,
-      });
+      this.onBlur(event);
     }
 
     // Clear form
@@ -50,9 +48,13 @@ class App extends Component {
 
   escapeEdit(event) {
     if (event.keyCode == 27) {
-      this.setState({ edited: false, });
-      $('.new-entry textarea').blur();
+      this.onBlur(event);
     }
+  }
+
+  onBlur(event) {
+    this.setState({ edited: false, });
+    $('.new-entry textarea').blur();
   }
 
   toggleHideUnimportant() {
@@ -98,7 +100,8 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>RWGB ({this.props.entrysCount})</h1>
+          <h1>RWGB</h1>
+          <span>({this.props.entrysCount} Entries, {this.props.importantEntrysCount} important Entries)</span>
 
           <label className="hide-unimportant" htmlFor="hide-unimportant">
             <input
@@ -118,6 +121,7 @@ class App extends Component {
                 ref="textInput"
                 onFocus={ this.toggleEdited.bind(this) }
                 onKeyUp={ this.escapeEdit.bind(this) }
+                onBlur={ this.onBlur.bind(this) }
                 placeholder="Type to add a new entry"
               />
               <button className="submitBtn" onClick={this.handleSubmit.bind(this)} ></button>
@@ -135,6 +139,7 @@ class App extends Component {
 
 App.propTypes = {
   entrys: PropTypes.array.isRequired,
+  importantEntrysCount: PropTypes.number.isRequired,
   entrysCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
 };
@@ -145,6 +150,7 @@ export default createContainer(() => {
   return {
     entrys: Entrys.find({}, { sort: { createdAt: -1 } }).fetch(),
     entrysCount: Entrys.find().count(),
+    importantEntrysCount: Entrys.find().count() - Entrys.find({ important: { $ne: true } }).count(),
     currentUser: Meteor.user(),
   };
 }, App);

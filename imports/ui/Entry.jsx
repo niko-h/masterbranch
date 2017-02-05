@@ -32,16 +32,13 @@ export default class Entry extends Component {
     event.preventDefault();
     if (event.keyCode == 13 && event.altKey) {
       this.updateEntry(event);
-      $('.entry-edit textarea').blur()
     }
   }
 
   updateEntry() {
     event.preventDefault();
     Meteor.call('entrys.updateText', this.props.entry._id, this.refs[ `text_${ this.props.entry._id}` ].value);
-    this.setState({
-      edited: false,
-    });
+    this.onBlur(event);
   }
 
   toggleEdited() {
@@ -50,9 +47,13 @@ export default class Entry extends Component {
 
   escapeEdit(event) {
     if (event.keyCode == 27) {
-      this.setState({ edited: false, });
-      $('.entry-edit textarea').val(this.props.entry.text).blur();
+      this.onBlur(event);
     }
+  }
+
+  onBlur(event) {
+    this.setState({ edited: false, });
+    $('.entry-edit textarea').val(this.props.entry.text).blur();
   }
 
   render() {
@@ -69,7 +70,7 @@ export default class Entry extends Component {
     
     return (
       <li className={entryClassName}>
-        <strong>{this.props.entry.username} {this.props.entryCountByUser}</strong>
+        <strong>{this.props.entry.username}</strong>
         <span> created: { moment(new Date( this.props.entry.createdAt).toString() ).format('DD.MM.YY, HH:mm') }</span>
         { this.props.updated ? (
           <span> | updated: { moment(new Date( this.props.entry.lastEditAt).toString() ).format('DD.MM.YY, HH:mm') }</span>
@@ -80,8 +81,9 @@ export default class Entry extends Component {
             <form className="editEntryForm" onKeyUp={this.altEnter.bind(this)} >
               <Textarea 
                 className="text"
-                onChange={ this.toggleEdited.bind(this) }
+                onFocus={ this.toggleEdited.bind(this) }
                 onKeyUp={ this.escapeEdit.bind(this) }
+                onBlur={ this.onBlur.bind(this) }
                 ref={ `text_${ this.props.entry._id }` }
                 name="text"
                 defaultValue={ this.props.entry.text }
@@ -97,7 +99,7 @@ export default class Entry extends Component {
         
         <p />
 
-        { this.props.canEdit && this.props.entryCountByUser < 2 ? (
+        { this.props.canEdit ? (
           <div>
             <span>
               <label htmlFor="importantCheckbox_{this.props.entry._id}">
