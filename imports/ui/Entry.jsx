@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
 
+
 // Entry component - represents a single todo item
 export default class Entry extends Component {
   constructor(props) {
@@ -67,6 +68,7 @@ export default class Entry extends Component {
         'entry-edit' : ( !this.state.edited ),
         'entry-edit edited': ( this.state.edited ),
     } );
+    var checkboxId = 'importantCheckbox_'+this.props.entry._id;
     
     return (
       <li className={entryClassName}>
@@ -88,6 +90,7 @@ export default class Entry extends Component {
                 name="text"
                 defaultValue={ this.props.entry.text }
               />
+              
             </form>
             <button className="editBtn" onClick={this.updateEntry.bind(this)}></button>
           </div>
@@ -102,11 +105,11 @@ export default class Entry extends Component {
         { this.props.canEdit ? (
           <div>
             <span>
-              <label htmlFor="importantCheckbox_{this.props.entry._id}">
+              <label htmlFor={checkboxId}>
                 <input
                   type="checkbox"
                   readOnly
-                  id="importantCheckbox_{this.props.entry._id}"
+                  id={checkboxId}
                   checked={this.props.entry.important}
                   onClick={this.toggleImportant.bind(this)}
                 /> important

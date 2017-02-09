@@ -117,12 +117,12 @@ class App extends Component {
 
           { this.props.currentUser ?
             <form className={edited} onKeyUp={this.altEnter.bind(this)} >
-              <Textarea
+              <Textarea 
                 ref="textInput"
-                onFocus={ this.toggleEdited.bind(this) }
-                onKeyUp={ this.escapeEdit.bind(this) }
                 onBlur={ this.onBlur.bind(this) }
                 placeholder="Type to add a new entry"
+                onKeyUp={ this.escapeEdit.bind(this) }
+                onFocus={ this.toggleEdited.bind(this) }
               />
               <button className="submitBtn" onClick={this.handleSubmit.bind(this)} ></button>
             </form> : ''
