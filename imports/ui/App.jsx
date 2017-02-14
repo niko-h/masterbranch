@@ -4,10 +4,15 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
+import { check } from 'meteor/check';
 import { Entrys } from '../api/entrys.js';
+
+// import Upload from './Upload.jsx';
+import Dropzone from 'react-dropzone';
 
 import Entry from './Entry.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
 
 // App component - represents the whole app
 class App extends Component {
@@ -17,7 +22,26 @@ class App extends Component {
     this.state = {
       hideUnimportant: false,
       edited: false,
+      files: [],
+      fileUrl: '',
     };
+  }
+
+  readFile(file, onLoadCallback) {
+    reader = new FileReader();
+    reader.onload = onLoadCallback;
+    reader.readAsDataURL(file);
+  }
+
+  onDrop(acceptedFiles, rejectedFiles) {
+    url = 'empty';
+    this.setState({ files: acceptedFiles }, () => {
+      this.readFile(this.state.files[0], function(e) {
+        this.setState({ fileUrl: e.target.result }, () => {
+          console.info('image converted to base64');
+        });
+      }.bind(this));
+    });
   }
 
   toggleEdited() {
@@ -26,17 +50,26 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.info('handleSubmit');
+    check(this.state.fileUrl, String);
 
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    const image = this.state.fileUrl;
 
-    if (text.length>0) {
-      Meteor.call('entrys.insert', text);
+    const entry = {
+      text: text,
+      image: image
+    }
+
+    if (entry.text.length>0 || entry.image.length>0) {
+      Meteor.call('entrys.insert', entry);
       this.onBlur(event);
     }
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    this.setState({files: [], fileUrl: ''});
   }
 
   altEnter(event) {
@@ -92,6 +125,7 @@ class App extends Component {
   }
 
   render() {
+    console.info('render()');
     var edited = classnames( this.state.edited, {
         'new-entry' : ( !this.state.edited ),
         'new-entry edited': ( this.state.edited ),
@@ -116,16 +150,38 @@ class App extends Component {
           <AccountsUIWrapper />
 
           { this.props.currentUser ?
-            <form className={edited} onKeyUp={this.altEnter.bind(this)} >
-              <Textarea 
-                ref="textInput"
-                onBlur={ this.onBlur.bind(this) }
-                placeholder="Type to add a new entry"
-                onKeyUp={ this.escapeEdit.bind(this) }
-                onFocus={ this.toggleEdited.bind(this) }
-              />
-              <button className="submitBtn" onClick={this.handleSubmit.bind(this)} ></button>
-            </form> : ''
+            <div className="newEntryForm">
+              <form className={edited} onKeyUp={this.altEnter.bind(this)} >
+                <Textarea 
+                  ref="textInput"
+                  // onBlur={ this.onBlur.bind(this) }
+                  placeholder="Type to add a new entry"
+                  onKeyUp={ this.escapeEdit.bind(this) }
+                  onFocus={ this.toggleEdited.bind(this) }
+                />
+                <button className="submitBtn" onClick={this.handleSubmit.bind(this)} ></button>
+              </form>
+              <div className="imageUploadForm">
+                <Dropzone 
+                  ref={(node) => { this.dropzone = node; }} 
+                  accept=".jpg, .png"
+                  onDrop={this.onDrop.bind(this)}
+                  className="drop-zone"
+                  activeClassName="drop-zone-active"
+                  rejectClassName="drop-zone-reject"
+                  multiple={false}
+                  maxSize={1000*1000}
+                  >
+                  <div>
+                    Image Upload
+                  </div>
+                </Dropzone>
+                {this.state.files.length > 0 ? <div className="preview">
+                  {this.state.files.map((file) => <img className="preview" src={file.preview} /> )}
+                  </div> : null
+                }
+              </div>
+            </div> : ''
           }
         </header>
 

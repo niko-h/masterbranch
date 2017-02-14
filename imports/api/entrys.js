@@ -12,9 +12,11 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'entrys.insert'(text) {
-    check(text, String);
-
+  'entrys.insert'(entry) {
+    console.info('insertEntry');
+    check(entry.text, String);
+    check(entry.image, String);
+    
     // Make sure the user is logged in before inserting a entry
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -26,7 +28,8 @@ Meteor.methods({
       ( Meteor.users.findOne(this.userId).emails[0].address );
 
     Entrys.insert({
-      text,
+      text: entry.text,
+      image: entry.image,
       createdAt: new Date(),
       owner: this.userId,
       username: username,

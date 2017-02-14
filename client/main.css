@@ -48,10 +48,15 @@ textarea {
   font-family: sans-serif;
 }
 
-header form {
-  margin: 10px -15px;
-  margin-bottom: -10px;
+.newEntryForm {
   position: relative;
+}
+
+header form {
+  margin: 0;
+  position: relative;
+  width: 80%;
+  display: inline-block;
 }
  
 .new-entry textarea {
@@ -59,7 +64,7 @@ header form {
   background: transparent;
   border: none;
   width: 100% !important;
-  padding: 10px 80px 10px 10px;
+  padding: 10px 80px 10px 0px;
   font-size: 1em;
   resize: none;
   color: #ff0;
@@ -69,7 +74,7 @@ header form {
 }
 
 .new-entry .submitBtn {
-  margin: 2px 10px 5px;
+  margin: 2px 0 0;
   width: 100px;
   height: 20px;
   border: none;
@@ -90,6 +95,21 @@ header form {
 .new-entry .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
+
+.imageUploadForm {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  width: 20%;
+}
+.preview {
+  position: absolute;
+  top: 0;
+}
+.preview img {
+  width: 115px;
+}
+
  
 ul {
   margin: 0;
@@ -151,6 +171,10 @@ li .entry-edit textarea:hover, li .entry-edit textarea:focus, li .entry-edit tex
   background: white;
   border: 1px solid grey;
 }
+li img {
+  max-width: 100%;
+  max-height: 300px;
+}
  
 li.checked, li.checked * {
   color: red;
@@ -184,4 +208,26 @@ header .hide-unimportant {
   .new-entry input {
     padding-bottom: 5px;
   }
+}
+
+.preview {
+  width: 100px;
+  height: 100px;
+}
+
+.drop-zone {
+  color: green;
+  padding: 10px 5px;
+  margin: 0;
+  border: 2px dashed #ccc;
+  border-radius: 2px;
+  text-align: center;
+}
+.drop-zone.drop-zone-accept {
+  color: white;
+  background-color: green;
+}
+.drop-zone.drop-zone-reject {
+  color: white;
+  background-color: red;
 }

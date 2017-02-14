@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { RIETextArea } from 'riek';
 import { moment } from 'meteor/momentjs:moment';
 import { Meteor } from 'meteor/meteor';
 import Textarea from 'react-textarea-autosize';
@@ -73,11 +72,14 @@ export default class Entry extends Component {
     return (
       <li className={entryClassName}>
         <strong>{this.props.entry.username}</strong>
-        <span> created: { moment(new Date( this.props.entry.createdAt).toString() ).format('DD.MM.YY, HH:mm') }</span>
+        <span> created: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>
         { this.props.updated ? (
-          <span> | updated: { moment(new Date( this.props.entry.lastEditAt).toString() ).format('DD.MM.YY, HH:mm') }</span>
+          <span> | updated: { moment(new Date( this.props.entry.lastEditAt) ).format('DD.MM.YY, HH:mm') }</span>
         ) : ''}
         <p />
+
+        <img src={this.props.entry.image} />
+
         { (this.props.canEdit && this.props.entryCountByUser < 2) ? (
           <div className={edited}> 
             <form className="editEntryForm" onKeyUp={this.altEnter.bind(this)} >
