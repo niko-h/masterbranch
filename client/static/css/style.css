@@ -1,0 +1,562 @@
+@charset "UTF-8";
+/* ==========================================================================
+   MASTER-CSS FILE
+   ========================================================================== */
+/* ==========================================================================
+   ALL
+   ========================================================================== */
+/*
+example:
+
+(_fonts.scss)
+@import 'import-once'
+@if import-once( 'fonts' ) {
+    %helvetica {
+        font-family: 'Helvetica';
+    }
+}
+
+(_buttons.scss) uses fonts
+@import 'fonts';
+button {
+    @extend %helvetica;
+}
+
+(_cart.scss) also uses fonts
+@import 'fonts';
+.cart {
+    @extend %helvetica;
+}
+
+(screen.scss) brings them all together
+@import 'buttons';
+@import 'cart';
+
+***Output without @import-once:***
+button, cart { font-family: 'Helvetica'; }
+button, cart { font-family: 'Helvetica'; }
+
+***Output WITH @import-once:***
+button, cart { font-family: 'Helvetica'; }
+
+------------------------------------------
+
+CSS will be generated wherever they are @import'd, so if you import 'fonts' twice in a bundle, they would normally be generated n-times they are imported
+
+*/
+/**
+ * Breakpoint
+ */
+/* ==========================================================================
+   ALL
+   ========================================================================== */
+/*No classes should belong here.  Look in ../modules.*/
+/* ==========================================================================
+   CSS Reset
+   ========================================================================== */
+/**
+ * Based on Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ */
+/* line 5, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 15, ../scss/base/_base.scss */
+html, body, div, span, applet, object, iframe, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 24, ../scss/base/_base.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 28, ../scss/base/_base.scss */
+body {
+  line-height: 1;
+}
+
+/* line 31, ../scss/base/_base.scss */
+blockquote {
+  border-left: 5px solid #ccc;
+  margin: 1.5em 0;
+  padding: 0.5em 10px;
+  quotes: "“" "”" "‘" "’";
+}
+
+/* line 37, ../scss/base/_base.scss */
+blockquote:before {
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+/* line 44, ../scss/base/_base.scss */
+blockquote p {
+  display: inline;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+/* base files only alter actual HTML elements.  NO CLASSES HERE (See ../modules) */
+/* ==========================================================================
+   MASTER-VARIABLES FILE
+   ========================================================================== */
+/**
+ * COLORS
+ */
+/**
+ * Base
+ */
+/**
+ * Sizes
+ */
+/**
+ * Breakpoints
+ */
+/* line 58, ../scss/base/_base.scss */
+html, body {
+  font-size: 62.5%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/* line 64, ../scss/base/_base.scss */
+body {
+  color: #000;
+  background: #666;
+  background-image: linear-gradient(to bottom, #ddd, #aaa 100%);
+  background-attachment: fixed;
+  font-size: 1.4em;
+  font-family: sans-serif;
+  font: arial;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 85, ../scss/base/_base.scss */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+/* line 93, ../scss/base/_base.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 96, ../scss/base/_base.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 100, ../scss/base/_base.scss */
+p {
+  margin: 0 0 1em;
+}
+
+/* line 104, ../scss/base/_base.scss */
+img {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   ALL
+   ========================================================================== */
+/* ==========================================================================
+   Mother
+   ========================================================================== */
+/* line 5, ../scss/modules/_mother.scss */
+#mother {
+  height: 100%;
+  min-height: 100%;
+  margin: 0px auto;
+  max-width: 920px;
+  clear: both;
+}
+
+/* =language-menu
+-----------------------------------------------------------------------------*/
+/* line 15, ../scss/modules/_mother.scss */
+.languages {
+  line-height: 30px;
+}
+
+/* line 18, ../scss/modules/_mother.scss */
+.lang-link {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* line 22, ../scss/modules/_mother.scss */
+.lang-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* line 26, ../scss/modules/_mother.scss */
+.lang-link.selected {
+  font-weight: bold;
+  color: #ddd;
+}
+
+/* ==========================================================================
+   header
+   ========================================================================== */
+/* line 5, ../scss/modules/_header.scss */
+header {
+  background: #333;
+  padding: 20px 15px 15px 15px;
+  position: relative;
+  margin-bottom: 0;
+  color: #eee;
+}
+/* line 12, ../scss/modules/_header.scss */
+header #login-buttons {
+  display: block;
+}
+/* line 16, ../scss/modules/_header.scss */
+header h1 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
+}
+/* line 24, ../scss/modules/_header.scss */
+header .newEntryForm {
+  position: relative;
+}
+/* line 27, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry {
+  margin: 0;
+  position: relative;
+  width: 80%;
+  display: inline-block;
+}
+/* line 33, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry textarea {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  width: 100% !important;
+  padding: 10px 80px 10px 0px;
+  font-size: 1em;
+  resize: none;
+  color: #ff0;
+}
+/* line 44, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry textarea:focus {
+  outline: 0;
+}
+/* line 49, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry .submitBtn {
+  margin: 2px 0 0;
+  width: 100px;
+  height: 20px;
+  border: none;
+  background: #dd0;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 1px #222, 0px 0px 0px 2px #dd0;
+  border-radius: 2px;
+  display: none;
+}
+/* line 62, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry .submitBtn.edited .submitBtn {
+  display: inline;
+}
+/* line 67, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry .submitBtn .submitBtn:after {
+  content: 'Submit Post';
+}
+/* line 70, ../scss/modules/_header.scss */
+header .newEntryForm .new-entry .submitBtn .submitBtn:hover:after {
+  content: 'Alt + Enter';
+}
+/* line 78, ../scss/modules/_header.scss */
+header .imageUploadForm {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  width: 20%;
+}
+/* line 84, ../scss/modules/_header.scss */
+header .imageUploadForm .drop-zone {
+  color: green;
+  padding: 10px 5px;
+  margin: 0;
+  border: 2px dashed #ccc;
+  border-radius: 2px;
+  text-align: center;
+}
+/* line 92, ../scss/modules/_header.scss */
+header .imageUploadForm .drop-zone .drop-zone-accept {
+  color: white;
+  background-color: green;
+}
+/* line 96, ../scss/modules/_header.scss */
+header .imageUploadForm .drop-zone .drop-zone-reject {
+  color: white;
+  background-color: red;
+}
+/* line 102, ../scss/modules/_header.scss */
+header .imageUploadForm .preview {
+  position: absolute;
+  top: 0;
+}
+/* line 106, ../scss/modules/_header.scss */
+header .imageUploadForm .preview img {
+  width: 115px;
+  height: 100px;
+}
+/* line 113, ../scss/modules/_header.scss */
+header .hide-unimportant {
+  float: right;
+}
+/* line 117, ../scss/modules/_header.scss */
+header .toggle-private {
+  margin-left: 5px;
+}
+
+/* ==========================================================================
+   menu
+   ========================================================================== */
+/* line 5, ../scss/modules/_menu.scss */
+#menu {
+  width: 30%;
+  display: inline-block;
+  float: left;
+  padding: 20px;
+  background: #ddd;
+  box-sizing: border-box;
+}
+
+/* line 14, ../scss/modules/_menu.scss */
+ul#menu_list li {
+  list-style-type: none;
+  list-style-image: none;
+  margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   Main
+   ========================================================================== */
+/* =Content
+-----------------------------------------------------------------------------*/
+/* line 8, ../scss/modules/_main.scss */
+ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 12, ../scss/modules/_main.scss */
+ul li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border-bottom: #eee solid 1px;
+  margin-bottom: 0;
+  background: #fff;
+}
+/* line 19, ../scss/modules/_main.scss */
+ul li:first-child:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  height: 1px;
+  width: 100%;
+  box-shadow: 0 5px 5px 0 #000;
+}
+/* line 31, ../scss/modules/_main.scss */
+ul li .editBtn {
+  display: none;
+}
+/* line 33, ../scss/modules/_main.scss */
+ul li .editBtn:after {
+  content: 'Update Post';
+}
+/* line 36, ../scss/modules/_main.scss */
+ul li .editBtn:hover:after {
+  content: 'Alt + Enter';
+}
+/* line 41, ../scss/modules/_main.scss */
+ul li .entry-edit .edited .editBtn {
+  display: inline;
+}
+/* line 45, ../scss/modules/_main.scss */
+ul li .entry-edit textarea {
+  /*margin-left: 10px;*/
+  box-sizing: border-box;
+  background: transparent;
+  border: 1px solid transparent;
+  width: 100% !important;
+  padding: 10px 80px 10px 10px;
+  font-size: 1em;
+  resize: none;
+}
+/* line 54, ../scss/modules/_main.scss */
+ul li .entry-edit textarea:hover, ul li .entry-edit textarea:focus, ul li .entry-edit textarea:active {
+  background: white;
+  border: 1px solid grey;
+}
+/* line 63, ../scss/modules/_main.scss */
+ul li img {
+  max-width: 100%;
+  max-height: 300px;
+}
+/* line 68, ../scss/modules/_main.scss */
+ul li.checked, ul li.checked * {
+  color: red;
+}
+/* line 73, ../scss/modules/_main.scss */
+ul li.private {
+  margin-top: -1px;
+  background: #eee;
+  border-color: #ddd;
+  box-shadow: inset 0 1px 0 0 #ddd;
+}
+/* line 80, ../scss/modules/_main.scss */
+ul li .delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  /* line 95, ../scss/modules/_main.scss */
+  li {
+    padding: 12px 15px;
+  }
+
+  /* line 99, ../scss/modules/_main.scss */
+  .search {
+    width: 150px;
+    clear: both;
+  }
+
+  /* line 104, ../scss/modules/_main.scss */
+  .new-entry input {
+    padding-bottom: 5px;
+  }
+}
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+/* line 5, ../scss/modules/_footer.scss */
+#footer {
+  clear: both;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ==========================================================================
+   NOTICE
+   ========================================================================== */
+/* line 5, ../scss/modules/_notice.scss */
+.notice, .warning, .success {
+  border: 1px solid;
+  margin: 5px;
+  padding: 5px;
+}
+
+/**
+ * WARNING 
+ */
+/* line 15, ../scss/modules/_notice.scss */
+.warning {
+  border-color: red;
+}
+
+/* line 20, ../scss/modules/_notice.scss */
+.success {
+  border-color: green;
+}
+
+/* ==========================================================================
+   ALL
+   ========================================================================== */
