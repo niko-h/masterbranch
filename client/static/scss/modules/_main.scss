@@ -54,15 +54,15 @@
         
         textarea {
           @include box-sizing(border-box);
-          border: 1px solid $white;
+          border: 1px solid transparent;
           border-radius: 3px;
           @include transition-property(border-color, background, box-shadow);
           @include transition-duration(0.2s);
           @include transition-timing-function(ease-in-out);
           background: transparent;
-          width: 100% !important;
-          padding: 10px 80px 10px 10px;
-          font-size: 1em;
+          width: 80% !important;
+          padding: 10px;
+          font-size: 1.4rem;
           resize: none;
           
           &:hover {
@@ -83,18 +83,32 @@
         }
         
         .editBtn {
-          display: none;
+          display: inline;
+          width: 100px;
+          vertical-align: bottom;
+          margin: 0 0 4px 10px;
           &:after {
             content: 'Update Post';
           }
           &:hover:after {
             content: 'Alt + Enter';
           }
+          &.none {
+            visibility: hidden;
+            margin-bottom: 20px;
+            opacity: 0;
+            height: 0;
+            @include transition(visibility 0s .1s, height .1s linear, margin-bottom .1s linear, opacity .1s linear);
+          }
+          &.edited {
+            visibility: visible;
+            margin-bottom: 4px;
+            opacity: 1;
+            height: 37px;
+            @include transition(opacity .1s linear);
+          } 
         }
       }
-      &.edited .editEntryForm .editBtn {
-        display: inline;
-      } 
     }
 
     .entryOptions {

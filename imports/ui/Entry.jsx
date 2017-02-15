@@ -32,12 +32,15 @@ export default class Entry extends Component {
     event.preventDefault();
     if (event.keyCode == 13 && event.altKey) {
       this.updateEntry(event);
+      this.setState({ edited: false, });
+      $('.editEntryForm textarea').val(this.props.entry.text).blur();
     }
   }
 
   updateEntry() {
     event.preventDefault();
     Meteor.call('entrys.updateText', this.props.entry._id, this.refs[ `text_${ this.props.entry._id}` ].value);
+    
     setTimeout(function() {
       this.onBlur(event);
     }.bind(this), 500); // wait for button-effect
@@ -66,8 +69,8 @@ export default class Entry extends Component {
       private: this.props.entry.private,
     });
     var edited = classnames( this.state.edited, {
-        'editEntry' : ( !this.state.edited ),
-        'editEntry edited': ( this.state.edited ),
+        'none' : ( !this.state.edited ),
+        'edited': ( this.state.edited ),
     } );
     var checkboxId = 'importantCheckbox_'+this.props.entry._id;
     
@@ -83,7 +86,7 @@ export default class Entry extends Component {
         <img src={this.props.entry.image} />
 
         { (this.props.canEdit && this.props.entryCountByUser < 2) ? (
-          <div className={edited}> 
+          <div className={'editEntry '+edited}> 
             <form className="editEntryForm" onKeyUp={this.altEnter.bind(this)} >
               <Textarea 
                 className="text"
@@ -95,7 +98,7 @@ export default class Entry extends Component {
                 defaultValue={ this.props.entry.text }
               />
               
-              <button className="editBtn btn" onClick={this.updateEntry.bind(this)}></button>
+              <button className={'editBtn btn '+edited} onClick={this.updateEntry.bind(this)}></button>
             </form>
           </div>
         ) : (

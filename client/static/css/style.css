@@ -507,7 +507,7 @@ ul#menu_list li {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid #fff;
+  border: 1px solid transparent;
   border-radius: 3px;
   -moz-transition-property: border-color, background, box-shadow;
   -o-transition-property: border-color, background, box-shadow;
@@ -522,22 +522,22 @@ ul#menu_list li {
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
   background: transparent;
-  width: 100% !important;
-  padding: 10px 80px 10px 10px;
-  font-size: 1em;
+  width: 80% !important;
+  padding: 10px;
+  font-size: 1.4rem;
   resize: none;
 }
 /* line 68, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm textarea:hover {
   border: none;
-  border: 1px solid #efefef;
-  background: #efefef;
+  border: 1px solid #f3f3f3;
+  background: #f3f3f3;
 }
 /* line 73, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm textarea:focus {
   border: none;
   border: 1px solid #ccc;
-  background: #efefef;
+  background: #f3f3f3;
   box-shadow: inset 1px 1px 2px rgba(204, 204, 204, 0.5);
 }
 /* line 79, ../scss/modules/_main.scss */
@@ -546,25 +546,47 @@ ul#menu_list li {
 }
 /* line 85, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
-  display: none;
+  display: inline;
+  width: 100px;
+  vertical-align: bottom;
+  margin: 0 0 4px 10px;
 }
-/* line 87, ../scss/modules/_main.scss */
+/* line 90, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Update Post';
 }
-/* line 90, ../scss/modules/_main.scss */
+/* line 93, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 95, ../scss/modules/_main.scss */
-.mainContent li .editEntry.edited .editEntryForm .editBtn {
-  display: inline;
+/* line 96, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editBtn.none {
+  visibility: hidden;
+  margin-bottom: 20px;
+  opacity: 0;
+  height: 0;
+  -moz-transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
+  -o-transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
+  -webkit-transition: visibility 0s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
+  -webkit-transition-delay: 0.1s, 0s, 0s, 0s;
+  transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
 }
-/* line 101, ../scss/modules/_main.scss */
+/* line 103, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editBtn.edited {
+  visibility: visible;
+  margin-bottom: 4px;
+  opacity: 1;
+  height: 37px;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 115, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .toggle-private {
   margin-left: 5px;
 }
-/* line 105, ../scss/modules/_main.scss */
+/* line 119, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn {
   float: right;
   font-weight: bold;
@@ -575,18 +597,18 @@ ul#menu_list li {
 }
 
 @media (max-width: 600px) {
-  /* line 118, ../scss/modules/_main.scss */
+  /* line 132, ../scss/modules/_main.scss */
   li {
     padding: 12px 15px;
   }
 
-  /* line 122, ../scss/modules/_main.scss */
+  /* line 136, ../scss/modules/_main.scss */
   .search {
     width: 150px;
     clear: both;
   }
 
-  /* line 127, ../scss/modules/_main.scss */
+  /* line 141, ../scss/modules/_main.scss */
   .new-entry input {
     padding-bottom: 5px;
   }
