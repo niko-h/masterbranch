@@ -38,7 +38,9 @@ export default class Entry extends Component {
   updateEntry() {
     event.preventDefault();
     Meteor.call('entrys.updateText', this.props.entry._id, this.refs[ `text_${ this.props.entry._id}` ].value);
-    this.onBlur(event);
+    setTimeout(function() {
+      this.onBlur(event);
+    }.bind(this), 500); // wait for button-effect
   }
 
   toggleEdited() {
@@ -53,7 +55,7 @@ export default class Entry extends Component {
 
   onBlur(event) {
     this.setState({ edited: false, });
-    $('.entry-edit textarea').val(this.props.entry.text).blur();
+    $('.editEntryForm textarea').val(this.props.entry.text).blur();
   }
 
   render() {
@@ -87,14 +89,14 @@ export default class Entry extends Component {
                 className="text"
                 onFocus={ this.toggleEdited.bind(this) }
                 onKeyUp={ this.escapeEdit.bind(this) }
-                onBlur={ this.onBlur.bind(this) }
+                // onBlur={ this.onBlur.bind(this) }
                 ref={ `text_${ this.props.entry._id }` }
                 name="text"
                 defaultValue={ this.props.entry.text }
               />
               
+              <button className="editBtn btn" onClick={this.updateEntry.bind(this)}></button>
             </form>
-            <button className="editBtn" onClick={this.updateEntry.bind(this)}></button>
           </div>
         ) : (
           <span className="entry">
