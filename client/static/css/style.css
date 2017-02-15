@@ -289,10 +289,6 @@ header {
   color: #eee;
 }
 /* line 12, ../scss/modules/_header.scss */
-header #login-buttons {
-  display: block;
-}
-/* line 16, ../scss/modules/_header.scss */
 header h1 {
   font-size: 1.5em;
   margin: 0;
@@ -300,19 +296,27 @@ header h1 {
   display: inline-block;
   margin-right: 1em;
 }
+/* line 20, ../scss/modules/_header.scss */
+header .hide-unimportant {
+  float: right;
+}
 /* line 24, ../scss/modules/_header.scss */
-header .newEntryForm {
+header #login-buttons {
+  display: block;
+}
+/* line 28, ../scss/modules/_header.scss */
+header .newEntry {
   position: relative;
 }
-/* line 27, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry {
+/* line 31, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm {
   margin: 0;
   position: relative;
   width: 80%;
   display: inline-block;
 }
-/* line 33, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry textarea {
+/* line 37, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm textarea {
   font-family: sans-serif;
   box-sizing: border-box;
   background: transparent;
@@ -323,12 +327,12 @@ header .newEntryForm .new-entry textarea {
   resize: none;
   color: #ff0;
 }
-/* line 44, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry textarea:focus {
+/* line 48, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm textarea:focus {
   outline: 0;
 }
-/* line 49, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry .submitBtn {
+/* line 53, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .submitBtn {
   margin: 2px 0 0;
   width: 100px;
   height: 20px;
@@ -341,26 +345,26 @@ header .newEntryForm .new-entry .submitBtn {
   border-radius: 2px;
   display: none;
 }
-/* line 62, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry .submitBtn.edited .submitBtn {
-  display: inline;
-}
-/* line 67, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry .submitBtn .submitBtn:after {
+/* line 66, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .submitBtn:after {
   content: 'Submit Post';
 }
-/* line 70, ../scss/modules/_header.scss */
-header .newEntryForm .new-entry .submitBtn .submitBtn:hover:after {
+/* line 69, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 78, ../scss/modules/_header.scss */
+/* line 74, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm.edited .submitBtn {
+  display: inline;
+}
+/* line 80, ../scss/modules/_header.scss */
 header .imageUploadForm {
   display: inline-block;
   vertical-align: top;
   margin: 0;
   width: 20%;
 }
-/* line 84, ../scss/modules/_header.scss */
+/* line 86, ../scss/modules/_header.scss */
 header .imageUploadForm .drop-zone {
   color: green;
   padding: 10px 5px;
@@ -369,33 +373,25 @@ header .imageUploadForm .drop-zone {
   border-radius: 2px;
   text-align: center;
 }
-/* line 92, ../scss/modules/_header.scss */
+/* line 94, ../scss/modules/_header.scss */
 header .imageUploadForm .drop-zone .drop-zone-accept {
   color: white;
   background-color: green;
 }
-/* line 96, ../scss/modules/_header.scss */
+/* line 98, ../scss/modules/_header.scss */
 header .imageUploadForm .drop-zone .drop-zone-reject {
   color: white;
   background-color: red;
 }
-/* line 102, ../scss/modules/_header.scss */
+/* line 104, ../scss/modules/_header.scss */
 header .imageUploadForm .preview {
   position: absolute;
   top: 0;
 }
-/* line 106, ../scss/modules/_header.scss */
+/* line 108, ../scss/modules/_header.scss */
 header .imageUploadForm .preview img {
   width: 115px;
   height: 100px;
-}
-/* line 113, ../scss/modules/_header.scss */
-header .hide-unimportant {
-  float: right;
-}
-/* line 117, ../scss/modules/_header.scss */
-header .toggle-private {
-  margin-left: 5px;
 }
 
 /* ==========================================================================
@@ -424,12 +420,12 @@ ul#menu_list li {
 /* =Content
 -----------------------------------------------------------------------------*/
 /* line 8, ../scss/modules/_main.scss */
-ul {
+.mainContent {
   margin: 0;
   padding: 0;
 }
 /* line 12, ../scss/modules/_main.scss */
-ul li {
+.mainContent li {
   position: relative;
   list-style: none;
   padding: 15px;
@@ -438,7 +434,7 @@ ul li {
   background: #fff;
 }
 /* line 19, ../scss/modules/_main.scss */
-ul li:first-child:before {
+.mainContent li:first-child:before {
   display: block;
   content: "";
   position: absolute;
@@ -450,23 +446,23 @@ ul li:first-child:before {
   box-shadow: 0 5px 5px 0 #000;
 }
 /* line 31, ../scss/modules/_main.scss */
-ul li .editBtn {
-  display: none;
-}
-/* line 33, ../scss/modules/_main.scss */
-ul li .editBtn:after {
-  content: 'Update Post';
+.mainContent li.checked, .mainContent li.checked * {
+  color: red;
 }
 /* line 36, ../scss/modules/_main.scss */
-ul li .editBtn:hover:after {
-  content: 'Alt + Enter';
+.mainContent li.private {
+  margin-top: -1px;
+  background: #eee;
+  border-color: #ddd;
+  box-shadow: inset 0 1px 0 0 #ddd;
 }
-/* line 41, ../scss/modules/_main.scss */
-ul li .entry-edit .edited .editBtn {
-  display: inline;
+/* line 43, ../scss/modules/_main.scss */
+.mainContent li img {
+  max-width: 100%;
+  max-height: 300px;
 }
-/* line 45, ../scss/modules/_main.scss */
-ul li .entry-edit textarea {
+/* line 54, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm textarea {
   /*margin-left: 10px;*/
   box-sizing: border-box;
   background: transparent;
@@ -476,29 +472,33 @@ ul li .entry-edit textarea {
   font-size: 1em;
   resize: none;
 }
-/* line 54, ../scss/modules/_main.scss */
-ul li .entry-edit textarea:hover, ul li .entry-edit textarea:focus, ul li .entry-edit textarea:active {
+/* line 63, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm textarea:hover, .mainContent li .editEntry .editEntryForm textarea:focus, .mainContent li .editEntry .editEntryForm textarea:active {
   background: white;
   border: 1px solid grey;
 }
-/* line 63, ../scss/modules/_main.scss */
-ul li img {
-  max-width: 100%;
-  max-height: 300px;
+/* line 71, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm.edited .editBtn {
+  display: inline;
 }
-/* line 68, ../scss/modules/_main.scss */
-ul li.checked, ul li.checked * {
-  color: red;
+/* line 74, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editBtn {
+  display: none;
 }
-/* line 73, ../scss/modules/_main.scss */
-ul li.private {
-  margin-top: -1px;
-  background: #eee;
-  border-color: #ddd;
-  box-shadow: inset 0 1px 0 0 #ddd;
+/* line 76, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editBtn:after {
+  content: 'Update Post';
 }
-/* line 80, ../scss/modules/_main.scss */
-ul li .delete {
+/* line 79, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editBtn:hover:after {
+  content: 'Alt + Enter';
+}
+/* line 87, ../scss/modules/_main.scss */
+.mainContent li .entryOptions .toggle-private {
+  margin-left: 5px;
+}
+/* line 91, ../scss/modules/_main.scss */
+.mainContent li .entryOptions .deleteBtn {
   float: right;
   font-weight: bold;
   background: none;
@@ -508,18 +508,18 @@ ul li .delete {
 }
 
 @media (max-width: 600px) {
-  /* line 95, ../scss/modules/_main.scss */
+  /* line 104, ../scss/modules/_main.scss */
   li {
     padding: 12px 15px;
   }
 
-  /* line 99, ../scss/modules/_main.scss */
+  /* line 108, ../scss/modules/_main.scss */
   .search {
     width: 150px;
     clear: both;
   }
 
-  /* line 104, ../scss/modules/_main.scss */
+  /* line 113, ../scss/modules/_main.scss */
   .new-entry input {
     padding-bottom: 5px;
   }

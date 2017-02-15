@@ -1,29 +1,22 @@
-# README #
+# rwgb with meteor+react #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+a dev-branch of rwgb
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* rwgb
+* Version 0
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* install meteor: 'curl https://install.meteor.com/ | sh'
+* go to rwgb-dir
+* run 'meteor'
 
 ### Contribution guidelines ###
 
-* Writing tests
 * Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
 * Repo owner or admin
-* Other community or team contact

@@ -5,7 +5,7 @@
 /* =Content
 -----------------------------------------------------------------------------*/
  
-ul {
+.mainContent {
   margin: 0;
   padding: 0;
   
@@ -27,69 +27,78 @@ ul {
       width: 100%;
       box-shadow: 0 5px 5px 0 #000;
     }
-    
-    .editBtn {
-      display: none;
-      &:after {
-        content: 'Update Post';
-      }
-      &:hover:after {
-        content: 'Alt + Enter';
-      }
-    }
-    .entry-edit {
-      .edited .editBtn {
-        display: inline;
-      }
-      
-      textarea {
-        /*margin-left: 10px;*/
-        box-sizing: border-box;
-        background: transparent;
-        border: 1px solid transparent;
-        width: 100% !important;
-        padding: 10px 80px 10px 10px;
-        font-size: 1em;
-        resize: none;
-        &:hover, 
-        &:focus, 
-        &:active {
-          background: white;
-          border: 1px solid grey;
-        }
-      }
-    }
-    
-    img {
-      max-width: 100%;
-      max-height: 300px;
-    }
-    
+
     &.checked, 
     &.checked * {
       color: red;
     }
-     
+ 
     &.private {
       margin-top: -1px;
       background: #eee;
       border-color: #ddd;
       box-shadow: inset 0 1px 0 0 #ddd;
     }
+    
+    img {
+      max-width: 100%;
+      max-height: 300px;
+    }
 
-    .delete {
-      float: right;
-      font-weight: bold;
-      background: none;
-      font-size: 1em;
-      border: none;
-      position: relative;
+    .entry {
+      // nothing to be done here so far
+    }
+    
+    .editEntry {
+      .editEntryForm {
+        textarea {
+          /*margin-left: 10px;*/
+          box-sizing: border-box;
+          background: transparent;
+          border: 1px solid transparent;
+          width: 100% !important;
+          padding: 10px 80px 10px 10px;
+          font-size: 1em;
+          resize: none;
+          &:hover, 
+          &:focus, 
+          &:active {
+            background: white;
+            border: 1px solid grey;
+          }
+        }
+        
+        &.edited .editBtn {
+          display: inline;
+        }
+        .editBtn {
+          display: none;
+          &:after {
+            content: 'Update Post';
+          }
+          &:hover:after {
+            content: 'Alt + Enter';
+          }
+        }
+      }
+    }
+
+    .entryOptions {
+      .toggle-private {
+        margin-left: 5px;
+      }
+          
+      .deleteBtn {
+        float: right;
+        font-weight: bold;
+        background: none;
+        font-size: 1em;
+        border: none;
+        position: relative;
+      }
     }
   }
 }
- 
- 
- 
  
 @media (max-width: 600px) {
   li {

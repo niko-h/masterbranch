@@ -9,10 +9,6 @@ header {
   margin-bottom: 0;
   color: #eee;
   
-  #login-buttons {
-    display: block;
-  }
-   
   h1 {
     font-size: 1.5em;
     margin: 0;
@@ -21,10 +17,18 @@ header {
     margin-right: 1em;
   }
 
-  .newEntryForm {
+  .hide-unimportant {
+    float: right;
+  }
+
+  #login-buttons {
+    display: block;
+  }
+
+  .newEntry {
     position: relative;
     
-    .new-entry {
+    .newEntryForm {
       margin: 0;
       position: relative;
       width: 80%;
@@ -59,18 +63,16 @@ header {
         border-radius: 2px;
         display: none;
         
-        &.edited .submitBtn {
-          display: inline;
+        &:after {
+          content: 'Submit Post';
         }
-        
-        .submitBtn {
-          &:after {
-            content: 'Submit Post';
-          }
-          &:hover:after {
-            content: 'Alt + Enter';
-          }
+        &:hover:after {
+          content: 'Alt + Enter';
         }
+      }
+
+      &.edited .submitBtn {
+        display: inline;
       }
     }
   }
@@ -109,14 +111,5 @@ header {
       }
     }
   }
-   
-  .hide-unimportant {
-    float: right;
-  }
-   
-  .toggle-private {
-    margin-left: 5px;
-  }
-
 }
  

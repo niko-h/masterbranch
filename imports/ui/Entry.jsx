@@ -64,8 +64,8 @@ export default class Entry extends Component {
       private: this.props.entry.private,
     });
     var edited = classnames( this.state.edited, {
-        'entry-edit' : ( !this.state.edited ),
-        'entry-edit edited': ( this.state.edited ),
+        'editEntry' : ( !this.state.edited ),
+        'editEntry edited': ( this.state.edited ),
     } );
     var checkboxId = 'importantCheckbox_'+this.props.entry._id;
     
@@ -105,7 +105,7 @@ export default class Entry extends Component {
         <p />
 
         { this.props.canEdit ? (
-          <div>
+          <div className="entryOptions">
             <span>
               <label htmlFor={checkboxId}>
                 <input
@@ -120,7 +120,7 @@ export default class Entry extends Component {
             <button className="toggle-private" onClick={this.togglePrivate.bind(this)}>
               { this.props.entry.private ? 'Private' : 'Public' }
             </button>
-            <button className="delete" onClick={this.deleteThisEntry.bind(this)}>
+            <button className="deleteBtn" onClick={this.deleteThisEntry.bind(this)}>
               &times;
             </button>
           </div>

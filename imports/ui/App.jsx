@@ -127,8 +127,8 @@ class App extends Component {
   render() {
     console.info('render()');
     var edited = classnames( this.state.edited, {
-        'new-entry' : ( !this.state.edited ),
-        'new-entry edited': ( this.state.edited ),
+        'newEntryForm' : ( !this.state.edited ),
+        'newEntryForm edited': ( this.state.edited ),
     } );
 
     return (
@@ -150,7 +150,7 @@ class App extends Component {
           <AccountsUIWrapper />
 
           { this.props.currentUser ?
-            <div className="newEntryForm">
+            <div className="newEntry">
               <form className={edited} onKeyUp={this.altEnter.bind(this)} >
                 <Textarea 
                   ref="textInput"
@@ -177,7 +177,7 @@ class App extends Component {
                   </div>
                 </Dropzone>
                 {this.state.files.length > 0 ? <div className="preview">
-                  {this.state.files.map((file) => <img className="preview" src={file.preview} /> )}
+                  {this.state.files.map((file) => <img src={file.preview} /> )}
                   </div> : null
                 }
               </div>
@@ -185,7 +185,7 @@ class App extends Component {
           }
         </header>
 
-        <ul>
+        <ul className="mainContent">
           {this.renderEntrys()}
         </ul>
       </div>
