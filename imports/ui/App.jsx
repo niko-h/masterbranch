@@ -6,10 +6,8 @@ import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
 import { check } from 'meteor/check';
 import { Entrys } from '../api/entrys.js';
-
-// import Upload from './Upload.jsx';
 import Dropzone from 'react-dropzone';
-
+import EmbedJS from '../../node_modules/embed-js/src/js/main.js';
 import Entry from './Entry.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
@@ -22,6 +20,8 @@ class App extends Component {
     this.state = {
       hideUnimportant: false,
       edited: false,
+      important: false,
+      private: false,
       files: [],
       fileUrl: '',
     };
@@ -34,18 +34,35 @@ class App extends Component {
   }
 
   onDrop(acceptedFiles, rejectedFiles) {
-    url = 'empty';
-    this.setState({ files: acceptedFiles }, () => {
-      this.readFile(this.state.files[0], function(e) {
-        this.setState({ fileUrl: e.target.result }, () => {
-          console.info('image converted to base64');
-        });
-      }.bind(this));
-    });
+    // todo: warn about rejected files
+    if(typeof(acceptedFiles[0]) === "undefined") {
+      alert('too large or not accepted file type');
+    } else {
+      this.setState({ files: acceptedFiles }, () => {
+        this.readFile(this.state.files[0], function(e) {
+          this.setState({ fileUrl: e.target.result }, () => {
+            console.info('image converted to base64');
+          });
+        }.bind(this));
+      });
+    }
+  }
+
+  clearImg(event) {
+    event.preventDefault();
+    this.setState({ fileUrl: '', files: [], });
   }
 
   toggleEdited() {
     this.setState({ edited: true, });
+  }
+
+  toggleImportant() {
+    this.setState({ important: !this.state.important, });
+  }
+  
+  togglePrivate() {
+    this.setState({ private: !this.state.private, });
   }
 
   handleSubmit(event) {
@@ -59,7 +76,9 @@ class App extends Component {
 
     const entry = {
       text: text,
-      image: image
+      image: image,
+      important: this.state.important,
+      private: this.state.private,
     }
 
     if (entry.text.length>0 || entry.image.length>0) {
@@ -86,8 +105,12 @@ class App extends Component {
   }
 
   onBlur(event) {
-    this.setState({ edited: false, });
-    $('.new-entry textarea').blur();
+    this.setState({ 
+      edited: false, 
+      important: false,
+      private: false,
+    });
+    $('.newEntry textarea').blur();
   }
 
   toggleHideUnimportant() {
@@ -124,34 +147,42 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    var $this = $(ReactDOM.findDOMNode(this));
+    $('.mainContent').css('margin-top', $('header').height()+50);
+  }
+
   render() {
     console.info('render()');
     var edited = classnames( this.state.edited, {
-        'newEntryForm' : ( !this.state.edited ),
-        'newEntryForm edited': ( this.state.edited ),
+        'none' : ( !this.state.edited ),
+        'edited': ( this.state.edited ),
     } );
-
+    
     return (
       <div className="container">
         <header>
           <h1>RWGB</h1>
-          <span>({this.props.entrysCount} Entries, {this.props.importantEntrysCount} important Entries)</span>
+          <span>({this.props.entrysCount} Entries)</span>
 
-          <label className="hide-unimportant" htmlFor="hide-unimportant">
-            <input
-              type="checkbox"
-              readOnly
+          <div className="checkbox hide-unimportant">
+            <input 
+              type="checkbox" 
+              className="slider-checkbox" 
+              id="hide-unimportant" 
               checked={this.state.hideUnimportant}
               onClick={this.toggleHideUnimportant.bind(this)}
-              id="hide-unimportant"
-            /> Hide unimportant entrys
-          </label>
+             />
+            <label className="slider-v2" htmlFor="hide-unimportant"></label>
+            <div className="value">Show {this.props.importantEntrysCount} important</div>
+          </div>
+          
 
           <AccountsUIWrapper />
 
           { this.props.currentUser ?
             <div className="newEntry">
-              <form className={edited} onKeyUp={this.altEnter.bind(this)} >
+              <form className={'newEntryForm ' + edited} onKeyUp={this.altEnter.bind(this)} >
                 <Textarea 
                   ref="textInput"
                   // onBlur={ this.onBlur.bind(this) }
@@ -159,28 +190,53 @@ class App extends Component {
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
                 />
-                <button className="submitBtn" onClick={this.handleSubmit.bind(this)} ></button>
-              </form>
-              <div className="imageUploadForm">
-                <Dropzone 
-                  ref={(node) => { this.dropzone = node; }} 
-                  accept=".jpg, .png"
-                  onDrop={this.onDrop.bind(this)}
-                  className="drop-zone"
-                  activeClassName="drop-zone-active"
-                  rejectClassName="drop-zone-reject"
-                  multiple={false}
-                  maxSize={1000*1000}
-                  >
-                  <div>
-                    Image Upload
+                <div className="newEntryOptions">
+                  <div className="checkbox">
+                    <input 
+                      type="checkbox" 
+                      className="slider-checkbox" 
+                      id="privateCheckbox" 
+                      checked={this.state.private}
+                      onClick={this.togglePrivate.bind(this)}
+                     />
+                    <label className="slider-v2" htmlFor="privateCheckbox"></label>
+                    <div className="value">Private</div>
                   </div>
-                </Dropzone>
-                {this.state.files.length > 0 ? <div className="preview">
-                  {this.state.files.map((file) => <img src={file.preview} /> )}
-                  </div> : null
-                }
-              </div>
+                  <div className="checkbox">
+                    <input 
+                      type="checkbox" 
+                      className="slider-checkbox" 
+                      id="importantCheckbox" 
+                      checked={this.state.important}
+                      onClick={this.toggleImportant.bind(this)}
+                     />
+                    <label className="slider-v2" htmlFor="importantCheckbox"></label>
+                    <div className="value">Important</div>
+                  </div>
+
+                  <div className={'imageUploadForm'}>
+                    {this.state.files.length > 0 ? <div className="preview">
+                        {this.state.files.map((file) => <span><img className="smallPreview" src={file.preview} /><span className="previewDetail"><img src={file.preview} /></span></span> )}
+                        <button className="btn" onClick={this.clearImg.bind(this)}>&times;</button>
+                      </div> : null
+                    }
+                    <Dropzone 
+                      ref={(node) => { this.dropzone = node; }} 
+                      accept="image/*"
+                      onDrop={this.onDrop.bind(this)}
+                      className="dropzone"
+                      activeClassName="accept"
+                      rejectClassName="reject"
+                      multiple={false}
+                      maxSize={1000*1000}
+                      >
+                      <div className="icon-add_a_photo">
+                      </div>
+                    </Dropzone>
+                  </div>
+                </div>
+                <button className="submitBtn btn" onClick={this.handleSubmit.bind(this)} ></button>
+              </form>
             </div> : ''
           }
         </header>

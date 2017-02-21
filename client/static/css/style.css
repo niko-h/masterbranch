@@ -57,6 +57,7 @@ CSS will be generated wherever they are @import'd, so if you import 'fonts' twic
 /**
  * Based on Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
  */
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700");
 /* line 5, ../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -199,7 +200,7 @@ body {
   background-image: linear-gradient(to bottom, #ddd, #aaa 100%);
   background-attachment: fixed;
   font-size: 1.4em;
-  font-family: sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font: arial;
   position: absolute;
   top: 0;
@@ -217,6 +218,11 @@ body {
   min-height: 100%;
 }
 
+/* line 91, ../scss/base/_base.scss */
+textarea {
+  font-family: 'Titillium Web', sans-serif;
+}
+
 /* line 93, ../scss/base/_base.scss */
 a {
   text-decoration: none;
@@ -228,11 +234,16 @@ a:hover {
 }
 
 /* line 100, ../scss/base/_base.scss */
+strong {
+  font-weight: bold !important;
+}
+
+/* line 104, ../scss/base/_base.scss */
 p {
   margin: 0 0 1em;
 }
 
-/* line 104, ../scss/base/_base.scss */
+/* line 108, ../scss/base/_base.scss */
 img {
   max-width: 100%;
 }
@@ -240,47 +251,6 @@ img {
 /* ==========================================================================
    ALL
    ========================================================================== */
-/* line 1, ../scss/modules/_button.scss */
-.btn {
-  position: relative;
-  padding: .5em 1em;
-  width: 100px;
-  background-color: #3498db;
-  border-radius: 3px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 0 2px 0 #2980b9;
-  outline: none;
-}
-/* line 14, ../scss/modules/_button.scss */
-.btn span {
-  position: relative;
-  z-index: 1;
-}
-/* line 18, ../scss/modules/_button.scss */
-.btn .circle {
-  position: absolute;
-  z-index: 0;
-  background-color: #2980b9;
-  border-radius: 50%;
-  transform: scale(0);
-  opacity: 1;
-  width: 100px;
-  height: 100px;
-}
-/* line 27, ../scss/modules/_button.scss */
-.btn .circle.animate {
-  animation: grow .5s linear;
-}
-
-@keyframes grow {
-  to {
-    transform: scale(2.5);
-    opacity: 0;
-  }
-}
 /* ==========================================================================
    Mother
    ========================================================================== */
@@ -321,15 +291,83 @@ img {
 /* ==========================================================================
    header
    ========================================================================== */
-/* line 5, ../scss/modules/_header.scss */
-header {
-  background: #333;
-  padding: 20px 15px 15px 15px;
-  position: relative;
-  margin-bottom: 0;
-  color: #eee;
+/* line 2, ../scss/modules/_checkbox.scss */
+.checkbox {
+  display: inline-block;
 }
-/* line 12, ../scss/modules/_header.scss */
+/* line 5, ../scss/modules/_checkbox.scss */
+.checkbox input.slider-checkbox {
+  position: absolute;
+  left: -9999px;
+}
+/* line 10, ../scss/modules/_checkbox.scss */
+.checkbox .slider-v2 {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 13px;
+  transition: 350ms;
+  background: #aaa;
+}
+/* line 21, ../scss/modules/_checkbox.scss */
+.checkbox .slider-v2::after {
+  position: absolute;
+  content: '';
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: 250ms ease-in-out;
+  background: #aaa;
+  box-shadow: 0px 2px 6px 0px rgba(200, 200, 200, 0.45);
+}
+/* line 34, ../scss/modules/_checkbox.scss */
+.checkbox .slider-v2::before {
+  position: absolute;
+  content: '';
+  width: 40px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border-radius: 13px;
+  transition: 250ms ease-in-out;
+  background: #ddd;
+}
+/* line 46, ../scss/modules/_checkbox.scss */
+.checkbox input:checked + .slider-v2::before {
+  background: #ddd;
+}
+/* line 50, ../scss/modules/_checkbox.scss */
+.checkbox input:checked + .slider-v2::after {
+  left: 22px;
+  background: #00c800;
+  box-shadow: 0px 2px 6px 0px rgba(10, 45, 92, 0.15);
+}
+/* line 56, ../scss/modules/_checkbox.scss */
+.checkbox .value {
+  color: #666;
+  margin: -17px 10px 0 45px;
+}
+
+/* line 7, ../scss/modules/_header.scss */
+header {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #333;
+  padding: 20px 15px 5px 15px;
+  position: relative;
+  top: 10px;
+  color: #eee;
+  position: fixed;
+  z-index: 10000;
+  width: 600px;
+  box-shadow: 0 2px 2px rgba(100, 100, 100, 0.4);
+}
+/* line 19, ../scss/modules/_header.scss */
 header h1 {
   font-size: 1.5em;
   margin: 0;
@@ -337,102 +375,334 @@ header h1 {
   display: inline-block;
   margin-right: 1em;
 }
-/* line 20, ../scss/modules/_header.scss */
+/* line 27, ../scss/modules/_header.scss */
 header .hide-unimportant {
   float: right;
 }
-/* line 24, ../scss/modules/_header.scss */
+/* line 31, ../scss/modules/_header.scss */
 header #login-buttons {
   display: block;
 }
-/* line 28, ../scss/modules/_header.scss */
+/* line 35, ../scss/modules/_header.scss */
+header .checkbox .value {
+  color: #ccc;
+}
+/* line 39, ../scss/modules/_header.scss */
 header .newEntry {
   position: relative;
 }
-/* line 31, ../scss/modules/_header.scss */
+/* line 42, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm {
-  margin: 0;
+  margin: 5px 0 0 0;
   position: relative;
-  width: 80%;
+  width: 100%;
   display: inline-block;
 }
-/* line 37, ../scss/modules/_header.scss */
+/* line 48, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea {
-  font-family: sans-serif;
   box-sizing: border-box;
   background: transparent;
   border: none;
   width: 100% !important;
-  padding: 10px 80px 10px 0px;
+  padding: 10px 20% 10px 0px;
   font-size: 1em;
   resize: none;
   color: #ff0;
 }
-/* line 48, ../scss/modules/_header.scss */
+/* line 58, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea:focus {
   outline: 0;
 }
-/* line 53, ../scss/modules/_header.scss */
-header .newEntry .newEntryForm .submitBtn {
-  margin: 2px 0 0;
-  width: 100px;
-  height: 20px;
+/* line 63, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions {
+  display: none;
+  width: 80%;
+  height: 28px;
+  line-height: 28px;
+}
+/* line 70, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .checkbox label {
+  margin-top: 6px;
+}
+/* line 73, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .checkbox .value {
+  margin-top: -24px;
+}
+/* line 2, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
+  display: none;
+  vertical-align: top;
+  margin: 0;
+}
+/* line 7, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm.edited {
+  display: inline-block;
+}
+/* line 11, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .clearImgBtn {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
   border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+/* line 12, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .clearImgBtn span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .clearImgBtn .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: red;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .clearImgBtn .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 18, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0 .5em;
+  height: 25px;
+  line-height: 25px;
+}
+/* line 12, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: green;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 28, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.accept {
+  background-color: green !important;
+}
+/* line 31, ../scss/modules/_dropzone.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.reject {
+  background-color: red !important;
+}
+/* line 79, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
+  display: inline-block;
+}
+/* line 83, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
+  margin-top: 3px;
+  display: inline-block;
+  background: #f3f3f3;
+  color: #222;
+  font-weight: bold;
+  height: 25px;
+}
+/* line 90, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div {
+  line-height: 25px;
+  font-size: 1.8rem;
+  color: #222;
+}
+/* line 94, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div:hover {
+  color: blue;
+}
+/* line 99, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
+  display: inline-block;
+  position: relative;
+  margin-left: 0px;
+  border-radius: 4px 0 0 4px;
+  height: 25px;
+  padding: 0;
+  top: 1px;
+  background: #f3f3f3;
+}
+/* line 108, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dropzone {
+  margin-bottom: -1px;
+  border-radius: 0 3px 3px 0;
+  border-left: 1px solid #ccc;
+}
+/* line 113, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span {
+  position: relative;
+}
+/* line 115, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  border-radius: 3px 0 0 3px;
+  border-right: 1px solid #ccc;
+}
+/* line 121, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail {
+  display: block;
+  position: absolute;
+  right: -86px;
+  border-radius: 3px;
+  width: 150px;
+  padding: 2px;
+  background: #f3f3f3;
+  box-shadow: 0 2px 2px #666;
+}
+/* line 130, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail:before {
+  position: absolute;
+  content: '';
+  top: -5px;
+  left: 80px;
+  margin-left: -5px;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent #f3f3f3 transparent;
+}
+/* line 142, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail img {
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  height: auto;
+  margin: 0 auto -9px auto;
+}
+/* line 151, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .previewDetail {
+  display: none;
+}
+/* line 155, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button {
+  display: inline-block;
+  position: relative;
+  background: transparent;
+  border: none;
+  height: 25px;
+  top: -6px;
+  cursor: pointer;
+  line-height: 25px;
+  color: #666;
+  font-weight: bold;
+  font-size: 2rem;
+}
+/* line 167, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button:hover {
+  color: red;
+}
+/* line 175, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm .submitBtn {
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  padding: 0;
+  margin: 2px 0 7px 10px;
+  float: right;
+  width: 100px;
   background: #dd0;
   color: #222;
   font-weight: bold;
-  cursor: pointer;
   box-shadow: 0px 0px 0px 1px #222, 0px 0px 0px 2px #dd0;
-  border-radius: 2px;
   display: none;
+  height: 25px;
+  line-height: 24px;
 }
-/* line 66, ../scss/modules/_header.scss */
+/* line 12, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .submitBtn span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .submitBtn .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: #ee3;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+header .newEntry .newEntryForm .submitBtn .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 189, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:after {
   content: 'Submit Post';
 }
-/* line 69, ../scss/modules/_header.scss */
+/* line 192, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 74, ../scss/modules/_header.scss */
-header .newEntry .newEntryForm.edited .submitBtn {
-  display: inline;
-}
-/* line 80, ../scss/modules/_header.scss */
-header .imageUploadForm {
+/* line 198, ../scss/modules/_header.scss */
+header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm.edited .newEntryOptions {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
-  vertical-align: top;
-  margin: 0;
-  width: 20%;
-}
-/* line 86, ../scss/modules/_header.scss */
-header .imageUploadForm .drop-zone {
-  color: green;
-  padding: 10px 5px;
-  margin: 0;
-  border: 2px dashed #ccc;
-  border-radius: 2px;
-  text-align: center;
-}
-/* line 94, ../scss/modules/_header.scss */
-header .imageUploadForm .drop-zone .drop-zone-accept {
-  color: white;
-  background-color: green;
-}
-/* line 98, ../scss/modules/_header.scss */
-header .imageUploadForm .drop-zone .drop-zone-reject {
-  color: white;
-  background-color: red;
-}
-/* line 104, ../scss/modules/_header.scss */
-header .imageUploadForm .preview {
-  position: absolute;
-  top: 0;
-}
-/* line 108, ../scss/modules/_header.scss */
-header .imageUploadForm .preview img {
-  width: 115px;
-  height: 100px;
 }
 
 /* ==========================================================================
@@ -469,40 +739,313 @@ ul#menu_list li {
 .mainContent li {
   position: relative;
   list-style: none;
-  padding: 15px;
+  padding: 20px 15px;
   border-bottom: #eee solid 1px;
   margin-bottom: 0;
   background: #fff;
+  -moz-transition: background 0.25s linear;
+  -o-transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  transition: background 0.25s linear;
 }
-/* line 19, ../scss/modules/_main.scss */
-.mainContent li:first-child:before {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: -5px;
-  height: 1px;
-  width: 100%;
-  box-shadow: 0 5px 5px 0 #000;
-}
-/* line 31, ../scss/modules/_main.scss */
-.mainContent li.checked, .mainContent li.checked * {
+/* line 24, ../scss/modules/_main.scss */
+.mainContent li.checked textarea, .mainContent li.checked .entry {
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
   color: red;
 }
-/* line 36, ../scss/modules/_main.scss */
+/* line 29, ../scss/modules/_main.scss */
 .mainContent li.private {
-  margin-top: -1px;
   background: #eee;
   border-color: #ddd;
   box-shadow: inset 0 1px 0 0 #ddd;
+  -moz-transition: background 0.25s linear;
+  -o-transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  transition: background 0.25s linear;
 }
-/* line 43, ../scss/modules/_main.scss */
+/* line 40, ../scss/modules/_main.scss */
+.mainContent li .entryTitle {
+  font-weight: bold;
+  display: inline-block;
+  height: 20px;
+  margin-left: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 48, ../scss/modules/_main.scss */
+.mainContent li .timestamps {
+  float: right;
+  color: #ccc;
+  opacity: 0;
+  font-size: 1rem;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 55, ../scss/modules/_main.scss */
+.mainContent li:hover .timestamps {
+  opacity: 1;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 60, ../scss/modules/_main.scss */
 .mainContent li img {
   max-width: 100%;
   max-height: 300px;
 }
-/* line 55, ../scss/modules/_main.scss */
+/* line 65, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container {
+  margin: 10px -2.6%;
+  width: 105.4% !important;
+  min-width: 105.4% !important;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+/* line 72, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container.yes {
+  display: block;
+}
+/* line 76, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .imgbg {
+  margin: 0 -5%;
+  height: 300px;
+  width: 110% !important;
+  min-width: 110% !important;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+/* line 91, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .img {
+  margin: -300px 0 0 0;
+  position: relative;
+  display: block !important;
+  z-index: 6;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+}
+/* line 99, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .img img {
+  margin: auto;
+  width: auto !important;
+  position: relative;
+  display: block !important;
+  max-height: 300px !important;
+  height: auto !important;
+}
+/* line 2, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm {
+  display: none;
+  vertical-align: top;
+  margin: 0;
+}
+/* line 7, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm.edited {
+  display: inline-block;
+}
+/* line 11, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm .clearImgBtn {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+/* line 12, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .clearImgBtn span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .clearImgBtn .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: red;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .clearImgBtn .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 18, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm .dropzone {
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0 .5em;
+  height: 25px;
+  line-height: 25px;
+}
+/* line 12, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .dropzone span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .dropzone .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: green;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+.mainContent li .imageUploadForm .dropzone .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 28, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm .dropzone.accept {
+  background-color: green !important;
+}
+/* line 31, ../scss/modules/_dropzone.scss */
+.mainContent li .imageUploadForm .dropzone.reject {
+  background-color: red !important;
+}
+/* line 111, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm {
+  display: block;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+  opacity: 0;
+  position: absolute;
+  margin: 0;
+  z-index: 20;
+  right: 10px;
+  top: 60px;
+  width: 130px;
+  text-align: right;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 124, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm:hover {
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+  opacity: 1 !important;
+}
+/* line 129, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding: 0;
+  line-height: 27px;
+  height: 27px;
+  text-align: center;
+}
+/* line 139, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm .dropzone {
+  width: 100px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* line 144, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm .clearImgBtn {
+  width: 30px;
+  background: red;
+  font-weight: bold;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  font-size: 1.5rem;
+}
+/* line 153, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm.no {
+  opacity: .5;
+  bottom: 13px;
+  top: auto;
+  right: 50px;
+}
+/* line 158, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm.no .dropzone {
+  border-radius: 3px;
+}
+/* line 160, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm.no .dropzone div {
+  display: none;
+}
+/* line 163, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm.no .dropzone:after {
+  content: 'Upload Img';
+}
+/* line 170, ../scss/modules/_main.scss */
+.mainContent li:hover .imageUploadForm {
+  opacity: .5;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 175, ../scss/modules/_main.scss */
+.mainContent li .entry {
+  display: block;
+  margin: 10px;
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+/* line 185, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -513,53 +1056,86 @@ ul#menu_list li {
   -o-transition-property: border-color, background, box-shadow;
   -webkit-transition-property: border-color, background, box-shadow;
   transition-property: border-color, background, box-shadow;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  -webkit-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
   background: transparent;
   width: 80% !important;
   padding: 10px;
   font-size: 1.4rem;
   resize: none;
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  transition: color 0.25s linear;
 }
-/* line 68, ../scss/modules/_main.scss */
-.mainContent li .editEntry .editEntryForm textarea:hover {
-  border: none;
-  border: 1px solid #f3f3f3;
-  background: #f3f3f3;
-}
-/* line 73, ../scss/modules/_main.scss */
+/* line 199, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm textarea:focus {
   border: none;
   border: 1px solid #ccc;
   background: #f3f3f3;
   box-shadow: inset 1px 1px 2px rgba(204, 204, 204, 0.5);
 }
-/* line 79, ../scss/modules/_main.scss */
+/* line 205, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm textarea:focus, .mainContent li .editEntry .editEntryForm textarea:valid {
   outline: none;
 }
-/* line 85, ../scss/modules/_main.scss */
+/* line 211, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
   display: inline;
   width: 100px;
   vertical-align: bottom;
-  margin: 0 0 4px 10px;
+  margin: 0 0 2px 10px;
 }
-/* line 90, ../scss/modules/_main.scss */
+/* line 12, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editBtn span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editBtn .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: #2980b9;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editBtn .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 217, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Update Post';
 }
-/* line 93, ../scss/modules/_main.scss */
+/* line 220, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 96, ../scss/modules/_main.scss */
+/* line 223, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
   visibility: hidden;
   margin-bottom: 20px;
@@ -571,22 +1147,40 @@ ul#menu_list li {
   -webkit-transition-delay: 0.1s, 0s, 0s, 0s;
   transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
 }
-/* line 103, ../scss/modules/_main.scss */
+/* line 230, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
   visibility: visible;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   opacity: 1;
-  height: 37px;
+  height: 39px;
   -moz-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 115, ../scss/modules/_main.scss */
-.mainContent li .entryOptions .toggle-private {
-  margin-left: 5px;
+/* line 241, ../scss/modules/_main.scss */
+.mainContent li:hover .editEntry textarea {
+  border: none;
+  border: 1px solid #f3f3f3;
+  background: #f3f3f3;
 }
-/* line 119, ../scss/modules/_main.scss */
+/* line 247, ../scss/modules/_main.scss */
+.mainContent li:hover .entryOptions {
+  opacity: 1;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 251, ../scss/modules/_main.scss */
+.mainContent li .entryOptions {
+  opacity: .3;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+/* line 255, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn {
   float: right;
   font-weight: bold;
@@ -597,18 +1191,18 @@ ul#menu_list li {
 }
 
 @media (max-width: 600px) {
-  /* line 132, ../scss/modules/_main.scss */
+  /* line 268, ../scss/modules/_main.scss */
   li {
     padding: 12px 15px;
   }
 
-  /* line 136, ../scss/modules/_main.scss */
+  /* line 272, ../scss/modules/_main.scss */
   .search {
     width: 150px;
     clear: both;
   }
 
-  /* line 141, ../scss/modules/_main.scss */
+  /* line 277, ../scss/modules/_main.scss */
   .new-entry input {
     padding-bottom: 5px;
   }

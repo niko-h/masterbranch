@@ -18,9 +18,10 @@
         x = e.pageX - $(this).offset().left - circle.width() / 2;
         y = e.pageY - $(this).offset().top - circle.height() / 2;
         size = $(this).width();
+        offset = size<20 ? 45 : 10;
         circle.css({
-          top: y + 10 + 'px',
-          left: x + 'px',
+          top: y + offset + 'px',
+          left: x + offset + 'px',
           width: size + 'px',
           height: size + 'px'
         }).addClass("animate");

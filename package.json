@@ -1,5 +1,5 @@
 {
-  "name": "simple-todos",
+  "name": "rwgb",
   "private": true,
   "scripts": {
     "start": "meteor run"

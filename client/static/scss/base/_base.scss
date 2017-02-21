@@ -45,7 +45,7 @@ blockquote p {
   display: inline;
 }
 
-
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700');
 
 /* ==========================================================================
    Base Styles
@@ -68,7 +68,7 @@ body {
     background-attachment: fixed;
     
     font-size: 1.4em;
-    font-family: sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     font: arial;
     
     position: absolute;
@@ -88,13 +88,17 @@ body {
   min-height: 100%;
 }
 
-// input[type="text"] { border: 1px solid $black50; }
+textarea { font-family: 'Titillium Web', sans-serif; }
 
 a { 
 	text-decoration: none;
 }
 a:hover { 
 	text-decoration: underline;
+}
+
+strong {
+  font-weight: bold !important;
 }
 
 p {

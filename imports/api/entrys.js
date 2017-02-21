@@ -31,6 +31,8 @@ Meteor.methods({
       text: entry.text,
       image: entry.image,
       createdAt: new Date(),
+      important: entry.important,
+      private: entry.private,
       owner: this.userId,
       username: username,
       //Todo: poll, date, important, answer, publicToFacebook, fromFacebook
@@ -47,6 +49,20 @@ Meteor.methods({
 
     Entrys.update(entryId, { $set: {
       text: text,
+      lastEditAt: new Date(),
+    }});
+  },
+  'entrys.updateImage'(entryId, image) {
+    check(image, String);
+    check(entryId, String);
+
+    // Make sure the user is logged in before updating a entry
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Entrys.update(entryId, { $set: {
+      image: image,
       lastEditAt: new Date(),
     }});
   },
