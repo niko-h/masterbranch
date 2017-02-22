@@ -121,7 +121,8 @@ export default class Entry extends Component {
       <li className={entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
         <span className="timestamps">
-          <span> created: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>
+          <span>no. {this.props.entry.countId}</span>
+          <span> | created: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>
           { this.props.updated ? (
             <span> | updated: { moment(new Date( this.props.entry.lastEditAt) ).format('DD.MM.YY, HH:mm') }</span>
           ) : ''}

@@ -6,14 +6,14 @@ export const Entrys = new Mongo.Collection('entrys');
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  // Meteor.publish('entrys', function (limit) {
-  //   return Entrys.find({}, {
-  //     limit: limit,
-  //     sort: {createdAt: -1}
-  //   });
-  // });
-  Meteor.publish('entrys', function () {
+  Meteor.publish('entrys', function (limit) {
     return Entrys.find({}, {
+      limit: limit,
+      sort: {createdAt: -1}
+    });
+  });
+  FindFromPublication.publish('importantEntrys', function () {
+    return Entrys.find({important: true}, {
       // We can include fields to get the same result. 
       // This will be safer, as it ensures we won't get any extra fields in case the documents get extended
       // fields: {

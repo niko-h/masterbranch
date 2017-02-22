@@ -126,7 +126,6 @@ class App extends Component {
 
   renderEntrys() {
     let filteredEntrys = this.props.entrys;
-    console.log(filteredEntrys);
     if (this.state.hideUnimportant) {
       filteredEntrys = this.props.importantEntrys;
     }
@@ -169,8 +168,7 @@ class App extends Component {
       <div className="container">
         <header>
           <h1>RWGB</h1>
-          <span>({$('.mainContent li:first-child').attr('id')} Entrys)</span>
-          
+
           {this.props.importantEntrysCount > 0 ? (
             <div className="checkbox hide-unimportant">
               <input 
@@ -251,8 +249,9 @@ class App extends Component {
         <ul className="mainContent">
           {this.renderEntrys()}
         </ul>
-        
-        <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Load more Entrys</button>
+        {!this.state.hideUnimportant ? (
+          <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Load more Entrys</button>
+        ) : ''}
       </div>
     );
   }
@@ -260,22 +259,22 @@ class App extends Component {
 
 App.propTypes = {
   entrys: PropTypes.array.isRequired,
-  importantEntrysCount: PropTypes.number.isRequired,
   importantEntrys: PropTypes.array.isRequired,
+  importantEntrysCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
   Session.setDefault('lazyloadLimit', 10);
-  // Tracker.autorun(function(){
-  //   Meteor.subscribe('entrys', Session.get('lazyloadLimit'));
-  // });
-  Meteor.subscribe('entrys');
+  Tracker.autorun(function(){
+    Meteor.subscribe('entrys', Session.get('lazyloadLimit'));
+  });
+  Meteor.subscribe('importantEntrys');
 
   return {
     entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
-    importantEntrys: Entrys.find({important: true}, {sort: { createdAt: -1 }}).fetch(),
-    importantEntrysCount: Entrys.find({important: true}).count(),
+    importantEntrys: Entrys.findFromPublication('importantEntrys', {}, {sort: { createdAt: -1 }}).fetch(),
+    importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),
     currentUser: Meteor.user(),
   };
 }, App);

@@ -1,6 +1,6 @@
 (function() {
   var material;
-
+  
   $(document).ready(function() {
     return material.init();
   });
