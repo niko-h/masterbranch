@@ -6,8 +6,25 @@ export const Entrys = new Mongo.Collection('entrys');
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('entrys', function entrysPublication() {
-    return Entrys.find();
+  // Meteor.publish('entrys', function (limit) {
+  //   return Entrys.find({}, {
+  //     limit: limit,
+  //     sort: {createdAt: -1}
+  //   });
+  // });
+  Meteor.publish('entrys', function () {
+    return Entrys.find({}, {
+      // We can include fields to get the same result. 
+      // This will be safer, as it ensures we won't get any extra fields in case the documents get extended
+      // fields: {
+      //   title: 1,
+      //   slug: 1,
+      //   timeCreated: 1,
+      //   description: 1,
+      //   author: 1
+      // }
+      sort: {createdAt: -1}
+    });
   });
 }
 
@@ -28,6 +45,7 @@ Meteor.methods({
       ( Meteor.users.findOne(this.userId).emails[0].address );
 
     Entrys.insert({
+      countId: entry.countId,
       text: entry.text,
       image: entry.image,
       createdAt: new Date(),
@@ -35,7 +53,7 @@ Meteor.methods({
       private: entry.private,
       owner: this.userId,
       username: username,
-      //Todo: poll, date, important, answer, publicToFacebook, fromFacebook
+      //Todo: poll, date, answer, publicToFacebook, fromFacebook
     });
   },
   'entrys.updateText'(entryId, text) {

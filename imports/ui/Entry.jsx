@@ -118,7 +118,7 @@ export default class Entry extends Component {
     var privateCheckboxId = 'privateCheckbox_'+this.props.entry._id;
     
     return (
-      <li className={entryClassName}>
+      <li className={entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
         <span className="timestamps">
           <span> created: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>

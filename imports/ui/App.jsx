@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import { check } from 'meteor/check';
 import { Entrys } from '../api/entrys.js';
 import Dropzone from 'react-dropzone';
-import EmbedJS from '../../node_modules/embed-js/src/js/main.js';
 import Entry from './Entry.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
@@ -65,6 +64,11 @@ class App extends Component {
     this.setState({ private: !this.state.private, });
   }
 
+  loadMore() {
+    var currentLimit = Session.get('lazyloadLimit');
+    Session.set('lazyloadLimit', currentLimit + 10);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.info('handleSubmit');
@@ -75,6 +79,7 @@ class App extends Component {
     const image = this.state.fileUrl;
 
     const entry = {
+      countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
       text: text,
       image: image,
       important: this.state.important,
@@ -121,8 +126,9 @@ class App extends Component {
 
   renderEntrys() {
     let filteredEntrys = this.props.entrys;
+    console.log(filteredEntrys);
     if (this.state.hideUnimportant) {
-      filteredEntrys = filteredEntrys.filter(entry => entry.important);
+      filteredEntrys = this.props.importantEntrys;
     }
     if (!Meteor.userId()) {
       filteredEntrys = filteredEntrys.filter(entry => !entry.private);
@@ -163,20 +169,21 @@ class App extends Component {
       <div className="container">
         <header>
           <h1>RWGB</h1>
-          <span>({this.props.entrysCount} Entries)</span>
-
-          <div className="checkbox hide-unimportant">
-            <input 
-              type="checkbox" 
-              className="slider-checkbox" 
-              id="hide-unimportant" 
-              checked={this.state.hideUnimportant}
-              onClick={this.toggleHideUnimportant.bind(this)}
-             />
-            <label className="slider-v2" htmlFor="hide-unimportant"></label>
-            <div className="value">Show {this.props.importantEntrysCount} important</div>
-          </div>
+          <span>({$('.mainContent li:first-child').attr('id')} Entrys)</span>
           
+          {this.props.importantEntrysCount > 0 ? (
+            <div className="checkbox hide-unimportant">
+              <input 
+                type="checkbox" 
+                className="slider-checkbox" 
+                id="hide-unimportant" 
+                checked={this.state.hideUnimportant}
+                onClick={this.toggleHideUnimportant.bind(this)}
+               />
+              <label className="slider-v2" htmlFor="hide-unimportant"></label>
+              <div className="value">Show {this.props.importantEntrysCount} important</div>
+            </div>
+          ) : ''}
 
           <AccountsUIWrapper />
 
@@ -244,6 +251,8 @@ class App extends Component {
         <ul className="mainContent">
           {this.renderEntrys()}
         </ul>
+        
+        <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Load more Entrys</button>
       </div>
     );
   }
@@ -252,17 +261,21 @@ class App extends Component {
 App.propTypes = {
   entrys: PropTypes.array.isRequired,
   importantEntrysCount: PropTypes.number.isRequired,
-  entrysCount: PropTypes.number.isRequired,
+  importantEntrys: PropTypes.array.isRequired,
   currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
+  Session.setDefault('lazyloadLimit', 10);
+  // Tracker.autorun(function(){
+  //   Meteor.subscribe('entrys', Session.get('lazyloadLimit'));
+  // });
   Meteor.subscribe('entrys');
- 
+
   return {
-    entrys: Entrys.find({}, { sort: { createdAt: -1 } }).fetch(),
-    entrysCount: Entrys.find().count(),
-    importantEntrysCount: Entrys.find().count() - Entrys.find({ important: { $ne: true } }).count(),
+    entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
+    importantEntrys: Entrys.find({important: true}, {sort: { createdAt: -1 }}).fetch(),
+    importantEntrysCount: Entrys.find({important: true}).count(),
     currentUser: Meteor.user(),
   };
 }, App);

@@ -4,6 +4,9 @@
   $(document).ready(function() {
     return material.init();
   });
+  $(document).bind('drop dragover', function (e) {
+    e.preventDefault();
+  });
 
   material = {
     init: function() {
