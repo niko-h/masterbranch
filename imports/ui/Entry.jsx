@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
 import Dropzone from 'react-dropzone';
-// import EmbedJS from 'embed-js';
 
 // Entry component - represents a single todo item
 export default class Entry extends Component {
@@ -56,9 +55,20 @@ export default class Entry extends Component {
     }
   }
 
+  parseEntry(text) {  
+    return text.replace(/(?:http:|https:)?(?:\/\/)(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([^<.,!():"'\s]+)/g, 
+                      '<iframe width="100%" height="300" src="http://www.youtube.com/embed/$1?modestbranding=1&rel=0&wmode=transparent&theme=light&color=white" frameborder="0" allowfullscreen></iframe>')
+              .replace(/(?:http:|https:)?(?:\/\/)(?:www\.)?(?:vimeo\.com)\/([^<.,!():"'\s]+)/g, 
+                      '<iframe src="//player.vimeo.com/video/$1" width="100%" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+              .replace(/(?:http:|https:)?(?:\/\/)(?:www\.|w\.|m\.)?(?:snd\.sc)\/(.*)/g, 
+                      '<iframe width="100%" height="125" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/$1&amp;color=cccccc&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>')
+              ;
+  }
+
   updateEntry() {
     event.preventDefault();
-    Meteor.call('entrys.updateText', this.props.entry._id, this.refs[ `text_${ this.props.entry._id}` ].value);
+
+    Meteor.call('entrys.updateText', this.props.entry._id, this.parseEntry(this.refs[ `text_${ this.props.entry._id}` ].value));
     
     setTimeout(function() {
       this.onBlur(event);
@@ -78,6 +88,14 @@ export default class Entry extends Component {
   
   toggleEdited() {
     this.setState({ edited: true, });
+  }
+
+  editLastBtn() {
+    event.preventDefault();
+    setTimeout(function() {
+      this.setState({edited: true});
+      $('.mainContent li#'+this.props.entry.countId+' .textarea').caret(-1);
+    }.bind(this), 500); // wait for button-effect
   }
 
   escapeEdit(event) {
@@ -111,9 +129,7 @@ export default class Entry extends Component {
     const style = {
       backgroundImage: 'url(' + this.props.entry.image + ')',
     };
-    // var x = new EmbedJS({
-    //   input : this.props.entry.text;
-    // });
+
     var importantCheckboxId = 'importantCheckbox_'+this.props.entry._id;
     var privateCheckboxId = 'privateCheckbox_'+this.props.entry._id;
     
@@ -149,9 +165,7 @@ export default class Entry extends Component {
               multiple={false}
               maxSize={1000*1000}
               >
-              <div>
-                Replace Img
-              </div>
+              <div className="icon-add_a_photo"></div>
             </Dropzone>
             { image ? (<button className="clearImgBtn" onClick={this.deleteImage.bind(this)} >&times;</button>) : '' }
           </div>
@@ -161,7 +175,7 @@ export default class Entry extends Component {
           <div className={'editEntry '+edited}> 
             <form className="editEntryForm" onKeyUp={this.altEnter.bind(this)} >
               <Textarea 
-                className="text"
+                className="textarea"
                 onFocus={ this.toggleEdited.bind(this) }
                 onKeyUp={ this.escapeEdit.bind(this) }
                 // onBlur={ this.onBlur.bind(this) }
@@ -169,17 +183,15 @@ export default class Entry extends Component {
                 name="text"
                 defaultValue={ this.props.entry.text }
               />
+            <span className="entry" dangerouslySetInnerHTML={{__html: this.props.entry.text}}></span>
+            <button className="editLastBtn btn icon-mode_edit" onClick={ this.editLastBtn.bind(this) }></button>
               
               <button className={'editBtn btn '+edited} onClick={this.updateEntry.bind(this)}></button>
             </form>
           </div>
         ) : (
-          <span className="entry">
-            {this.props.entry.text}
-          </span>
+          <span className="entry" dangerouslySetInnerHTML={{__html: this.props.entry.text}}></span>
         )}
-        
-        <p />
 
         { this.props.canEdit ? (
           <div className="entryOptions">

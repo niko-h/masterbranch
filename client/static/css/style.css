@@ -210,38 +210,50 @@ body {
 }
 
 /* line 83, ../scss/base/_base.scss */
+* {
+  cursor: default;
+}
+
+/* line 85, ../scss/base/_base.scss */
 .container {
   max-width: 600px;
   margin: 0 auto 20px auto;
   min-height: 100%;
 }
 
-/* line 89, ../scss/base/_base.scss */
+/* line 91, ../scss/base/_base.scss */
 textarea {
   font-family: 'Titillium Web', sans-serif;
+  cursor: text;
 }
 
-/* line 91, ../scss/base/_base.scss */
+/* line 96, ../scss/base/_base.scss */
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
-/* line 94, ../scss/base/_base.scss */
+/* line 100, ../scss/base/_base.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 98, ../scss/base/_base.scss */
+/* line 104, ../scss/base/_base.scss */
+[class^="icon-"], [class*=" icon-"], label {
+  cursor: pointer;
+}
+
+/* line 108, ../scss/base/_base.scss */
 strong {
   font-weight: bold !important;
 }
 
-/* line 102, ../scss/base/_base.scss */
+/* line 112, ../scss/base/_base.scss */
 p {
-  margin: 0 0 1em;
+  margin: 0;
 }
 
-/* line 106, ../scss/base/_base.scss */
+/* line 116, ../scss/base/_base.scss */
 img {
   max-width: 100%;
 }
@@ -748,7 +760,7 @@ ul#menu_list li {
   transition: background 0.25s linear;
 }
 /* line 24, ../scss/modules/_main.scss */
-.mainContent li.checked textarea, .mainContent li.checked .entry {
+.mainContent li.checked .textarea, .mainContent li.checked .entry {
   -moz-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
@@ -770,7 +782,7 @@ ul#menu_list li {
   font-weight: bold;
   display: inline-block;
   height: 20px;
-  margin-left: 10px;
+  margin-left: 5px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -801,7 +813,7 @@ ul#menu_list li {
 }
 /* line 65, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container {
-  margin: 10px -2.6%;
+  margin: 10px -2.6% 15px -2.6%;
   width: 105.4% !important;
   min-width: 105.4% !important;
   overflow: hidden;
@@ -974,14 +986,6 @@ ul#menu_list li {
   transition: opacity 0.1s linear;
 }
 /* line 124, ../scss/modules/_main.scss */
-.mainContent li .imageUploadForm:hover {
-  -moz-transition: opacity 0.1s linear;
-  -o-transition: opacity 0.1s linear;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
-  opacity: 1 !important;
-}
-/* line 129, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -991,15 +995,23 @@ ul#menu_list li {
   padding: 0;
   line-height: 27px;
   height: 27px;
+  font-size: 1.8rem;
   text-align: center;
 }
-/* line 139, ../scss/modules/_main.scss */
+/* line 135, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone {
-  width: 100px;
+  width: 40px;
+  line-height: 27px;
+  height: 27px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 144, ../scss/modules/_main.scss */
+/* line 141, ../scss/modules/_main.scss */
+.mainContent li .imageUploadForm .dropzone div {
+  line-height: 25px;
+  height: 25px;
+}
+/* line 146, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .clearImgBtn {
   width: 30px;
   background: red;
@@ -1008,49 +1020,112 @@ ul#menu_list li {
   border-bottom-left-radius: 0;
   font-size: 1.5rem;
 }
-/* line 153, ../scss/modules/_main.scss */
+/* line 155, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no {
   opacity: .5;
   bottom: 13px;
   top: auto;
   right: 50px;
 }
-/* line 158, ../scss/modules/_main.scss */
+/* line 160, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no .dropzone {
   border-radius: 3px;
 }
-/* line 160, ../scss/modules/_main.scss */
-.mainContent li .imageUploadForm.no .dropzone div {
-  display: none;
-}
-/* line 163, ../scss/modules/_main.scss */
-.mainContent li .imageUploadForm.no .dropzone:after {
-  content: 'Upload Img';
-}
-/* line 170, ../scss/modules/_main.scss */
+/* line 172, ../scss/modules/_main.scss */
 .mainContent li:hover .imageUploadForm {
-  opacity: .5;
+  opacity: 1;
   -moz-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 175, ../scss/modules/_main.scss */
+/* line 177, ../scss/modules/_main.scss */
 .mainContent li .entry {
   display: block;
-  margin: 10px;
+  padding: 5px;
+  margin: 10px 0 0 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   -moz-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
   transition: color 0.25s linear;
 }
-/* line 185, ../scss/modules/_main.scss */
-.mainContent li .editEntry .editEntryForm textarea {
+/* line 191, ../scss/modules/_main.scss */
+.mainContent li .entry img {
+  max-height: 300px;
+  width: auto;
+  display: block;
+}
+/* line 196, ../scss/modules/_main.scss */
+.mainContent li .entry iframe[src*="bandcamp"] {
+  width: 100% !important;
+}
+/* line 201, ../scss/modules/_main.scss */
+.mainContent li > .entry {
+  margin: 5px 20% 15px 0;
+}
+/* line 205, ../scss/modules/_main.scss */
+.mainContent li .editEntry {
+  position: relative;
+}
+/* line 209, ../scss/modules/_main.scss */
+.mainContent li .editEntry.edited .editEntryForm .textarea {
+  display: inline;
+}
+/* line 212, ../scss/modules/_main.scss */
+.mainContent li .editEntry.edited .editEntryForm .entry {
+  display: none;
+}
+/* line 215, ../scss/modules/_main.scss */
+.mainContent li .editEntry.edited .editEntryForm .editLastBtn {
+  display: none;
+}
+/* line 221, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm {
+  margin: 5px 0 15px 0;
+}
+/* line 223, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid transparent;
   border-radius: 3px;
+  -moz-transition-property: border-color, background, box-shadow;
+  -o-transition-property: border-color, background, box-shadow;
+  -webkit-transition-property: border-color, background, box-shadow;
+  transition-property: border-color, background, box-shadow;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  background: #f3f3f3;
+  width: 80% !important;
+  padding: 5px;
+  font-size: 1.4rem;
+  resize: none;
+  cursor: text;
+  line-height: normal;
+  display: none;
+  color: #666;
+}
+/* line 240, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .textarea:focus {
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  box-shadow: inset 1px 1px 2px rgba(204, 204, 204, 0.5);
   -moz-transition-property: border-color, background, box-shadow;
   -o-transition-property: border-color, background, box-shadow;
   -webkit-transition-property: border-color, background, box-shadow;
@@ -1063,28 +1138,77 @@ ul#menu_list li {
   -o-transition-timing-function: linear;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
-  background: transparent;
-  width: 80% !important;
-  padding: 10px;
-  font-size: 1.4rem;
-  resize: none;
-  -moz-transition: color 0.25s linear;
-  -o-transition: color 0.25s linear;
-  -webkit-transition: color 0.25s linear;
-  transition: color 0.25s linear;
 }
-/* line 199, ../scss/modules/_main.scss */
-.mainContent li .editEntry .editEntryForm textarea:focus {
-  border: none;
-  border: 1px solid #ccc;
-  background: #f3f3f3;
-  box-shadow: inset 1px 1px 2px rgba(204, 204, 204, 0.5);
-}
-/* line 205, ../scss/modules/_main.scss */
-.mainContent li .editEntry .editEntryForm textarea:focus, .mainContent li .editEntry .editEntryForm textarea:valid {
+/* line 248, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .textarea:focus, .mainContent li .editEntry .editEntryForm .textarea:valid {
   outline: none;
 }
-/* line 211, ../scss/modules/_main.scss */
+/* line 254, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .entry {
+  top: -5px;
+  left: 0;
+  width: 100%;
+  padding-right: 20%;
+  border: 1px solid transparent;
+  position: relative;
+  line-height: normal;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: block;
+  cursor: default;
+  background: transparent;
+  -moz-transition: background 0.1s linear;
+  -o-transition: background 0.1s linear;
+  -webkit-transition: background 0.1s linear;
+  transition: background 0.1s linear;
+  color: #666;
+}
+/* line 271, ../scss/modules/_main.scss */
+.mainContent li .editEntry .editEntryForm .editLastBtn {
+  position: relative;
+  padding: .5em 1em;
+  background-color: #3498db;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  position: absolute;
+  top: -2px;
+  right: 3px;
+  padding: 5px 10px;
+  font-size: 1.8rem;
+}
+/* line 12, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editLastBtn span {
+  position: relative;
+  z-index: 1;
+}
+/* line 16, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editLastBtn .circle {
+  position: absolute;
+  z-index: 0;
+  background-color: #2980b9;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../scss/modules/_button.scss */
+.mainContent li .editEntry .editEntryForm .editLastBtn .circle.animate {
+  animation: grow .5s linear;
+}
+@keyframes grow {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* line 280, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   padding: .5em 1em;
@@ -1126,70 +1250,62 @@ ul#menu_list li {
     opacity: 0;
   }
 }
-/* line 217, ../scss/modules/_main.scss */
+/* line 286, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Update Post';
 }
-/* line 220, ../scss/modules/_main.scss */
+/* line 289, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 223, ../scss/modules/_main.scss */
+/* line 292, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
-  visibility: hidden;
-  margin-bottom: 20px;
-  opacity: 0;
-  height: 0;
-  -moz-transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
-  -o-transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
-  -webkit-transition: visibility 0s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
-  -webkit-transition-delay: 0.1s, 0s, 0s, 0s;
-  transition: visibility 0s 0.1s, height 0.1s linear, margin-bottom 0.1s linear, opacity 0.1s linear;
+  display: none;
 }
-/* line 230, ../scss/modules/_main.scss */
+/* line 295, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
-  visibility: visible;
-  margin-bottom: 2px;
-  opacity: 1;
-  height: 39px;
-  -moz-transition: opacity 0.1s linear;
-  -o-transition: opacity 0.1s linear;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
+  height: 33px;
+  display: inline;
 }
-/* line 241, ../scss/modules/_main.scss */
-.mainContent li:hover .editEntry textarea {
-  border: none;
-  border: 1px solid #f3f3f3;
+/* line 303, ../scss/modules/_main.scss */
+.mainContent li:hover .editEntry .entry {
+  border: 1px solid transparent;
   background: #f3f3f3;
+  -moz-transition: background 0.1s linear;
+  -o-transition: background 0.1s linear;
+  -webkit-transition: background 0.1s linear;
+  transition: background 0.1s linear;
 }
-/* line 247, ../scss/modules/_main.scss */
-.mainContent li:hover .entryOptions {
+/* line 309, ../scss/modules/_main.scss */
+.mainContent li:hover .entryOptions, .mainContent li:hover .editLastBtn {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 251, ../scss/modules/_main.scss */
-.mainContent li .entryOptions {
+/* line 314, ../scss/modules/_main.scss */
+.mainContent li .entryOptions,
+.mainContent li .editLastBtn {
   opacity: .3;
   -moz-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 255, ../scss/modules/_main.scss */
-.mainContent li .entryOptions .deleteBtn {
+/* line 319, ../scss/modules/_main.scss */
+.mainContent li .entryOptions .deleteBtn,
+.mainContent li .editLastBtn .deleteBtn {
   float: right;
   font-weight: bold;
   background: none;
+  cursor: pointer;
   font-size: 1em;
   border: none;
   position: relative;
 }
 
-/* line 267, ../scss/modules/_main.scss */
+/* line 332, ../scss/modules/_main.scss */
 .loadMoreBtn {
   position: relative;
   padding: .5em 1em;
@@ -1232,18 +1348,18 @@ ul#menu_list li {
   }
 }
 @media (max-width: 600px) {
-  /* line 276, ../scss/modules/_main.scss */
+  /* line 341, ../scss/modules/_main.scss */
   li {
     padding: 12px 15px;
   }
 
-  /* line 280, ../scss/modules/_main.scss */
+  /* line 345, ../scss/modules/_main.scss */
   .search {
     width: 150px;
     clear: both;
   }
 
-  /* line 285, ../scss/modules/_main.scss */
+  /* line 350, ../scss/modules/_main.scss */
   .new-entry input {
     padding-bottom: 5px;
   }

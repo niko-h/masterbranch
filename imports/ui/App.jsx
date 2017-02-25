@@ -9,6 +9,8 @@ import { Entrys } from '../api/entrys.js';
 import Dropzone from 'react-dropzone';
 import Entry from './Entry.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import linkifyJq from 'linkifyjs/jquery';
+linkifyJq($, document);
 
 
 // App component - represents the whole app
@@ -69,6 +71,18 @@ class App extends Component {
     Session.set('lazyloadLimit', currentLimit + 10);
   }
 
+  parseEntry(text) {
+    return text.replace(/(?:http:|https:)?(?:\/\/)(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([^<.,!():"'\s]+)/g, 
+                      '<iframe width="100%" height="300" src="http://www.youtube.com/embed/$1?modestbranding=1&rel=0&wmode=transparent&theme=light&color=white" frameborder="0" allowfullscreen></iframe>')
+              .replace(/(?:http:|https:)?(?:\/\/)(?:www\.)?(?:vimeo\.com)\/([^<.,!():"'\s]+)/g, 
+                      '<iframe src="//player.vimeo.com/video/$1" width="100%" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+              .replace(/(?:http:|https:)?(?:\/\/)(?:www\.|w\.|m\.)?(?:snd\.sc)\/(.*)/g, 
+                      '<iframe width="100%" height="125" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/$1&amp;color=cccccc&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>')
+              // .replace(/(\&lt\;iframe){1}(.*bandcamp.*)(\&gt\;){1}(.*)(&lt;\/iframe\&gt\;){1}/g,
+              //         '<iframe$2>$4</iframe>')
+              ;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.info('handleSubmit');
@@ -80,7 +94,7 @@ class App extends Component {
 
     const entry = {
       countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
-      text: text,
+      text: this.parseEntry(text),
       image: image,
       important: this.state.important,
       private: this.state.private,
@@ -104,6 +118,7 @@ class App extends Component {
   }
 
   escapeEdit(event) {
+    event.preventDefault();
     if (event.keyCode == 27) {
       this.onBlur(event);
     }
@@ -154,7 +169,35 @@ class App extends Component {
 
   componentDidUpdate() {
     var $this = $(ReactDOM.findDOMNode(this));
+    
     $('.mainContent').css('margin-top', $('header').height()+50);
+
+    var linkifyOptions = {
+      className: 'embed',
+      defaultProtocol: 'https',
+      format: function (value, type) {
+        if (type === 'url' && value.length > 50) {
+          value = value.slice(0, 50) + '…';
+        }
+        return value;
+      },
+      formatHref: function (href, type) {
+        return href;
+      },
+      ignoreTags: ['script', 'style'],
+      nl2br: true,
+      tagName: 'a',
+      target: {
+        url: '_blank'
+      },
+      validate: true
+    };
+
+    $('.mainContent .entry').linkify(linkifyOptions);
+
+    $('a.embed[href$=".jpg"], a.embed[href$=".png"], a.embed[href$=".gif"]').each(function() {
+        $(this).replaceWith($('<img>').attr('src', this.href));
+    });
   }
 
   render() {
@@ -272,6 +315,7 @@ export default createContainer(() => {
   Meteor.subscribe('importantEntrys');
 
   return {
+    // search: Entrys.find({text:}, { sort: { createdAt: -1 } }).fetch(),
     entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
     importantEntrys: Entrys.findFromPublication('importantEntrys', {}, {sort: { createdAt: -1 }}).fetch(),
     importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),

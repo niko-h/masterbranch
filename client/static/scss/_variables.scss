@@ -8,18 +8,34 @@
 /**
  * COLORS
  */
+$transparent: transparent;
 $white: #fff;
-$black: #000;
-$black50: rgb(127,127,127);
-$darkgrey: #666;
-$mediumgrey: #ccc;
+$almostwhite: #efefef;
 $lightgrey: #f3f3f3;
+$lightmediumgrey: #eee;
+$mediumgrey: #ccc;
+$darkmediumgrey: #999;
+$darkgrey: #666;
+$almostblack: #222;
+$black: #000;
+
 
 /**
  * Base
  */
 
 $text: $black !default;
+$link: blue !default;
+$linkhover: rgb(0,0,238) !default;
+
+$yellow: #ff0;
+$darkyellow: #ee3;
+$red: red;
+$darkred: red;
+$green: rgb(0, 200, 0);
+$darkgreen: rgb(0, 150, 0);
+$blue: #3498db;
+$darkblue: #2980b9;
 
 /**
  * Sizes

@@ -21,7 +21,7 @@
     //   margin-top: 135px;
     // }
 
-    &.checked textarea, &.checked .entry {
+    &.checked .textarea, &.checked .entry {
       @include transition(color .25s linear);
       color: red;
     }
@@ -41,7 +41,7 @@
       font-weight: bold;
       display: inline-block;
       height: 20px;
-      margin-left: 10px;
+      margin-left: 5px;
       @include box-sizing(border-box);
     }
     
@@ -63,7 +63,7 @@
     }
 
     .imgbg-container {
-      margin: 10px -2.6%;
+      margin: 10px -2.6% 15px -2.6%;
       width: 105.4% !important;
       min-width: 105.4% !important;
       overflow: hidden;
@@ -121,11 +121,6 @@
       text-align: right;
       @include transition(opacity .1s linear);
 
-      &:hover {
-        @include transition(opacity .1s linear);
-        opacity: 1 !important;
-      }
-
       .dropzone, .clearImgBtn {
         display: inline-block;
         @include box-sizing(border-box);
@@ -133,13 +128,20 @@
         padding: 0;
         line-height: 27px;
         height: 27px;
+        font-size: 1.8rem;
         text-align: center;
 
       }
       .dropzone {
-        width: 100px;
+        width: 40px;
+        line-height: 27px;
+        height: 27px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        div {
+          line-height: 25px;
+          height: 25px;
+        }
       }
       .clearImgBtn {
         width: 30px;
@@ -157,55 +159,122 @@
         right: 50px;
         .dropzone {
           border-radius: 3px;
-          div {
-            display: none; 
-          }
-          &:after {
-            content: 'Upload Img';
-          }
+          // div {
+          //   display: none; 
+          // }
+          // &:after {
+          //   content: 'Upload Img';
+          // }
         }
       }
     }
 
     &:hover .imageUploadForm {
-      opacity: .5;
+      opacity: 1;
       @include transition(opacity .1s linear);
     }
 
     .entry {
       display: block;
-      margin: 10px;
+      padding: 5px;
+      margin: 10px 0 0 0;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+      word-break: break-word;
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
       @include transition(color .25s linear);
+      img {
+        max-height: 300px;
+        width: auto;
+        display: block;
+      }
+      iframe[src*="bandcamp"] {
+        width: 100% !important;
+      }
     }
 
+    & > .entry {
+      margin: 5px 20% 15px 0;
+    }
 
     .editEntry {
+      position: relative;
+      &.edited {
+        .editEntryForm {
+          .textarea {
+            display: inline;
+          }
+          .entry {
+            display: none;
+          }
+          .editLastBtn {
+            display: none;
+          }
+        }
+      }
+
       .editEntryForm {
-        
-        textarea {
+        margin: 5px 0 15px 0;
+        .textarea {
           @include box-sizing(border-box);
           border: 1px solid transparent;
           border-radius: 3px;
           @include transition-property(border-color, background, box-shadow);
-          @include transition-duration(0.1s);
+          @include transition-duration(0.2s);
           @include transition-timing-function(linear);
-          background: transparent;
+          background: $lightgrey;
           width: 80% !important;
-          padding: 10px;
+          padding: 5px;
           font-size: 1.4rem;
           resize: none;
-          @include transition(color .25s linear);
-          
+          cursor: text;
+          line-height: normal;
+          display: none;
+          color: $darkgrey;
+
           &:focus {
-            border: none;
             border: 1px solid $mediumgrey;
             background: $lightgrey;
             box-shadow: inset 1px 1px 2px rgba($mediumgrey, .5);
+            @include transition-property(border-color, background, box-shadow);
+            @include transition-duration(0.1s);
+            @include transition-timing-function(linear);
           }
           &:focus,
           &:valid {
             outline: none;
           }
+        }
+
+        .entry {
+          top: -5px;
+          left: 0;
+          width: 100%;
+          padding-right: 20%;
+          border: 1px solid transparent;
+          position: relative;
+          line-height: normal;
+          @include box-sizing(border-box);
+          border-radius: 3px;
+          display: block;
+          cursor: default;
+          background: transparent;
+          @include transition(background .1s linear);
+          color: $darkgrey;
+        }
+
+        .editLastBtn {
+          @include button(#2980b9);
+          position: absolute;
+          top: -2px;
+          right: 3px;
+          padding: 5px 10px;
+          font-size: 1.8rem;
         }
         
         .editBtn {
@@ -221,34 +290,29 @@
             content: 'Alt + Enter';
           }
           &.none {
-            visibility: hidden;
-            margin-bottom: 20px;
-            opacity: 0;
-            height: 0;
-            @include transition(visibility 0s .1s, height .1s linear, margin-bottom .1s linear, opacity .1s linear);
+            display: none;
           }
           &.edited {
-            visibility: visible;
-            margin-bottom: 2px;
-            opacity: 1;
-            height: 39px;
-            @include transition(opacity .1s linear);
+            height: 33px;
+            display: inline;
           } 
         }
       }
     }
 
-    &:hover .editEntry textarea {
-      border: none;
-      border: 1px solid $lightgrey;
+    &:hover .editEntry .entry {
+      border: 1px solid transparent;
       background: $lightgrey;
+      @include transition(background .1s linear);
     }
 
-    &:hover .entryOptions {
+    &:hover .entryOptions,
+    &:hover .editLastBtn {
       opacity: 1;
       @include transition(opacity .1s linear);
     }
-    .entryOptions {
+    .entryOptions,
+    .editLastBtn {
       opacity: .3;
       @include transition(opacity .1s linear);
           
@@ -256,6 +320,7 @@
         float: right;
         font-weight: bold;
         background: none;
+        cursor: pointer;
         font-size: 1em;
         border: none;
         position: relative;
