@@ -30,6 +30,13 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+  'checksecret'(secret) {
+    if(secret === 'V' || secret === 'v' || secret === '5' || secret === 'Fünf' || secret === 'fünf' || secret === 'Fuenf' || secret === 'fuenf') {
+      return true;
+    } else {
+      return false;
+    }
+  },
   'entrys.insert'(entry) {
     console.info('insertEntry');
     check(entry.text, String);

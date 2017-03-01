@@ -26,6 +26,7 @@ class App extends Component {
       private: false,
       files: [],
       fileUrl: '',
+      youShallPass: false,
     };
   }
 
@@ -111,10 +112,36 @@ class App extends Component {
     this.setState({files: [], fileUrl: ''});
   }
 
+  checkSecret(event) {
+    console.info('checkSecret');
+    const secret = ReactDOM.findDOMNode(this.refs.regSecret).value.trim();
+    if (secret.length>0) {
+      Meteor.call('checksecret', secret, function(err, result) {
+        if(!err && result) {
+          this.setState({youShallPass: true});
+          console.log(this.state.youShallPass);
+          this.render()
+        } else if(!result) {
+          $('body').append($('<div id="wrongModal" />'))
+          return setTimeout(function() {
+            $('#wrongModal').remove();
+          }, 1500);
+        }
+      }.bind(this));
+    }
+  }
+
   altEnter(event) {
     event.preventDefault();
     if (event.keyCode == 13 && event.altKey) {
       this.handleSubmit(event);
+    }
+  }
+
+  enterSecret(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+      this.checkSecret(event);
     }
   }
 
@@ -220,9 +247,25 @@ class App extends Component {
         <header className={edited}>
           <h1>RWGB</h1>
 
-
-          <AccountsUIWrapper />
-
+          { this.props.currentUser || this.state.youShallPass ?
+            <AccountsUIWrapper />
+          :
+            <div className="register-secret">
+              <span>
+                <h1>RWGB</h1>
+                <span>Tach! Wenn du absichtlich hier gelandet bist, ahnst du bestimmt, was hier einzugeben ist:</span>
+                <input 
+                  type="password"
+                  placeholder="Ausbau No..."
+                  className="secret"
+                  ref="regSecret"
+                  autoFocus
+                  onKeyUp={ this.enterSecret.bind(this) }
+                />
+              </span>
+            </div>
+          }
+        
           {this.props.importantEntrysCount > 0 ? (
             <span>
               <input 
@@ -245,6 +288,7 @@ class App extends Component {
                   placeholder="Gib' einen neuen Eintrag ein..."
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
+                  tabindex="1"
                 />
                 <div className="newEntryOptions">
                   <div className="checkbox green">

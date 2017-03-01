@@ -246,6 +246,9 @@
 
     & > .entry {
       margin: 5px 20% 15px 0;
+      @include breakpoint(baby) {
+        margin: 5px 0 15px 0;
+      }
     }
 
     .editEntry {
