@@ -8,41 +8,71 @@
 .mainContent {
   margin: 0;
   padding: 0;
+  margin-top: 124px;
+  @include breakpoint(baby) {
+    width: 100%;
+    margin-top: 104px;
+    @include box-sizing(border-box);
+  }  
   
   li {
     position: relative;
     list-style: none;
     padding: 20px 15px;
-    border-bottom: #eee solid 1px;
+    border-top: $almostwhite solid 1px;
     margin-bottom: 0;
-    background: #fff;
-    @include transition(background .25s linear);
-    // &:first-child {
-    //   margin-top: 135px;
-    // }
+    background: $white;
+    z-index: 2;
+    @include transition(all .5s linear);
 
-    &.checked .textarea, &.checked .entry {
-      @include transition(color .25s linear);
-      color: red;
+    @include breakpoint(baby) {
+      padding: 10px 5px;
+      width: 100%;
+      @include box-sizing(border-box);
     }
- 
-    &.private {
-      background: #eee;
-      border-color: #ddd;
-      box-shadow: inset 0 1px 0 0 #ddd;
+
+    &:first-child {
+      border-top: 1px solid $transparent;
+      @include breakpoint(baby) {
+       margin-top: -130px;
+      }
+    }
+
+    &.private, &.important {
+      z-index: 1;
+      border-color: $lightmediumgrey;
       @include transition(background .25s linear);
+      .entryTitle {
+        @include transition(color .25s linear);
+      }
     }
-
+    &.private {
+      background: rgba($lightgreen, 1);
+      @include neon(green);
+      .entryTitle {
+        color: $darkgreen !important;
+      }
+    }
     &.important {
-
+      background: rgba($lightred, 1);
+      @include neon(red);
+      
+      .entryTitle {
+        color: $darkred !important;
+      }
     }
 
     .entryTitle {
+      font-size: 1.8rem;
       font-weight: bold;
       display: inline-block;
       height: 20px;
       margin-left: 5px;
+      color: $almostblack;
       @include box-sizing(border-box);
+      @include breakpoint(baby) {
+        font-size: 1.6rem;
+      }
     }
     
     .timestamps {
@@ -50,7 +80,11 @@
       color: $mediumgrey;
       opacity: 0;
       font-size: 1rem;
+      margin-top: 3px;
       @include transition(opacity .1s linear);
+      @include breakpoint(baby) {
+        display: none;
+      }
     }
     &:hover .timestamps {
       opacity: 1;
@@ -71,6 +105,11 @@
       display: none;
       &.yes {
         display: block;
+      }
+      @include breakpoint(baby) {
+        width: 104% !important;
+        min-width: 104% !important;
+        margin: 10px 0 15px -2%;
       }
 
       .imgbg {
@@ -145,7 +184,7 @@
       }
       .clearImgBtn {
         width: 30px;
-        background: red;
+        background: $red;
         font-weight: bold;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -157,14 +196,11 @@
         bottom: 13px;
         top: auto;
         right: 50px;
+        @include breakpoint(baby) {
+          bottom: 5px;
+        }
         .dropzone {
           border-radius: 3px;
-          // div {
-          //   display: none; 
-          // }
-          // &:after {
-          //   content: 'Upload Img';
-          // }
         }
       }
     }
@@ -178,6 +214,8 @@
       display: block;
       padding: 5px;
       margin: 10px 0 0 0;
+      font-size: 1.6rem;
+      line-height: 2rem;
       overflow-wrap: break-word;
       word-wrap: break-word;
       -ms-word-break: break-all;
@@ -187,7 +225,15 @@
       -moz-hyphens: auto;
       -webkit-hyphens: auto;
       hyphens: auto;
+      color: $almostblack;
       @include transition(color .25s linear);
+      @include breakpoint(baby) {
+        font-size: 1.4rem;
+      }
+
+      a {
+        color: $darkblue;
+      }
       img {
         max-height: 300px;
         width: auto;
@@ -222,7 +268,7 @@
         margin: 5px 0 15px 0;
         .textarea {
           @include box-sizing(border-box);
-          border: 1px solid transparent;
+          border: 1px solid $transparent;
           border-radius: 3px;
           @include transition-property(border-color, background, box-shadow);
           @include transition-duration(0.2s);
@@ -235,7 +281,12 @@
           cursor: text;
           line-height: normal;
           display: none;
-          color: $darkgrey;
+          color: $almostblack;
+
+          @include breakpoint(baby) {
+            width: 100% !important;
+            font-size: 16px;
+          }
 
           &:focus {
             border: 1px solid $mediumgrey;
@@ -256,35 +307,45 @@
           left: 0;
           width: 100%;
           padding-right: 20%;
-          border: 1px solid transparent;
+          border: 1px solid $transparent;
           position: relative;
           line-height: normal;
           @include box-sizing(border-box);
           border-radius: 3px;
           display: block;
           cursor: default;
-          background: transparent;
+          background: $transparent;
           @include transition(background .1s linear);
-          color: $darkgrey;
+          color: $almostblack;
+          @include breakpoint(baby) {
+            padding-right: 5px;
+          }
         }
 
         .editLastBtn {
-          @include button(#2980b9);
+          @include button($darkblue);
           position: absolute;
           top: -2px;
           right: 3px;
           padding: 5px 10px;
           font-size: 1.8rem;
+          @include breakpoint(baby) {
+            top: -37px;
+            right: -1px;
+          }
         }
         
         .editBtn {
-          @include button(#2980b9);
+          @include button($darkblue);
           display: inline;
           width: 100px;
           vertical-align: bottom;
           margin: 0 0 2px 10px;
+          @include breakpoint(baby) {
+            margin: 5px 0 0 0;
+          }
           &:after {
-            content: 'Update Post';
+            content: 'Speichern';
           }
           &:hover:after {
             content: 'Alt + Enter';
@@ -301,8 +362,8 @@
     }
 
     &:hover .editEntry .entry {
-      border: 1px solid transparent;
-      background: $lightgrey;
+      border: 1px solid $transparent;
+      background: $almostwhite;
       @include transition(background .1s linear);
     }
 
@@ -330,25 +391,14 @@
 }
 
 .loadMoreBtn {
-  @include button(blue);
+  @include button($darkblue);
   margin: 20px 0 0 0;
   font-weight: bold;
   width: 100%;
   height: 30px;
-}
- 
-@media (max-width: 600px) {
-  li {
-    padding: 12px 15px;
-  }
- 
-  .search {
-    width: 150px;
-    clear: both;
-  }
- 
-  .new-entry input {
-    padding-bottom: 5px;
+  @include breakpoint(baby) {
+    width: 90%;
+    left: 50%;
+    margin: 20px 10px 20px -45%;
   }
 }
-

@@ -111,10 +111,9 @@ export default class Entry extends Component {
 
   render() {
     // Give entrys a different className when they are checked off,
-    // so that we can style them nicely in CSS
     const entryClassName = classnames({
-      checked: this.props.entry.important,
       private: this.props.entry.private,
+      important: this.props.entry.important,
     });
     var edited = classnames( this.state.edited, {
         'none' : ( !this.state.edited ),
@@ -136,11 +135,12 @@ export default class Entry extends Component {
     return (
       <li className={entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
+
         <span className="timestamps">
-          <span>no. {this.props.entry.countId}</span>
-          <span> | created: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>
+          <span>&#8470; {this.props.entry.countId}</span>
+          <span> | Erstellt: { moment(new Date( this.props.entry.createdAt) ).format('DD.MM.YY, HH:mm') }</span>
           { this.props.updated ? (
-            <span> | updated: { moment(new Date( this.props.entry.lastEditAt) ).format('DD.MM.YY, HH:mm') }</span>
+            <span> | Aktualisiert: { moment(new Date( this.props.entry.lastEditAt) ).format('DD.MM.YY, HH:mm') }</span>
           ) : ''}
         </span>
 
@@ -195,7 +195,7 @@ export default class Entry extends Component {
 
         { this.props.canEdit ? (
           <div className="entryOptions">
-            <div className="checkbox">
+            <div className="checkbox green">
               <input 
                 type="checkbox" 
                 className="slider-checkbox" 
@@ -204,9 +204,9 @@ export default class Entry extends Component {
                 onClick={this.togglePrivate.bind(this)}
                />
               <label className="slider-v2" htmlFor={privateCheckboxId}></label>
-              <div className="value">Private</div>
+              <div className="value">Privat</div>
             </div>
-            <div className="checkbox">
+            <div className="checkbox red">
               <input 
                 type="checkbox" 
                 className="slider-checkbox" 
@@ -215,7 +215,7 @@ export default class Entry extends Component {
                 onClick={this.toggleImportant.bind(this)}
                />
               <label className="slider-v2" htmlFor={importantCheckboxId}></label>
-              <div className="value">Important</div>
+              <div className="value">Wichtig</div>
             </div>
             <button className="deleteBtn" onClick={this.deleteThisEntry.bind(this)}>
               &times;

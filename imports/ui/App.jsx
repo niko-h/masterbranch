@@ -6,6 +6,7 @@ import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
 import { check } from 'meteor/check';
 import { Entrys } from '../api/entrys.js';
+// import { Session } from 'meteor/session';
 import Dropzone from 'react-dropzone';
 import Entry from './Entry.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
@@ -170,7 +171,9 @@ class App extends Component {
   componentDidUpdate() {
     var $this = $(ReactDOM.findDOMNode(this));
     
-    $('.mainContent').css('margin-top', $('header').height()+50);
+    var offset = 0;
+    $('.mainContent').width()>599 ? offset = 50 : offset = -13;
+    $('.mainContent').css('margin-top', $('header').height()+offset);
 
     var linkifyOptions = {
       className: 'embed',
@@ -209,24 +212,29 @@ class App extends Component {
     
     return (
       <div className="container">
-        <header>
+        <div className="toggle toggle--daynight">
+          <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" />
+          <label className="toggle--btn" htmlFor="toggle--daynight"><span className="toggle--feature"></span></label>
+        </div>
+
+        <header className={edited}>
           <h1>RWGB</h1>
 
+
+          <AccountsUIWrapper />
+
           {this.props.importantEntrysCount > 0 ? (
-            <div className="checkbox hide-unimportant">
+            <span>
               <input 
                 type="checkbox" 
-                className="slider-checkbox" 
+                className="hide-unimportant-checkbox" 
                 id="hide-unimportant" 
                 checked={this.state.hideUnimportant}
                 onClick={this.toggleHideUnimportant.bind(this)}
                />
-              <label className="slider-v2" htmlFor="hide-unimportant"></label>
-              <div className="value">Show {this.props.importantEntrysCount} important</div>
-            </div>
+              <label className="hide-unimportant button icon-notifications" htmlFor="hide-unimportant"><span>{this.props.importantEntrysCount}</span></label>
+            </span>
           ) : ''}
-
-          <AccountsUIWrapper />
 
           { this.props.currentUser ?
             <div className="newEntry">
@@ -234,12 +242,12 @@ class App extends Component {
                 <Textarea 
                   ref="textInput"
                   // onBlur={ this.onBlur.bind(this) }
-                  placeholder="Type to add a new entry"
+                  placeholder="Gib' einen neuen Eintrag ein..."
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
                 />
                 <div className="newEntryOptions">
-                  <div className="checkbox">
+                  <div className="checkbox green">
                     <input 
                       type="checkbox" 
                       className="slider-checkbox" 
@@ -248,9 +256,9 @@ class App extends Component {
                       onClick={this.togglePrivate.bind(this)}
                      />
                     <label className="slider-v2" htmlFor="privateCheckbox"></label>
-                    <div className="value">Private</div>
+                    <div className="value">Privat</div>
                   </div>
-                  <div className="checkbox">
+                  <div className="checkbox red">
                     <input 
                       type="checkbox" 
                       className="slider-checkbox" 
@@ -259,7 +267,7 @@ class App extends Component {
                       onClick={this.toggleImportant.bind(this)}
                      />
                     <label className="slider-v2" htmlFor="importantCheckbox"></label>
-                    <div className="value">Important</div>
+                    <div className="value">Wichtig</div>
                   </div>
 
                   <div className={'imageUploadForm'}>

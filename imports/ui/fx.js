@@ -1,7 +1,54 @@
 (function() {
   var material;
-  
+
   $(document).ready(function() {
+    
+    function createCookie(name,value,days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    function eraseCookie(name) {
+      createCookie(name,"",-1);
+    }
+    if(readCookie('day')!=='true' && readCookie('day')!=='false') {
+      createCookie('day','true',1);
+    } 
+
+    if(readCookie('day')==='true') {
+      $('body').removeClass('night');
+      $('.toggle.toggle--daynight input').prop('checked', true);
+    } else {
+      $('body').addClass('night');
+      $('.toggle.toggle--daynight input').prop('checked', false);
+    }
+    
+    $('.toggle.toggle--daynight input').change(function() {
+      if(readCookie('day')==='true') {
+        $('body').addClass('night');
+        createCookie('day', 'false', 1);
+        $(this).prop('checked', false);
+      } else {
+        $('body').removeClass('night');
+        createCookie('day', 'true', 1);
+        $(this).prop('checked', true);
+      }
+    });
+
     return material.init();
   });
   $(document).bind('drop dragover', function (e) {
@@ -120,3 +167,4 @@
     return this;
   }
 })(jQuery);
+

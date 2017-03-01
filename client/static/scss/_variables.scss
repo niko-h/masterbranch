@@ -11,42 +11,43 @@
 $transparent: transparent;
 $white: #fff;
 $almostwhite: #efefef;
-$lightgrey: #f3f3f3;
+$lightgrey: #e2e1e0;
 $lightmediumgrey: #eee;
-$mediumgrey: #ccc;
+$mediumgrey: #c8c8c8;
 $darkmediumgrey: #999;
 $darkgrey: #666;
 $almostblack: #222;
 $black: #000;
-
-
-/**
- * Base
- */
-
-$text: $black !default;
-$link: blue !default;
-$linkhover: rgb(0,0,238) !default;
-
 $yellow: #ff0;
 $darkyellow: #ee3;
-$red: red;
-$darkred: red;
+$lightred: rgb(255,250,250);
+$red: rgb(255,50,50);
+$darkred: rgb(150,0,0);
+$lightgreen: rgb(250,255,250);
 $green: rgb(0, 200, 0);
 $darkgreen: rgb(0, 150, 0);
 $blue: #3498db;
 $darkblue: #2980b9;
 
 /**
+ * Base
+ */
+
+$darkbg: #3c4145;
+$text: $black !default;
+$link: blue !default;
+$linkhover: rgb(0,0,238) !default;
+
+
+/**
  * Sizes
  */
 $headerheight: 57px;
 $headerheight-baby: 35px;
-$footerheight: 160px;
 
 /**
  * Breakpoints
  */
 $breakpoint-mama: 930px;
-$breakpoint-baby: 650px;
+$breakpoint-baby: 610px;
 $breakpoint-flunder: 500px;

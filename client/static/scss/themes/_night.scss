@@ -1,0 +1,270 @@
+* { 
+  @include transition(color .25s linear, background-color .25s linear, background .25s linear); 
+}
+
+body.night {
+  background: rgba($black, .9);
+
+
+  /* ==========================================================================
+     header
+     ========================================================================== */
+
+  // @include checkbox();
+
+  header {
+    background: #2c2c2c;
+    color: $lightgrey;
+    box-shadow: none;
+    border-radius: 1px;
+    box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+
+    #login-buttons {
+      // @include button($darkblue);
+      background-color: rgba($yellow, .8);
+      color: $almostblack;
+      .login-link-and-dropdown-list {
+        #login-dropdown-list {
+          .login-close-text {
+            color: $transparent;
+            &:before {
+              color: $almostblack;
+            }
+          }
+        }
+      }
+    }
+
+    .hide-unimportant {
+      background: $transparent;
+      color: $darkgrey;
+      span {
+        background: $red;
+        border: 1px solid $almostblack;
+      }
+    }
+    .hide-unimportant-checkbox { 
+      &:checked + .hide-unimportant {
+        color: $red;
+      }
+    }
+
+    .newEntry {    
+      .newEntryForm {
+        textarea {
+          background: $transparent;
+          color: $yellow;
+        }
+        
+        .newEntryOptions {
+          // @include dropzone();
+          .imageUploadForm {
+            .dropzone{
+              background: $lightgrey;
+              color: $almostblack;
+              div {
+                color: $almostblack;
+                &:hover {
+                  color: $darkblue;
+                }
+              }
+            }
+            .preview {
+              background: $lightgrey;
+              &+.dropzone {
+                border-left: 1px solid $mediumgrey;
+              }
+              span {
+                .smallPreview {
+                  border-right: 1px solid $mediumgrey;
+                  &:hover + .previewDetail {
+                    background: $lightgrey;
+                    box-shadow: 0 2px 2px $darkgrey;
+                    &:before {
+                      border-color: $transparent $transparent $lightgrey $transparent;
+                    }
+                  }
+                }
+              }
+              button {
+                background: $transparent;
+                color: $darkgrey;
+                &:hover {
+                  color: $red;
+                }
+              }
+            }
+          }
+        }
+
+        .submitBtn {
+          @include button($darkyellow);
+          padding: 0;
+          margin: 2px 0 5px 10px;
+          float: right;
+          width: 100px;
+          background: $yellow;
+          color: $almostblack;
+          font-weight: bold;
+          box-shadow: 0px 0px 0px 1px $almostblack, 0px 0px 0px 2px $yellow;
+          display: none;
+          height: 25px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+
+  /* ==========================================================================
+   Main
+   ========================================================================== */
+
+  /* =Content
+  -----------------------------------------------------------------------------*/
+   
+  .mainContent {
+    li {
+      border-top: rgba($darkyellow, .2) solid 1px;
+      background: #252525;
+      color: $lightgrey;
+      &:first-child {
+        border-color: #252525;
+      }
+    
+      &.private, &.important {
+        border-color: $almostblack;
+      }
+      &.private {
+        // background: rgba($darkgreen, .01);
+        @include neon(darkgreen);
+        .entryTitle {
+          color: $green !important;
+        }
+      }
+      &.important {
+        // background: rgba($darkred, .01);
+        @include neon(darkred);        
+        .entryTitle {
+          color: $red !important;
+        }
+      }
+
+      .entryTitle {
+        color: $lightgrey;
+      }
+      
+      .timestamps {
+        color: $darkgrey;
+      }
+
+      .imgbg-container {
+        .imgbg {
+          color: $black;
+        }
+        .img {
+          background: rgba($black, 0.5);
+        }
+      }
+      
+      .imageUploadForm {
+        div {
+          background: $yellow;
+          color: $almostblack;
+        }
+        .clearImgBtn {
+          background: $red;
+        }
+      }
+
+      .entry {
+        color: $lightgrey;
+        a {
+          color: $darkyellow;
+        }
+      }
+
+      .editEntry {
+        .editEntryForm {
+          .textarea {
+            border: 1px solid $transparent;
+            background: rgba($darkgrey, .2);
+            color: $yellow;
+
+            &:focus {
+              border: 1px solid rgba($black, .5);
+              background: rgba($darkgrey, .2);
+              box-shadow: inset 1px 1px 2px rgba($black, .4);
+            }
+          }
+
+          .entry {
+            border: 1px solid $transparent;
+            background: $transparent;
+            color: $lightgrey;
+            a {
+              color: $darkyellow;
+            }
+          }
+
+          .editLastBtn {
+            @include button($darkyellow);
+            background: $yellow;
+            color: $almostblack;
+            position: absolute;
+            top: -2px;
+            right: 3px;
+            padding: 5px 10px;
+            font-size: 1.8rem;
+            @include breakpoint(baby) {
+              top: -37px;
+              right: -1px;
+            }
+          }
+          
+          .editBtn {
+            @include button($darkyellow);
+            background: $yellow;
+            color: $almostblack;
+            display: inline;
+            width: 100px;
+            vertical-align: bottom;
+            margin: 0 0 2px 10px;
+            @include breakpoint(baby) {
+              margin: 5px 0 0 0;
+            }
+            &:after {
+              content: 'Speichern';
+            }
+            &:hover:after {
+              content: 'Alt + Enter';
+            }
+            &.none {
+              display: none;
+            }
+            &.edited {
+              height: 33px;
+              display: inline;
+            } 
+          }
+        }
+      }
+
+      &:hover .editEntry .entry {
+        border: 1px solid $transparent;
+        background: rgba($darkgrey, .2);
+      }
+    }
+  }
+
+  .loadMoreBtn {
+    @include button($darkyellow);
+    margin: 20px 0 0 0;
+    font-weight: normal;
+    font-size: 1.4rem;
+    width: 100%;
+    height: 30px;
+    background: $darkyellow;
+    color: $almostblack;
+  }
+
+}

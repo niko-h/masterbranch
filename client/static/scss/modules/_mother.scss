@@ -16,7 +16,7 @@
     line-height: 30px;
 }
 .lang-link {
-    color: #ccc;
+    color: $lightmediumgrey;
     text-decoration: none;
 }
 .lang-link:hover {
@@ -25,5 +25,5 @@
 }
 .lang-link.selected {
     font-weight: bold;
-    color: #ddd;
+    color: $lightmediumgrey;
 }

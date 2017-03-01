@@ -14,10 +14,10 @@
 
 .warning {
     @extend .notice;
-    border-color: red;
+    border-color: $red;
 }
 
 .success {
 	@extend .notice;
-	border-color: green;
+	border-color: $green;
 }

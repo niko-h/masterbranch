@@ -16,7 +16,7 @@
     }
 
     .dropzone {
-      @include button(green);      
+      @include button($green);      
       color: white;
       margin: 0;
       text-align: center;
@@ -26,10 +26,10 @@
       line-height: 25px;
 
       &.accept {
-        background-color: green !important;
+        background-color: $green !important;
       }
       &.reject {
-        background-color: red !important;
+        background-color: $red !important;
       }
     }
   }

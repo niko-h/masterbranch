@@ -1,0 +1,57 @@
+@mixin neon($color) {
+  -webkit-animation: $color 2s ease-in-out .3s infinite alternate;
+  -moz-animation: $color 2s ease-in-out .3s infinite alternate;
+  animation: $color 2s ease-in-out .3s infinite alternate;
+}
+
+@-webkit-keyframes green {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+@-moz-keyframes green {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+@keyframes green {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+
+@-webkit-keyframes red {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}
+@-moz-keyframes red {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}
+@keyframes red {
+	from { box-shadow: 0 0 1px $white, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $white, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}
+
+@-webkit-keyframes darkgreen {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+@-moz-keyframes darkgreen {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+@keyframes darkgreen {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $green; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $green, 0 0 6px $green, 0 0 8px $green; }
+}
+
+@-webkit-keyframes darkred {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}
+@-moz-keyframes darkred {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}
+@keyframes darkred {
+	from { box-shadow: 0 0 1px $almostblack, 0 0 2px $red; }
+	to { box-shadow: 0 0 2px $almostblack, 0 0 4px $red, 0 0 6px $red, 0 0 8px $red; }
+}

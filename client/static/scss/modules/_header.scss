@@ -6,56 +6,142 @@
 
 header {
   @include box-sizing(border-box);
-  background: #333;
-  padding: 20px 15px 5px 15px;
-  position: relative;
+  background: $white;
+  padding: 15px 15px 10px 15px;
   top: 10px;
-  color: #eee;
+  color: $darkgrey;
   position: fixed;
   z-index: 10000;
   width: 610px;
   margin-left: -5px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  
+  box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+  @include breakpoint(baby) {
+    width: 100% !important;
+    top: 0px;
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    border-radius: 0 !important;
+    &:not(.edited) + .mainContent {
+      margin-top: 130px !important;
+    }
+  }
+
   h1 {
     font-size: 1.5em;
     margin: 0;
     margin-bottom: 10px;
     display: inline-block;
     margin-right: 1em;
-  }
-
-
-  .hide-unimportant {
-    float: right;
+    font-weight: bold;
   }
 
   #login-buttons {
-    display: block;
+    float: right;
+    margin-left: 10px;
+    @include button($darkblue);
+    padding: 0 10px;
+    line-height: 25px;
+    position: static;
+    .login-link-and-dropdown-list {
+      position: static;
+      #login-dropdown-list {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        left: auto;
+        padding: 3px 8px;
+        width: 200px;
+        border-radius: 1px;
+        box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+        @include breakpoint(baby) {
+          top: 15px;
+          right: 20px;
+        }
+        .login-button {
+          border: none;
+        }
+
+        &:before {
+          content: 'Konto'
+        }
+        .login-close-text {
+          float: right;
+          color: $transparent;
+          padding-bottom: 0;
+          margin-top: -3px;
+          &:before {
+            color: $almostblack;
+            content: '+';
+            position: absolute;
+            font-size: 2rem;
+            right: 0;
+            font-weight: bold;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+    }
   }
 
-  .checkbox .value {
-    color: $mediumgrey;
+  .hide-unimportant {
+    float: right;
+    position: relative;
+    background: $transparent;
+    color: $darkgrey;
+    font-size: 3rem;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 25px;
+    span {
+      position: absolute;
+      right: 2px;
+      color: $white;
+      background: $red;
+      font-size: 1rem;
+      border-radius: 50%;
+      width: 16px;
+      height: 15px;
+      text-align: center;
+      line-height: 15px;
+      font-family: 'Titillium Web', sans-serif;
+      border: 1px solid $white;
+    }
+  }
+  .hide-unimportant-checkbox { 
+    position: absolute;
+    left: -9999px; 
+    &:checked + .hide-unimportant {
+      color: $darkred;
+    }
   }
 
   .newEntry {
     position: relative;
     
     .newEntryForm {
-      margin: 5px 0 0 0;
+      margin: 0;
       position: relative;
       width: 100%;
       display: inline-block;
 
       textarea {
         box-sizing: border-box;
-        background: transparent;
+        background: $transparent;
         border: none;
         width: 100% !important;
         padding: 10px 20% 10px 0px;
         font-size: 1em;
         resize: none;
-        color: #ff0;
+        color: $almostblack;
+
+        @include breakpoint(baby) {
+          padding: 10px 10px 10px 0px;
+          font-size: 16px;
+        }
         
         &:focus {
           outline: 0;
@@ -80,21 +166,24 @@ header {
         @include dropzone();
         .imageUploadForm {
           display: inline-block;
-
+          @include breakpoint(baby) {
+            display: block;
+            margin-top: 0px;
+          }
 
           .dropzone{
             margin-top: 3px;
             display: inline-block;
             background: $lightgrey;
-            color: #222;
+            color: $almostblack;
             font-weight: bold;
             height: 25px;
             div {
               line-height: 25px;
               font-size: 1.8rem;
-              color: #222;
+              color: $almostblack;
               &:hover {
-                color: blue;
+                color: $darkblue;
               }
             }
           }
@@ -139,7 +228,7 @@ header {
                     width: 0;
                     border-style: solid;
                     border-width: 0 5px 5px 5px;
-                    border-color: transparent transparent $lightgrey transparent;
+                    border-color: $transparent $transparent $lightgrey $transparent;
                   }
                   img {
                     position: relative;
@@ -157,7 +246,7 @@ header {
             button {
               display: inline-block;
               position: relative;
-              background: transparent;
+              background: $transparent;
               border: none;
               height: 25px;
               top: -6px;
@@ -167,7 +256,7 @@ header {
               font-weight: bold;
               font-size: 2rem;
               &:hover {
-                color: red;
+                color: $red;
               }
             }
           }
@@ -175,21 +264,27 @@ header {
       }
 
       .submitBtn {
-        @include button(#ee3);
+        @include button($darkblue);
         padding: 0;
-        margin: 2px 0 7px 10px;
+        margin: 2px 0 5px 10px;
         float: right;
         width: 100px;
-        background: #dd0;
-        color: #222;
-        font-weight: bold;
-        box-shadow: 0px 0px 0px 1px #222, 0px 0px 0px 2px #dd0;
+        background: $blue;
+        color: $white;
+        box-shadow: 0px 0px 0px 1px $white, 0px 0px 0px 2px $blue;
         display: none;
         height: 25px;
         line-height: 24px;
+
+        @include breakpoint(baby) {
+          margin: -23px 0 0 0 !important;
+        }
       
         &:after {
-          content: 'Submit Post';
+          content: 'Eintragen';
+          font-family: 'Titillium Web', sans-serif;
+          font-size: 1.4rem;
+          font-weight: normal;
         }
         &:hover:after {
           content: 'Alt + Enter';
@@ -199,7 +294,7 @@ header {
       &.edited {
         .submitBtn, .newEntryOptions {
           @include box-sizing(border-box);
-          display: inline-block;
+          display: inline-block !important;
         }
       }
 

@@ -56,28 +56,27 @@ blockquote p {
 @import "../variables";
 
 html, body {
-    font-size: 62.5%;
-    height: 100%;
-    min-height: 100%;
+  font-size: 62.5%;
+  height: 100%;
+  min-height: 100%;
 }
 
 body {
-    color: $black;
-    background: #e2e1e0;
-    
-    font-size: 1.4em;
-    font-family: 'Titillium Web', sans-serif;
-    font: arial;
-    
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-   
-    padding: 0;
-    margin: 0;
-   
+  color: $black;
+  background: $lightgrey;
+  
+  font-size: 1.4em;
+  font-family: 'Titillium Web', sans-serif;
+  font: arial;
+  
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  padding: 0;
+  margin: 0;
 }
 
 * { cursor: default; }
@@ -86,6 +85,9 @@ body {
   max-width: 600px;
   margin: 0 auto 20px auto;
   min-height: 100%;
+  @include breakpoint(baby) {
+    max-width: 100%;
+  }
 }
 
 textarea { 
