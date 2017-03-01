@@ -267,6 +267,118 @@ img {
 /* ==========================================================================
    ALL
    ========================================================================== */
+/* line 2, ../scss/modules/_login.scss */
+#login-buttons #login-sign-in-link {
+  color: transparent;
+  margin-right: 8px;
+}
+/* line 5, ../scss/modules/_login.scss */
+#login-buttons #login-sign-in-link:before {
+  content: 'Anmelden';
+  position: absolute;
+  color: #efefef;
+}
+/* line 11, ../scss/modules/_login.scss */
+#login-buttons #signup-link {
+  color: transparent;
+}
+/* line 13, ../scss/modules/_login.scss */
+#login-buttons #signup-link:before {
+  content: 'Konto erstellen';
+  position: absolute;
+  color: #222;
+}
+/* line 19, ../scss/modules/_login.scss */
+#login-buttons #forgot-password-link {
+  color: transparent;
+}
+/* line 21, ../scss/modules/_login.scss */
+#login-buttons #forgot-password-link:before {
+  content: 'Passwort vergessen';
+  position: absolute;
+  color: #222;
+}
+/* line 27, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-forgot-password {
+  color: transparent;
+}
+/* line 29, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-forgot-password:before {
+  content: 'Wiederherstellen';
+  position: absolute;
+  color: #efefef;
+}
+/* line 35, ../scss/modules/_login.scss */
+#login-buttons #back-to-login-link {
+  color: transparent;
+}
+/* line 37, ../scss/modules/_login.scss */
+#login-buttons #back-to-login-link:before {
+  content: 'Zurück';
+  position: absolute;
+  color: #222;
+}
+/* line 43, ../scss/modules/_login.scss */
+#login-buttons #login-username-label {
+  color: transparent;
+}
+/* line 45, ../scss/modules/_login.scss */
+#login-buttons #login-username-label:before {
+  content: 'Benutzername';
+  position: absolute;
+  color: #222;
+}
+/* line 51, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-open-change-password {
+  color: transparent;
+}
+/* line 53, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-open-change-password:before {
+  content: 'Passwort ändern';
+  position: absolute;
+  color: #222;
+}
+/* line 59, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-logout {
+  color: transparent;
+}
+/* line 61, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-logout:before {
+  content: 'Abmelden';
+  position: absolute;
+  color: #222;
+}
+/* line 67, ../scss/modules/_login.scss */
+#login-buttons #reset-password-new-password-label {
+  color: transparent;
+}
+/* line 69, ../scss/modules/_login.scss */
+#login-buttons #reset-password-new-password-label:before {
+  content: 'Neues Passwort';
+  position: absolute;
+  color: #222;
+}
+/* line 75, ../scss/modules/_login.scss */
+#login-buttons #login-old-password-label {
+  color: transparent;
+}
+/* line 77, ../scss/modules/_login.scss */
+#login-buttons #login-old-password-label:before {
+  content: 'Aktuelles Passwort';
+  position: absolute;
+  color: #222;
+}
+/* line 83, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-do-change-password {
+  color: transparent;
+}
+/* line 85, ../scss/modules/_login.scss */
+#login-buttons #login-buttons-do-change-password:before {
+  content: 'Passwort ändern';
+  position: absolute;
+  color: #222;
+}
+
 @-webkit-keyframes green {
   from {
     box-shadow: 0 0 1px #fff, 0 0 2px #00c800;
@@ -739,7 +851,7 @@ header .register-secret {
   background-size: cover;
   z-index: 9999;
 }
-/* line 89, ../scss/modules/_header.scss */
+/* line 86, ../scss/modules/_header.scss */
 header .register-secret > span {
   text-align: center;
   margin: 0;
@@ -751,12 +863,12 @@ header .register-secret > span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 99, ../scss/modules/_header.scss */
+/* line 96, ../scss/modules/_header.scss */
 header .register-secret > span span {
   text-align: left;
   display: block;
 }
-/* line 103, ../scss/modules/_header.scss */
+/* line 100, ../scss/modules/_header.scss */
 header .register-secret > span input {
   height: 80px;
   width: 100%;
@@ -775,19 +887,19 @@ header .register-secret > span input {
   color: #222;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 118, ../scss/modules/_header.scss */
+/* line 115, ../scss/modules/_header.scss */
 header .register-secret > span input:focus {
   outline: none;
 }
 @media (max-width: 610px) {
-  /* line 103, ../scss/modules/_header.scss */
+  /* line 100, ../scss/modules/_header.scss */
   header .register-secret > span input {
     font-size: 1.5em;
     height: 50px;
   }
 }
 @media (max-width: 610px) {
-  /* line 89, ../scss/modules/_header.scss */
+  /* line 86, ../scss/modules/_header.scss */
   header .register-secret > span {
     width: 200px;
   }
@@ -798,7 +910,7 @@ header .register-secret > span input:focus {
     background: #efefef;
   }
 }
-/* line 133, ../scss/modules/_header.scss */
+/* line 130, ../scss/modules/_header.scss */
 header #login-buttons {
   float: right;
   margin-left: 10px;
@@ -842,11 +954,11 @@ header #login-buttons .circle.animate {
     opacity: 0;
   }
 }
-/* line 140, ../scss/modules/_header.scss */
+/* line 137, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list {
   position: static;
 }
-/* line 142, ../scss/modules/_header.scss */
+/* line 139, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   position: absolute;
   top: 20px;
@@ -858,28 +970,28 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 @media (max-width: 610px) {
-  /* line 142, ../scss/modules/_header.scss */
+  /* line 139, ../scss/modules/_header.scss */
   header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
     top: 15px;
     right: 20px;
   }
 }
-/* line 155, ../scss/modules/_header.scss */
+/* line 152, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-button {
   border: none;
 }
-/* line 159, ../scss/modules/_header.scss */
+/* line 156, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list:before {
   content: "Konto";
 }
-/* line 162, ../scss/modules/_header.scss */
+/* line 159, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text {
   float: right;
   color: transparent;
   padding-bottom: 0;
   margin-top: -3px;
 }
-/* line 167, ../scss/modules/_header.scss */
+/* line 164, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text:before {
   color: #222;
   content: '+';
@@ -889,11 +1001,11 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-
   font-weight: bold;
   transform: rotate(45deg);
 }
-/* line 179, ../scss/modules/_header.scss */
+/* line 176, ../scss/modules/_header.scss */
 header #login-buttons a {
   text-decoration: none;
 }
-/* line 184, ../scss/modules/_header.scss */
+/* line 181, ../scss/modules/_header.scss */
 header .hide-unimportant {
   float: right;
   position: relative;
@@ -904,7 +1016,7 @@ header .hide-unimportant {
   padding: 0 10px;
   line-height: 25px;
 }
-/* line 193, ../scss/modules/_header.scss */
+/* line 190, ../scss/modules/_header.scss */
 header .hide-unimportant span {
   position: absolute;
   right: 2px;
@@ -919,27 +1031,27 @@ header .hide-unimportant span {
   font-family: 'Titillium Web', sans-serif;
   border: 1px solid #fff;
 }
-/* line 208, ../scss/modules/_header.scss */
+/* line 205, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox {
   position: absolute;
   left: -9999px;
 }
-/* line 211, ../scss/modules/_header.scss */
+/* line 208, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox:checked + .hide-unimportant {
   color: #960000;
 }
-/* line 216, ../scss/modules/_header.scss */
+/* line 213, ../scss/modules/_header.scss */
 header .newEntry {
   position: relative;
 }
-/* line 219, ../scss/modules/_header.scss */
+/* line 216, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm {
   margin: 0;
   position: relative;
   width: 100%;
   display: inline-block;
 }
-/* line 225, ../scss/modules/_header.scss */
+/* line 222, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea {
   box-sizing: border-box;
   background: transparent;
@@ -951,28 +1063,28 @@ header .newEntry .newEntryForm textarea {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 225, ../scss/modules/_header.scss */
+  /* line 222, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm textarea {
     padding: 10px 10px 10px 0px;
     font-size: 16px;
   }
 }
-/* line 240, ../scss/modules/_header.scss */
+/* line 237, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea:focus {
   outline: 0;
 }
-/* line 245, ../scss/modules/_header.scss */
+/* line 242, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions {
   display: none;
   width: 80%;
   height: 28px;
   line-height: 28px;
 }
-/* line 252, ../scss/modules/_header.scss */
+/* line 249, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox label {
   margin-top: 6px;
 }
-/* line 255, ../scss/modules/_header.scss */
+/* line 252, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox .value {
   margin-top: -24px;
 }
@@ -1084,18 +1196,18 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.accep
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 261, ../scss/modules/_header.scss */
+/* line 258, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
   display: inline-block;
 }
 @media (max-width: 610px) {
-  /* line 261, ../scss/modules/_header.scss */
+  /* line 258, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
     display: block;
     margin-top: 0px;
   }
 }
-/* line 268, ../scss/modules/_header.scss */
+/* line 265, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   margin-top: 3px;
   display: inline-block;
@@ -1104,17 +1216,17 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   font-weight: bold;
   height: 25px;
 }
-/* line 275, ../scss/modules/_header.scss */
+/* line 272, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div {
   line-height: 25px;
   font-size: 1.8rem;
   color: #222;
 }
-/* line 279, ../scss/modules/_header.scss */
+/* line 276, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div:hover {
   color: #2980b9;
 }
-/* line 284, ../scss/modules/_header.scss */
+/* line 281, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   display: inline-block;
   position: relative;
@@ -1125,17 +1237,17 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   top: 1px;
   background: #e2e1e0;
 }
-/* line 293, ../scss/modules/_header.scss */
+/* line 290, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dropzone {
   margin-bottom: -1px;
   border-radius: 0 3px 3px 0;
   border-left: 1px solid #c8c8c8;
 }
-/* line 298, ../scss/modules/_header.scss */
+/* line 295, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span {
   position: relative;
 }
-/* line 300, ../scss/modules/_header.scss */
+/* line 297, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview {
   display: inline-block;
   position: relative;
@@ -1143,7 +1255,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-radius: 3px 0 0 3px;
   border-right: 1px solid #c8c8c8;
 }
-/* line 306, ../scss/modules/_header.scss */
+/* line 303, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail {
   display: block;
   position: absolute;
@@ -1154,7 +1266,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   background: #e2e1e0;
   box-shadow: 0 2px 2px #666;
 }
-/* line 315, ../scss/modules/_header.scss */
+/* line 312, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail:before {
   position: absolute;
   content: '';
@@ -1167,7 +1279,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-width: 0 5px 5px 5px;
   border-color: transparent transparent #e2e1e0 transparent;
 }
-/* line 327, ../scss/modules/_header.scss */
+/* line 324, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail img {
   position: relative;
   width: 100%;
@@ -1175,11 +1287,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   height: auto;
   margin: 0 auto -9px auto;
 }
-/* line 336, ../scss/modules/_header.scss */
+/* line 333, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .previewDetail {
   display: none;
 }
-/* line 340, ../scss/modules/_header.scss */
+/* line 337, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button {
   display: inline-block;
   position: relative;
@@ -1193,11 +1305,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button
   font-weight: bold;
   font-size: 2rem;
 }
-/* line 352, ../scss/modules/_header.scss */
+/* line 349, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button:hover {
   color: #ff3232;
 }
-/* line 360, ../scss/modules/_header.scss */
+/* line 357, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn {
   position: relative;
   background-color: #3498db;
@@ -1247,23 +1359,23 @@ header .newEntry .newEntryForm .submitBtn .circle.animate {
   }
 }
 @media (max-width: 610px) {
-  /* line 360, ../scss/modules/_header.scss */
+  /* line 357, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .submitBtn {
     margin: -23px 0 0 0 !important;
   }
 }
-/* line 377, ../scss/modules/_header.scss */
+/* line 374, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:after {
   content: 'Eintragen';
   font-family: 'Titillium Web', sans-serif;
   font-size: 1.4rem;
   font-weight: normal;
 }
-/* line 383, ../scss/modules/_header.scss */
+/* line 380, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 389, ../scss/modules/_header.scss */
+/* line 386, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm.edited .newEntryOptions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

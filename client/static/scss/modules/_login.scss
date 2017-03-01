@@ -1,0 +1,91 @@
+#login-buttons {
+	#login-sign-in-link {
+		color: $transparent;
+		margin-right: 8px;
+		&:before {
+			content: 'Anmelden';
+			position: absolute;
+			color: $almostwhite;
+		}
+  }
+  #signup-link {
+  	color: $transparent;
+  	&:before {
+  		content: 'Konto erstellen';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #forgot-password-link {
+  	color: $transparent;
+  	&:before {
+  		content: 'Passwort vergessen';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-buttons-forgot-password {
+  	color: $transparent;
+  	&:before {
+  		content: 'Wiederherstellen';
+			position: absolute;
+			color: $almostwhite;
+  	}
+  }
+  #back-to-login-link {
+  	color: $transparent;
+  	&:before {
+  		content: 'Zurück';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-username-label {
+  	color: $transparent;
+  	&:before {
+  		content: 'Benutzername';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-buttons-open-change-password {
+  	color: $transparent;
+  	&:before {
+  		content: 'Passwort ändern';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-buttons-logout {
+  	color: $transparent;
+  	&:before {
+  		content: 'Abmelden';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #reset-password-new-password-label {
+  	color: $transparent;
+  	&:before {
+  		content: 'Neues Passwort';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-old-password-label {
+  	color: $transparent;
+  	&:before {
+  		content: 'Aktuelles Passwort';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+  #login-buttons-do-change-password {
+  	color: $transparent;
+  	&:before {
+  		content: 'Passwort ändern';
+			position: absolute;
+			color: $almostblack;
+  	}
+  }
+}
