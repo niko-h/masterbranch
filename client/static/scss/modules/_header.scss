@@ -18,19 +18,27 @@
     padding: 40% 0;
     &:before {
       display: block;
-      width: 100%;
-      text-align: center;
+      width: 70%;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      // text-align: center;
       margin: 0;
       content: "D'oh!";
     }
     &:after {
       display: block;
-      width: 100%;
+      width: 70%;
       position: absolute;
-      margin-bottom: 40%;
+      // margin-bottom: 40%;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
       font-size: 5vw;
       color: $darkgrey;
-      text-align: center;
+      // text-align: center;
       content: 'Nochmal: Ausbau Numero ...?';
     }
   }

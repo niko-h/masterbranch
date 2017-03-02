@@ -7,6 +7,11 @@ export const Entrys = new Mongo.Collection('entrys');
 if (Meteor.isServer) {
   // This code only runs on the server
 
+  Entrys._ensureIndex({
+    "username": "text",
+    "text": "text"
+  });
+
   Meteor.publish('entrys', function (limit) {
     return Entrys.find({}, {
       limit: limit,
@@ -27,6 +32,29 @@ if (Meteor.isServer) {
       sort: {createdAt: -1}
     });
   });
+
+  Meteor.publish("search", function(searchValue) {
+  if (!searchValue) {
+    // return Entrys.find({});
+  }
+  return Entrys.find({ $text: {$search: searchValue} },
+    {
+      // sort: {createdAt: -1},
+      // `fields` is where we can add MongoDB projections. Here we're causing
+      // each document published to include a property named `score`, which
+      // contains the document's search rank, a numerical value, with more
+      // relevant documents having a higher score.
+      fields: {
+        score: { $meta: "textScore" }
+      },
+      // This indicates that we wish the publication to be sorted by the
+      // `score` property specified in the projection fields above.
+      sort: {
+        score: { $meta: "textScore" }
+      }
+    }
+  );
+});
 }
 
 Meteor.methods({
@@ -37,6 +65,23 @@ Meteor.methods({
       return false;
     }
   },
+  // 'entrys.find'(query) {
+  //   console.info('findEntry');
+  //   check(query, String);
+
+  //   // Make sure the user is logged in before inserting a entry
+  //   if (! this.userId) {
+  //     throw new Meteor.Error('not-authorized');
+  //   }
+
+  //   if(query.length>0) {
+  //     results = Entrys.find({}, {
+        
+  //       sort: {createdAt: -1}
+  //     });
+  //     return results;
+  //   }
+  // },
   'entrys.insert'(entry) {
     console.info('insertEntry');
     check(entry.text, String);

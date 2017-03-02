@@ -27,6 +27,7 @@ class App extends Component {
       files: [],
       fileUrl: '',
       youShallPass: false,
+      searchActive: false,
     };
   }
 
@@ -131,6 +132,16 @@ class App extends Component {
     }
   }
 
+  search(event) {
+    const query = ReactDOM.findDOMNode(this.refs.searchInput).value.trim();
+    if(query.length>0) {
+      Session.set('searchValue', query);
+      this.setState({searchActive: true});
+    } else {
+      this.setState({searchActive: false});
+    }
+  }
+
   altEnter(event) {
     event.preventDefault();
     if (event.keyCode == 13 && event.altKey) {
@@ -168,7 +179,13 @@ class App extends Component {
   }
 
   renderEntrys() {
-    let filteredEntrys = this.props.entrys;
+    let filteredEntrys;
+    if(this.state.searchActive) {
+      filteredEntrys = this.props.searchResults;
+    } else {
+      filteredEntrys = this.props.entrys;
+    }
+
     if (this.state.hideUnimportant) {
       filteredEntrys = this.props.importantEntrys;
     }
@@ -247,6 +264,13 @@ class App extends Component {
         <header className={edited}>
           <h1>RWGB</h1>
 
+          <input 
+            className="searchInput" 
+            ref="searchInput" 
+            type="text"
+            placeholder="Suche"
+            onKeyUp={ this.search.bind(this) } />
+
           { this.props.currentUser || this.state.youShallPass ?
             <AccountsUIWrapper />
           :
@@ -288,7 +312,7 @@ class App extends Component {
                   placeholder="Gib' einen neuen Eintrag ein..."
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
-                  tabindex="1"
+                  tabIndex="1"
                 />
                 <div className="newEntryOptions">
                   <div className="checkbox green">
@@ -357,6 +381,7 @@ App.propTypes = {
   importantEntrys: PropTypes.array.isRequired,
   importantEntrysCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
+  searchResults: PropTypes.array.isRequired,
 };
 
 export default createContainer(() => {
@@ -366,11 +391,19 @@ export default createContainer(() => {
   });
   Meteor.subscribe('importantEntrys');
 
+  Meteor.subscribe("search", Session.get("searchValue"));
+  if (Session.get("searchValue")) {
+    // return Messages.find({}, { sort: [["score", "desc"]] });
+  } else {
+    // return Messages.find({});
+  }
+
   return {
     // search: Entrys.find({text:}, { sort: { createdAt: -1 } }).fetch(),
     entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
     importantEntrys: Entrys.findFromPublication('importantEntrys', {}, {sort: { createdAt: -1 }}).fetch(),
     importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),
     currentUser: Meteor.user(),
+    searchResults: Entrys.find({}, { sort: [["score", "desc"]] }).fetch(),
   };
 }, App);
