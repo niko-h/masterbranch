@@ -145,7 +145,7 @@ export default class Entry extends Component {
       <li className={entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
 
-        {(this.props.entry.important && showImportantDate) ? (
+        {this.props.entry.important ? (
           <div className="importantDateContainer">
             <i className="icon-today" />
             { this.props.canEdit ? ( 
