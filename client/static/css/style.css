@@ -958,14 +958,15 @@ header.searchActive {
 }
 /* line 82, ../scss/modules/_header.scss */
 header h1 {
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin: 0;
   margin-bottom: 10px;
   display: inline-block;
   margin-right: 1em;
+  color: #efefef;
   font-weight: bold;
 }
-/* line 91, ../scss/modules/_header.scss */
+/* line 92, ../scss/modules/_header.scss */
 header .register-secret {
   position: fixed;
   left: 0;
@@ -977,7 +978,7 @@ header .register-secret {
   background-size: cover;
   z-index: 9999;
 }
-/* line 101, ../scss/modules/_header.scss */
+/* line 102, ../scss/modules/_header.scss */
 header .register-secret > span {
   text-align: center;
   margin: 0;
@@ -989,12 +990,12 @@ header .register-secret > span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 111, ../scss/modules/_header.scss */
+/* line 112, ../scss/modules/_header.scss */
 header .register-secret > span span {
   text-align: left;
   display: block;
 }
-/* line 115, ../scss/modules/_header.scss */
+/* line 116, ../scss/modules/_header.scss */
 header .register-secret > span input {
   height: 80px;
   width: 100%;
@@ -1013,30 +1014,30 @@ header .register-secret > span input {
   color: #222;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 130, ../scss/modules/_header.scss */
+/* line 131, ../scss/modules/_header.scss */
 header .register-secret > span input:focus {
   outline: none;
 }
 @media (max-width: 610px) {
-  /* line 115, ../scss/modules/_header.scss */
+  /* line 116, ../scss/modules/_header.scss */
   header .register-secret > span input {
     font-size: 1.5em;
     height: 50px;
   }
 }
 @media (max-width: 610px) {
-  /* line 101, ../scss/modules/_header.scss */
+  /* line 102, ../scss/modules/_header.scss */
   header .register-secret > span {
     width: 200px;
   }
 }
 @media (max-width: 610px) {
-  /* line 91, ../scss/modules/_header.scss */
+  /* line 92, ../scss/modules/_header.scss */
   header .register-secret {
     background: #efefef;
   }
 }
-/* line 145, ../scss/modules/_header.scss */
+/* line 146, ../scss/modules/_header.scss */
 header #login-buttons {
   float: right;
   margin-left: 10px;
@@ -1080,11 +1081,11 @@ header #login-buttons .circle.animate {
     opacity: 0;
   }
 }
-/* line 152, ../scss/modules/_header.scss */
+/* line 153, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list {
   position: static;
 }
-/* line 154, ../scss/modules/_header.scss */
+/* line 155, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   position: absolute;
   top: 20px;
@@ -1096,28 +1097,28 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 @media (max-width: 610px) {
-  /* line 154, ../scss/modules/_header.scss */
+  /* line 155, ../scss/modules/_header.scss */
   header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
     top: 15px;
     right: 20px;
   }
 }
-/* line 167, ../scss/modules/_header.scss */
+/* line 168, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-button {
   border: none;
 }
-/* line 171, ../scss/modules/_header.scss */
+/* line 172, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list:before {
   content: "Konto";
 }
-/* line 174, ../scss/modules/_header.scss */
+/* line 175, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text {
   float: right;
   color: transparent;
   padding-bottom: 0;
   margin-top: -3px;
 }
-/* line 179, ../scss/modules/_header.scss */
+/* line 180, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text:before {
   color: #222;
   content: '+';
@@ -1127,11 +1128,11 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-
   font-weight: bold;
   transform: rotate(45deg);
 }
-/* line 191, ../scss/modules/_header.scss */
+/* line 192, ../scss/modules/_header.scss */
 header #login-buttons a {
   text-decoration: none;
 }
-/* line 196, ../scss/modules/_header.scss */
+/* line 197, ../scss/modules/_header.scss */
 header .hide-unimportant {
   float: right;
   position: relative;
@@ -1142,11 +1143,11 @@ header .hide-unimportant {
   padding: 0 10px 0 0;
   line-height: 25px;
 }
-/* line 205, ../scss/modules/_header.scss */
+/* line 206, ../scss/modules/_header.scss */
 header .hide-unimportant:hover {
   color: #960000;
 }
-/* line 208, ../scss/modules/_header.scss */
+/* line 209, ../scss/modules/_header.scss */
 header .hide-unimportant span {
   position: absolute;
   right: 2px;
@@ -1162,16 +1163,16 @@ header .hide-unimportant span {
   border: 1px solid #fff;
   font-weight: bold;
 }
-/* line 224, ../scss/modules/_header.scss */
+/* line 225, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox {
   position: absolute;
   left: -9999px;
 }
-/* line 227, ../scss/modules/_header.scss */
+/* line 228, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox:checked + .hide-unimportant {
   color: #960000;
 }
-/* line 232, ../scss/modules/_header.scss */
+/* line 233, ../scss/modules/_header.scss */
 header .openSearchBtn {
   float: right;
   background: transparent;
@@ -1185,31 +1186,31 @@ header .openSearchBtn {
   margin: 0;
 }
 @media (max-width: 610px) {
-  /* line 232, ../scss/modules/_header.scss */
+  /* line 233, ../scss/modules/_header.scss */
   header .openSearchBtn {
     padding-right: 0;
   }
 }
-/* line 244, ../scss/modules/_header.scss */
+/* line 245, ../scss/modules/_header.scss */
 header .openSearchBtn:focus {
   outline: none;
 }
-/* line 247, ../scss/modules/_header.scss */
+/* line 248, ../scss/modules/_header.scss */
 header .openSearchBtn:hover {
   color: #222;
 }
-/* line 256, ../scss/modules/_header.scss */
+/* line 257, ../scss/modules/_header.scss */
 header .newEntry {
   position: relative;
 }
-/* line 259, ../scss/modules/_header.scss */
+/* line 260, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm {
   margin: 0;
   position: relative;
   width: 100%;
   display: inline-block;
 }
-/* line 265, ../scss/modules/_header.scss */
+/* line 266, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea {
   box-sizing: border-box;
   background: transparent;
@@ -1221,28 +1222,28 @@ header .newEntry .newEntryForm textarea {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 265, ../scss/modules/_header.scss */
+  /* line 266, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm textarea {
     padding: 10px 10px 10px 0px;
     font-size: 16px;
   }
 }
-/* line 280, ../scss/modules/_header.scss */
+/* line 281, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea:focus {
   outline: 0;
 }
-/* line 285, ../scss/modules/_header.scss */
+/* line 286, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions {
   display: none;
   width: 80%;
   height: 28px;
   line-height: 28px;
 }
-/* line 292, ../scss/modules/_header.scss */
+/* line 293, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox label {
   margin-top: 6px;
 }
-/* line 295, ../scss/modules/_header.scss */
+/* line 296, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox .value {
   margin-top: -24px;
 }
@@ -1354,7 +1355,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.accep
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 301, ../scss/modules/_header.scss */
+/* line 302, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
   display: inline-block;
   height: 25px;
@@ -1363,13 +1364,13 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
   margin-top: 3px;
 }
 @media (max-width: 610px) {
-  /* line 301, ../scss/modules/_header.scss */
+  /* line 302, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
     display: block;
     margin-top: 0px;
   }
 }
-/* line 312, ../scss/modules/_header.scss */
+/* line 313, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   margin-top: 1px;
   display: inline-block;
@@ -1378,17 +1379,17 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   font-weight: bold;
   height: 25px;
 }
-/* line 319, ../scss/modules/_header.scss */
+/* line 320, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div {
   line-height: 25px;
   font-size: 1.8rem;
   color: #222;
 }
-/* line 323, ../scss/modules/_header.scss */
+/* line 324, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div:hover {
   color: #2980b9;
 }
-/* line 328, ../scss/modules/_header.scss */
+/* line 329, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   display: inline-block;
   position: relative;
@@ -1400,7 +1401,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   vertical-align: inherit;
   background: #e2e1e0;
 }
-/* line 338, ../scss/modules/_header.scss */
+/* line 339, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dropzone {
   height: 25px;
   top: -1px;
@@ -1409,11 +1410,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dro
   border-radius: 0 3px 3px 0;
   border-left: 1px solid #c8c8c8;
 }
-/* line 346, ../scss/modules/_header.scss */
+/* line 347, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span {
   position: relative;
 }
-/* line 348, ../scss/modules/_header.scss */
+/* line 349, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview {
   display: inline-block;
   position: relative;
@@ -1421,7 +1422,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-radius: 3px 0 0 3px;
   border-right: 1px solid #c8c8c8;
 }
-/* line 354, ../scss/modules/_header.scss */
+/* line 355, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail {
   display: block;
   position: absolute;
@@ -1432,7 +1433,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   background: #e2e1e0;
   box-shadow: 0 2px 2px #666;
 }
-/* line 363, ../scss/modules/_header.scss */
+/* line 364, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail:before {
   position: absolute;
   content: '';
@@ -1445,7 +1446,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-width: 0 5px 5px 5px;
   border-color: transparent transparent #e2e1e0 transparent;
 }
-/* line 375, ../scss/modules/_header.scss */
+/* line 376, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail img {
   position: relative;
   width: 100%;
@@ -1453,11 +1454,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   height: auto;
   margin: 0 auto -7px auto;
 }
-/* line 384, ../scss/modules/_header.scss */
+/* line 385, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .previewDetail {
   display: none;
 }
-/* line 388, ../scss/modules/_header.scss */
+/* line 389, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button {
   display: inline-block;
   position: relative;
@@ -1475,11 +1476,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button
   padding: 0px 4px;
   font-size: 2rem;
 }
-/* line 402, ../scss/modules/_header.scss */
+/* line 403, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button:hover {
   color: #ff3232;
 }
-/* line 410, ../scss/modules/_header.scss */
+/* line 411, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn {
   position: relative;
   background-color: #3498db;
@@ -1529,23 +1530,23 @@ header .newEntry .newEntryForm .submitBtn .circle.animate {
   }
 }
 @media (max-width: 610px) {
-  /* line 410, ../scss/modules/_header.scss */
+  /* line 411, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .submitBtn {
     margin: -23px 0 0 0 !important;
   }
 }
-/* line 427, ../scss/modules/_header.scss */
+/* line 428, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:after {
   content: 'Eintragen';
   font-family: 'Titillium Web', sans-serif;
   font-size: 1.4rem;
   font-weight: normal;
 }
-/* line 433, ../scss/modules/_header.scss */
+/* line 434, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 439, ../scss/modules/_header.scss */
+/* line 440, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm.edited .newEntryOptions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

@@ -59,6 +59,7 @@ observe-sequence@1.0.14
 ordered-dict@1.0.9
 percolate:find-from-publication@0.1.0
 promise@0.8.8
+raix:rssfeed@0.0.5
 random@1.0.10
 rate-limit@1.0.6
 react-meteor-data@0.2.9

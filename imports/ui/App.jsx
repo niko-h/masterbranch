@@ -285,7 +285,7 @@ class App extends Component {
         </div>
 
         <header className={edited+' '+search}>
-          <h1>RWGB</h1>
+          <h1>Rwgb</h1>
 
 
           { this.props.currentUser || this.state.youShallPass ?

@@ -7,17 +7,21 @@ export const Entrys = new Mongo.Collection('entrys');
 if (Meteor.isServer) {
   // This code only runs on the server
 
+  // search-index
   Entrys._ensureIndex({
     "username": "text",
     "text": "text"
   });
 
+  // basic entries-publication
   Meteor.publish('entrys', function (limit) {
     return Entrys.find({}, {
       limit: limit,
       sort: {createdAt: -1}
     });
   });
+
+  // important entrys
   FindFromPublication.publish('importantEntrys', function () {
     return Entrys.find({important: true}, {
       // We can include fields to get the same result. 
@@ -33,6 +37,28 @@ if (Meteor.isServer) {
     });
   });
 
+
+  // RSS
+  RssFeed.publish( 'updates', function() {
+    var feed = this;
+
+    feed.setValue( 'lastBuildDate', new Date() );
+    feed.setValue( 'pubDate', new Date() );
+    feed.setValue( 'ttl', 1 );
+
+    var entrys = Entrys.find( { private: false } );
+
+    entrys.forEach( function( entry ) {
+      feed.addItem({
+        title: entry.username,
+        description: entry.text,
+        link: `http://localhost:3000/rss/${ entry._id }`,
+        pubDate: entry.createdAt
+      });
+    });
+  });
+
+  // search
   Meteor.publish("search", function(searchValue) {
   if (!searchValue) {
     // return Entrys.find({});
@@ -65,23 +91,6 @@ Meteor.methods({
       return false;
     }
   },
-  // 'entrys.find'(query) {
-  //   console.info('findEntry');
-  //   check(query, String);
-
-  //   // Make sure the user is logged in before inserting a entry
-  //   if (! this.userId) {
-  //     throw new Meteor.Error('not-authorized');
-  //   }
-
-  //   if(query.length>0) {
-  //     results = Entrys.find({}, {
-        
-  //       sort: {createdAt: -1}
-  //     });
-  //     return results;
-  //   }
-  // },
   'entrys.insert'(entry) {
     console.info('insertEntry');
     check(entry.text, String);

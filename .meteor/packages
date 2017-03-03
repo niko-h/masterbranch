@@ -26,3 +26,4 @@ shell-server@0.2.1
 session
 percolate:find-from-publication
 email
+raix:rssfeed
