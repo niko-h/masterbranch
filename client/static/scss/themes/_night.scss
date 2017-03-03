@@ -3,8 +3,25 @@
 }
 
 body.night {
-  background: rgba($black, .9);
+  background: $darkbg;
 
+  * {
+    @include placeholder($darkyellow);
+  }
+  .register-secret input {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $darkgrey;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $darkgrey;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: $darkgrey;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $darkgrey;
+    }
+  }
 
   /* ==========================================================================
      header
@@ -21,8 +38,13 @@ body.night {
 
     #login-buttons {
       // @include button($darkblue);
-      background-color: rgba($yellow, .8);
+      background-color: $yellow;
       color: $almostblack;
+      #login-sign-in-link {
+        &:before {
+          color: $almostblack;
+        }
+      }
       .login-link-and-dropdown-list {
         #login-dropdown-list {
           .login-close-text {
@@ -37,7 +59,10 @@ body.night {
 
     .hide-unimportant {
       background: $transparent;
-      color: $darkgrey;
+      color: $yellow;
+      &:hover {
+        color: $darkred;
+      }
       span {
         background: $red;
         border: 1px solid $almostblack;
@@ -46,6 +71,14 @@ body.night {
     .hide-unimportant-checkbox { 
       &:checked + .hide-unimportant {
         color: $red;
+      }
+    }
+
+    .openSearchBtn {
+      background: $transparent;
+      color: $yellow;
+      &:hover {
+        color: $darkyellow;
       }
     }
 
@@ -58,19 +91,49 @@ body.night {
         
         .newEntryOptions {
           // @include dropzone();
+          .checkbox {
+            label {
+              margin-top: 6px;
+              .value {
+                margin-top: -24px;
+                color: $darkgrey;
+              }
+            }
+
+            .slider-v2 {
+              background: $darkmediumgrey;
+            }
+
+            .slider-v2::after {
+              background: $darkmediumgrey;
+            }
+
+            .slider-v2::before {
+              background: $darkgrey;
+            }
+
+            input:checked + .slider-v2::before {
+              background: $darkgrey;
+            }
+
+            &.green input:checked + .slider-v2::after { background: $green; }
+            &.red input:checked + .slider-v2::after { background: $red; } 
+
+          }
+
           .imageUploadForm {
             .dropzone{
-              background: $lightgrey;
+              background: $yellow;
               color: $almostblack;
               div {
                 color: $almostblack;
                 &:hover {
-                  color: $darkblue;
+                  color: $darkgrey;
                 }
               }
             }
             .preview {
-              background: $lightgrey;
+              background: $yellow;
               &+.dropzone {
                 border-left: 1px solid $mediumgrey;
               }
@@ -79,7 +142,7 @@ body.night {
                   border-right: 1px solid $mediumgrey;
                   &:hover + .previewDetail {
                     background: $lightgrey;
-                    box-shadow: 0 2px 2px $darkgrey;
+                    box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
                     &:before {
                       border-color: $transparent $transparent $lightgrey $transparent;
                     }
@@ -87,10 +150,10 @@ body.night {
                 }
               }
               button {
-                background: $transparent;
-                color: $darkgrey;
+                background: $yellow;
+                color: $red;
                 &:hover {
-                  color: $red;
+                  color: $darkred;
                 }
               }
             }
@@ -253,18 +316,64 @@ body.night {
         border: 1px solid $transparent;
         background: rgba($darkgrey, .2);
       }
+
+      .checkbox {
+        label {
+          margin-top: 6px;
+          .value {
+            margin-top: -24px;
+            color: $darkgrey;
+          }
+        }
+
+        .slider-v2 {
+          background: $darkmediumgrey;
+        }
+
+        .slider-v2::after {
+          background: $darkmediumgrey;
+        }
+
+        .slider-v2::before {
+          background: $darkgrey;
+        }
+
+        input:checked + .slider-v2::before {
+          background: $darkgrey;
+        }
+
+        &.green input:checked + .slider-v2::after { background: $green; }
+        &.red input:checked + .slider-v2::after { background: $red; } 
+
+      }
     }
   }
 
   .loadMoreBtn {
     @include button($darkyellow);
-    margin: 20px 0 0 0;
-    font-weight: normal;
-    font-size: 1.4rem;
-    width: 100%;
-    height: 30px;
     background: $darkyellow;
     color: $almostblack;
+  }
+
+  .searchForm {
+    background: $transparent;
+    box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24), 0 0 0 15px $darkbg;
+    @include breakpoint(baby) {
+      box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+    }
+    &.searchActive {
+      background: rgba($black, .5);
+      .searchInput {
+        color: $yellow;
+        border-color: transparent;
+      }
+    }
+    .searchCloseBtn {
+      color: $yellow;
+      &:hover {
+        color: $darkyellow;
+      }
+    }
   }
 
 }

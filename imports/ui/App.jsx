@@ -132,13 +132,24 @@ class App extends Component {
     }
   }
 
+  activateSearch(event) {
+    this.setState({searchActive: true});
+    $('.searchForm').css('height', $('header').height());
+    return setTimeout(function() {
+      $('.searchInput').focus();
+    }, 150);
+  }
+  deactivateSearch(event) {
+    this.setState({searchActive: false});
+  }
   search(event) {
+    event.preventDefault();
+    if (event.keyCode == 27) {
+      this.deactivateSearch(event);
+    }
     const query = ReactDOM.findDOMNode(this.refs.searchInput).value.trim();
     if(query.length>0) {
       Session.set('searchValue', query);
-      this.setState({searchActive: true});
-    } else {
-      this.setState({searchActive: false});
     }
   }
 
@@ -216,7 +227,7 @@ class App extends Component {
     var $this = $(ReactDOM.findDOMNode(this));
     
     var offset = 0;
-    $('.mainContent').width()>599 ? offset = 50 : offset = -13;
+    $('.mainContent').width()>599 ? offset = 50 : offset = -10;
     $('.mainContent').css('margin-top', $('header').height()+offset);
 
     var linkifyOptions = {
@@ -253,23 +264,29 @@ class App extends Component {
         'none' : ( !this.state.edited ),
         'edited': ( this.state.edited ),
     } );
+    var search = classnames( this.state.searchActive, {
+      'searchActive' : ( this.state.searchActive ),
+      'none' : ( !this.state.searchActive ),
+    });
     
     return (
       <div className="container">
-        <div className="toggle toggle--daynight">
-          <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" />
-          <label className="toggle--btn" htmlFor="toggle--daynight"><span className="toggle--feature"></span></label>
-        </div>
-
-        <header className={edited}>
-          <h1>RWGB</h1>
-
+        <div className={"searchForm "+search}>
           <input 
             className="searchInput" 
             ref="searchInput" 
             type="text"
-            placeholder="Suche"
+            placeholder="Suche..."
+            autoFocus
             onKeyUp={ this.search.bind(this) } />
+          <button 
+            className="searchCloseBtn icon-close"
+            onClick={ this.deactivateSearch.bind(this) } />
+        </div>
+
+        <header className={edited+' '+search}>
+          <h1>RWGB</h1>
+
 
           { this.props.currentUser || this.state.youShallPass ?
             <AccountsUIWrapper />
@@ -301,6 +318,12 @@ class App extends Component {
                />
               <label className="hide-unimportant button icon-notifications" htmlFor="hide-unimportant"><span>{this.props.importantEntrysCount}</span></label>
             </span>
+          ) : ''}
+
+          { this.props.currentUser ? (
+            <button 
+              className="openSearchBtn icon-search"
+              onClick={ this.activateSearch.bind(this) } />
           ) : ''}
 
           { this.props.currentUser ?
@@ -341,7 +364,7 @@ class App extends Component {
                   <div className={'imageUploadForm'}>
                     {this.state.files.length > 0 ? <div className="preview">
                         {this.state.files.map((file) => <span><img className="smallPreview" src={file.preview} /><span className="previewDetail"><img src={file.preview} /></span></span> )}
-                        <button className="btn" onClick={this.clearImg.bind(this)}>&times;</button>
+                        <button className="btn icon-close" onClick={this.clearImg.bind(this)}></button>
                       </div> : null
                     }
                     <Dropzone 
@@ -371,6 +394,11 @@ class App extends Component {
         {!this.state.hideUnimportant ? (
           <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Load more Entrys</button>
         ) : ''}
+
+        <div className="toggle toggle--daynight">
+          <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" />
+          <label className="toggle--btn" htmlFor="toggle--daynight"><span className="toggle--feature"></span></label>
+        </div>
       </div>
     );
   }

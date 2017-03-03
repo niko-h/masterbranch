@@ -53,7 +53,7 @@
   	&:before {
   		content: 'Passwort ändern';
 			position: absolute;
-			color: $almostblack;
+			color: $almostwhite;
   	}
   }
   #login-buttons-logout {
@@ -61,7 +61,7 @@
   	&:before {
   		content: 'Abmelden';
 			position: absolute;
-			color: $almostblack;
+			color: $almostwhite;
   	}
   }
   #reset-password-new-password-label {

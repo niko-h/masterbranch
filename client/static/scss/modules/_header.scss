@@ -15,15 +15,16 @@
     font-size: 20vw;
     font-weight: bold;
     z-index: 99999999999;
-    padding: 40% 0;
+    padding: 0;
     &:before {
       display: block;
       width: 70%;
-      top: 45%;
+      position: absolute;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       
-      // text-align: center;
+      text-align: center;
       margin: 0;
       content: "D'oh!";
     }
@@ -31,14 +32,13 @@
       display: block;
       width: 70%;
       position: absolute;
-      // margin-bottom: 40%;
-      top: 45%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       
       font-size: 5vw;
       color: $darkgrey;
-      // text-align: center;
+      text-align: center;
       content: 'Nochmal: Ausbau Numero ...?';
     }
   }
@@ -48,6 +48,7 @@
    ========================================================================== */
 
 @include checkbox();
+@include search();
 
 header {
   @include box-sizing(border-box);
@@ -56,10 +57,16 @@ header {
   top: 10px;
   color: $darkgrey;
   position: fixed;
-  z-index: 10000;
+  z-index: 99;
   width: 610px;
   margin-left: -5px;
   box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+  @include transition(filter .2s ease-in-out);
+  filter: blur(0);
+  &.searchActive {
+    @include transition(filter .2s ease-in-out);
+    filter: blur(10px);
+  }
   @include breakpoint(baby) {
     width: 100% !important;
     top: 0px;
@@ -193,8 +200,11 @@ header {
     color: $darkgrey;
     font-size: 3rem;
     display: inline-block;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     line-height: 25px;
+    &:hover {
+      color: $darkred;
+    }
     span {
       position: absolute;
       right: 2px;
@@ -208,6 +218,7 @@ header {
       line-height: 15px;
       font-family: 'Titillium Web', sans-serif;
       border: 1px solid $white;
+      font-weight: bold;
     }
   }
   .hide-unimportant-checkbox { 
@@ -217,6 +228,30 @@ header {
       color: $darkred;
     }
   }
+
+  .openSearchBtn {
+    float: right;
+    background: $transparent;
+    color: $darkgrey;
+    border: none;
+    font-size: 2.6rem;
+    @include box-sizing(border-box);
+    line-height: 25px;
+    margin: 0;
+    @include breakpoint(baby) {
+      padding-right: 0;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      color: $almostblack;
+    }
+  }
+
+  /* ==========================================================================
+   Entry-Form
+   ========================================================================== */
 
   .newEntry {
     position: relative;
@@ -265,13 +300,17 @@ header {
         @include dropzone();
         .imageUploadForm {
           display: inline-block;
+          height: 25px;
+          line-height: 25px;
+          vertical-align: top;
+          margin-top: 3px;
           @include breakpoint(baby) {
             display: block;
             margin-top: 0px;
           }
 
           .dropzone{
-            margin-top: 3px;
+            margin-top: 1px;
             display: inline-block;
             background: $lightgrey;
             color: $almostblack;
@@ -292,11 +331,15 @@ header {
             margin-left: 0px;
             border-radius: 4px 0 0 4px;
             height: 25px;
+            line-height: 25px;
             padding: 0;
-            top: 1px;
+            vertical-align: inherit;
             background: $lightgrey;
             &+.dropzone {
-              margin-bottom: -1px;
+              height: 25px;
+              top: -1px;
+              line-height: 25px;
+              vertical-align: inherit;
               border-radius: 0 3px 3px 0;
               border-left: 1px solid $mediumgrey;
             }
@@ -334,7 +377,7 @@ header {
                     width: 100%;
                     border-radius: 3px;
                     height: auto;
-                    margin: 0 auto -9px auto;
+                    margin: 0 auto -7px auto;
                   }
                 }
               }
@@ -348,11 +391,13 @@ header {
               background: $transparent;
               border: none;
               height: 25px;
-              top: -6px;
+              @include box-sizing(border-box);
+              vertical-align: top;
               cursor: pointer;
               line-height: 25px;
               color: $darkgrey;
               font-weight: bold;
+              padding: 0px 4px;
               font-size: 2rem;
               &:hover {
                 color: $red;

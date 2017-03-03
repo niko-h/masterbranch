@@ -192,10 +192,10 @@
       }
 
       &.no {
-        opacity: .5;
+        opacity: .3;
         bottom: 13px;
         top: auto;
-        right: 50px;
+        right: 17px;
         @include breakpoint(baby) {
           bottom: 5px;
         }
@@ -388,6 +388,8 @@
         font-size: 1em;
         border: none;
         position: relative;
+        margin-right: 50px;
+        z-index: 100;
       }
     }
   }
@@ -396,12 +398,11 @@
 .loadMoreBtn {
   @include button($darkblue);
   margin: 20px 0 0 0;
-  font-weight: bold;
   width: 100%;
   height: 30px;
   @include breakpoint(baby) {
     width: 90%;
     left: 50%;
-    margin: 20px 10px 20px -45%;
+    margin: 20px 10px 10px -45%;
   }
 }
