@@ -85,7 +85,6 @@ header {
     margin-bottom: 10px;
     display: inline-block;
     margin-right: 1em;
-    color: $almostwhite;
     font-weight: bold;
   }
 
@@ -288,6 +287,9 @@ header {
         width: 80%;
         height: 28px;
         line-height: 28px;
+        @include breakpoint(baby) {
+          width: 100%;
+        }
 
         .checkbox {
           label {
@@ -295,6 +297,34 @@ header {
           }
           .value {
             margin-top: -24px;
+          }
+        }
+
+        .newImportantDateContainer {
+          display: inline;
+          color: $darkgrey;
+          margin-left: -5px;
+          @include breakpoint(baby) {
+            margin: 0 -10px 0 -5px;
+          }
+          .newImportantDate {
+            border: none;
+            vertical-align: top;
+            margin: 4px 10px 0 3px;
+            padding: 0 3px;
+            max-width: 120px;
+            height: 25px;
+            line-height: 25px;
+            background: $lightgrey;
+            border-radius: 3px;
+            color: $darkgrey;
+            @include breakpoint(baby) {
+              margin-bottom: 5px;
+              max-width: 100px;
+            }
+            &:focus {
+              outline: none;
+            }
           }
         }
         
@@ -313,17 +343,17 @@ header {
           .dropzone{
             margin-top: 1px;
             display: inline-block;
-            background: $lightgrey;
+            background: $blue;
             color: $almostblack;
             font-weight: bold;
             height: 25px;
+            &:hover {
+              background: $darkblue;
+            }
             div {
               line-height: 25px;
               font-size: 1.8rem;
-              color: $almostblack;
-              &:hover {
-                color: $darkblue;
-              }
+              color: $almostwhite;
             }
           }
           .preview {

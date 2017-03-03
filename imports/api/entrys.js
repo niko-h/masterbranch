@@ -95,6 +95,7 @@ Meteor.methods({
     console.info('insertEntry');
     check(entry.text, String);
     check(entry.image, String);
+    check(entry.importantDate, Date);
     
     // Make sure the user is logged in before inserting a entry
     if (! this.userId) {
@@ -112,6 +113,7 @@ Meteor.methods({
       image: entry.image,
       createdAt: new Date(),
       important: entry.important,
+      importantDate: entry.importantDate,
       private: entry.private,
       owner: this.userId,
       username: username,
@@ -129,6 +131,18 @@ Meteor.methods({
 
     Entrys.update(entryId, { $set: {
       text: text,
+      lastEditAt: new Date(),
+    }});
+  },
+  'entrys.updateImportantDate'(entryId, importantDate) {
+    check(entryId, String);
+    check(importantDate, Date);
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Entrys.update(entryId, { $set: {
+      importantDate: importantDate,
       lastEditAt: new Date(),
     }});
   },

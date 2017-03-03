@@ -94,12 +94,14 @@ class App extends Component {
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     const image = this.state.fileUrl;
+    const importantDate = new Date(ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim());
 
     const entry = {
       countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
       text: this.parseEntry(text),
       image: image,
       important: this.state.important,
+      importantDate: importantDate,
       private: this.state.private,
     }
 
@@ -316,7 +318,11 @@ class App extends Component {
                 checked={this.state.hideUnimportant}
                 onClick={this.toggleHideUnimportant.bind(this)}
                />
-              <label className="hide-unimportant button icon-notifications" htmlFor="hide-unimportant"><span>{this.props.importantEntrysCount}</span></label>
+              <label className="hide-unimportant button icon-notifications" htmlFor="hide-unimportant">
+                {this.props.importantDatesCount>0 ? (
+                  <span>{this.props.importantDatesCount}</span>
+                ) : ''}
+              </label>
             </span>
           ) : ''}
 
@@ -360,6 +366,15 @@ class App extends Component {
                     <label className="slider-v2" htmlFor="importantCheckbox"></label>
                     <div className="value">Wichtig</div>
                   </div>
+                  { this.state.important ? (
+                    <div className="newImportantDateContainer">
+                      <i className="icon-today" />
+                      <input 
+                        type="date" 
+                        className="newImportantDate"
+                        ref="newImportantDate" />
+                    </div>
+                  ): ''}
 
                   <div className={'imageUploadForm'}>
                     {this.state.files.length > 0 ? <div className="preview">
@@ -408,6 +423,7 @@ App.propTypes = {
   entrys: PropTypes.array.isRequired,
   importantEntrys: PropTypes.array.isRequired,
   importantEntrysCount: PropTypes.number.isRequired,
+  importantDatesCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
   searchResults: PropTypes.array.isRequired,
 };
@@ -431,6 +447,10 @@ export default createContainer(() => {
     entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
     importantEntrys: Entrys.findFromPublication('importantEntrys', {}, {sort: { createdAt: -1 }}).fetch(),
     importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),
+    importantDatesCount: Entrys.findFromPublication('importantEntrys', {"importantDate" : { 
+        $lt: new Date(new Date().setDate(new Date().getDate()+7)), 
+        $gte: new Date(new Date().setDate(new Date().getDate()-3))
+      }}).count(),
     currentUser: Meteor.user(),
     searchResults: Entrys.find({}, { sort: [["score", "desc"]] }).fetch(),
   };

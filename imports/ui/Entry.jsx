@@ -69,7 +69,7 @@ export default class Entry extends Component {
     event.preventDefault();
 
     Meteor.call('entrys.updateText', this.props.entry._id, this.parseEntry(this.refs[ `text_${ this.props.entry._id}` ].value));
-    
+
     setTimeout(function() {
       this.onBlur(event);
     }.bind(this), 500); // wait for button-effect
@@ -88,6 +88,13 @@ export default class Entry extends Component {
   
   toggleEdited() {
     this.setState({ edited: true, });
+  }
+
+  setNewImportantDate(event) {
+    var date = new Date(this.refs[ `importantDate_${ this.props.entry._id}` ].value);
+    console.log(date);
+    // this.setState({ importantDate: this.refs[ `importantDate_${ this.props.entry._id}` ].value });
+    Meteor.call('entrys.updateImportantDate', this.props.entry._id, date );
   }
 
   editLastBtn() {
@@ -129,12 +136,28 @@ export default class Entry extends Component {
       backgroundImage: 'url(' + this.props.entry.image + ')',
     };
 
+    var importantDate = moment(this.props.entry.importantDate).format('YYYY-MM-DD');
+    var showImportantDate = moment(this.props.entry.importantDate).format('YYYY') !== '1970';
     var importantCheckboxId = 'importantCheckbox_'+this.props.entry._id;
     var privateCheckboxId = 'privateCheckbox_'+this.props.entry._id;
     
     return (
       <li className={entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
+
+        {(this.props.entry.important && showImportantDate) ? (
+          <div className="importantDateContainer">
+            <i className="icon-today" />
+            { this.props.canEdit ? ( 
+              <input 
+                type="date" 
+                className="importantDate"
+                ref={ `importantDate_${ this.props.entry._id }` }
+                value={showImportantDate ? importantDate : ''}
+                onChange={this.setNewImportantDate.bind(this)} />
+            ) : ' '+moment(importantDate).format('DD.MM.YYYY')}
+          </div>
+        ) : ''}
 
         <span className="timestamps">
           <span>&#8470; {this.props.entry.countId}</span>
