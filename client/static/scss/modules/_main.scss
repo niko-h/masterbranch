@@ -83,6 +83,7 @@
       margin-left: 10px;
       top: -2px;
       position: relative;
+
       i {
         font-size: 1.8rem;
         position: relative;
@@ -91,17 +92,32 @@
       .importantDate {
         @include transition(background .1s linear);
         border: 1px solid $transparent;
-        position: absolute;
-        margin-top: -2px;
-        margin-left: 3px;
+        position: relative;
+        margin: -4px 3px 0 3px;
         padding: 0 3px;
-        max-width: 120px;
+        max-width: 90px;
+        font-size: 1.4rem;
+        color: $darkgrey;
+        font-family: 'Titillium Web', sans-serif;
         height: 25px;
         line-height: 25px;
         background: $transparent;
         border-radius: 3px;
+        @include breakpoint(baby) {
+          font-size: 16px;
+        }
         &:focus {
           outline: none;
+        }
+      }
+      button {
+        @include button($darkblue);
+        border-radius: 3px;
+        opacity: 0;
+        @include transition(opacity .1s linear);
+        &.edited {
+          opacity: 1;
+          @include transition(opacity .1s linear);
         }
       }
     }

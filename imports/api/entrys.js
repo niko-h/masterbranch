@@ -112,7 +112,7 @@ Meteor.methods({
       image: entry.image,
       createdAt: new Date(),
       important: entry.important,
-      importantDate: entry.importantDate,
+      importantDate: new Date(entry.importantDate),
       private: entry.private,
       owner: this.userId,
       username: username,
@@ -135,13 +135,12 @@ Meteor.methods({
   },
   'entrys.updateImportantDate'(entryId, importantDate) {
     check(entryId, String);
-    check(importantDate, Date);
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
     Entrys.update(entryId, { $set: {
-      importantDate: importantDate,
+      importantDate: new Date(importantDate),
       lastEditAt: new Date(),
     }});
   },

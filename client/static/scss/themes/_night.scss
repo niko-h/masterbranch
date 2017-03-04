@@ -37,7 +37,14 @@ body.night {
     box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
 
     h1 {
-      color: $almostwhite;
+      color: $white;
+      // text-shadow: 1px 0 0px rgba($black, 1), -1px 0 0px rgba($black, 1);
+    }
+
+    .countdown {
+      #tent {
+        fill: $mediumgrey;
+      }
     }
 
     #login-buttons {
@@ -90,6 +97,10 @@ body.night {
       .newEntryForm {
         textarea {
           background: $transparent;
+          color: $yellow;
+        }
+
+        .closeNewEntry {
           color: $yellow;
         }
         
@@ -193,7 +204,7 @@ body.night {
       }
     
       &.private, &.important {
-        border-color: $almostblack;
+        border-color: rgba($darkyellow, .2);
       }
       &.private {
         // background: rgba($darkgreen, .01);
@@ -204,7 +215,7 @@ body.night {
       }
       &.important {
         // background: rgba($darkred, .01);
-        @include neon(darkred);        
+        @include neon(darkred);
         .entryTitle {
           color: $red !important;
         }

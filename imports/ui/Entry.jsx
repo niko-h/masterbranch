@@ -14,6 +14,7 @@ export default class Entry extends Component {
       edited: false,
       files: [],
       fileUrl: '',
+      impDateEdited: false,
     };
   }
 
@@ -91,10 +92,24 @@ export default class Entry extends Component {
   }
 
   setNewImportantDate(event) {
-    var date = new Date(this.refs[ `importantDate_${ this.props.entry._id}` ].value);
-    console.log(date);
-    // this.setState({ importantDate: this.refs[ `importantDate_${ this.props.entry._id}` ].value });
+    event.preventDefault();
+    console.info('changeImportantDate');
+    var date = this.refs[ `importantDate_${ this.props.entry._id}` ].value;
+    var impDateArr = date.split('.');
+    date = impDateArr[1]+'/'+impDateArr[0]+'/'+impDateArr[2];
+    
     Meteor.call('entrys.updateImportantDate', this.props.entry._id, date );
+    this.setState({impDateEdited: false});
+  }
+  setImpDateEdit(event) {
+    event.preventDefault();
+    this.setState({impDateEdited: true});
+  }
+  escapeImpDate(event) {
+    if (event.keyCode == 27) {
+      $('.importantDate').blur();
+      this.setState({impDateEdited: false});
+    }
   }
 
   editLastBtn() {
@@ -125,19 +140,21 @@ export default class Entry extends Component {
     var edited = classnames( this.state.edited, {
         'none' : ( !this.state.edited ),
         'edited': ( this.state.edited ),
-    } );
+    });
+    var impDateEdit = classnames( this.state.impDateEdited, {
+      'edited': (this.state.impDateEdited ),
+    });
     var image = false;
     this.props.entry.image ? image = this.props.entry.image.length > 0 : '';
     var imgClass = classnames( image, {
       'no' : ( !image ),
       'yes' : ( image ),
-    } )
+    });
     const style = {
       backgroundImage: 'url(' + this.props.entry.image + ')',
     };
 
-    var importantDate = moment(this.props.entry.importantDate).format('YYYY-MM-DD');
-    var showImportantDate = moment(this.props.entry.importantDate).format('YYYY') !== '1970';
+    var importantDate = moment(this.props.entry.importantDate).format('DD.MM.YYYY');
     var importantCheckboxId = 'importantCheckbox_'+this.props.entry._id;
     var privateCheckboxId = 'privateCheckbox_'+this.props.entry._id;
     
@@ -147,15 +164,20 @@ export default class Entry extends Component {
 
         {this.props.entry.important ? (
           <div className="importantDateContainer">
-            <i className="icon-today" />
-            { this.props.canEdit ? ( 
-              <input 
-                type="date" 
-                className="importantDate"
-                ref={ `importantDate_${ this.props.entry._id }` }
-                value={showImportantDate ? importantDate : ''}
-                onChange={this.setNewImportantDate.bind(this)} />
-            ) : ' '+moment(importantDate).format('DD.MM.YYYY')}
+            { (this.props.canEdit && this.props.entryCountByUser < 2) ? ( 
+              <span>Wichtig am 
+                <input 
+                  type="text" 
+                  className="importantDate"
+                  ref={ `importantDate_${ this.props.entry._id }` }
+                  value={importantDate}
+                  onClick={this.setImpDateEdit.bind(this)}
+                  onKeyUp={this.escapeImpDate.bind(this)} />
+                <button 
+                  className={'updateImportantDateBtn btn '+impDateEdit}
+                  onClick={this.setNewImportantDate.bind(this)}>Speichern</button>
+              </span>
+            ) : <span>Wichtig am {importantDate}</span> }
           </div>
         ) : ''}
 
@@ -216,7 +238,7 @@ export default class Entry extends Component {
           <span className="entry" dangerouslySetInnerHTML={{__html: this.props.entry.text}}></span>
         )}
 
-        { this.props.canEdit ? (
+        { (this.props.canEdit && this.props.entryCountByUser < 2) ? (
           <div className="entryOptions">
             <div className="checkbox green">
               <input 
@@ -224,7 +246,7 @@ export default class Entry extends Component {
                 className="slider-checkbox" 
                 id={privateCheckboxId} 
                 checked={this.props.entry.private}
-                onClick={this.togglePrivate.bind(this)}
+                onChange={this.togglePrivate.bind(this)}
                />
               <label className="slider-v2" htmlFor={privateCheckboxId}></label>
               <div className="value">Privat</div>
@@ -235,7 +257,7 @@ export default class Entry extends Component {
                 className="slider-checkbox" 
                 id={importantCheckboxId} 
                 checked={this.props.entry.important}
-                onClick={this.toggleImportant.bind(this)}
+                onChange={this.toggleImportant.bind(this)}
                />
               <label className="slider-v2" htmlFor={importantCheckboxId}></label>
               <div className="value">Wichtig</div>

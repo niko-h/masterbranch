@@ -27,3 +27,4 @@ session
 percolate:find-from-publication
 email
 raix:rssfeed
+tsega:bootstrap3-datetimepicker

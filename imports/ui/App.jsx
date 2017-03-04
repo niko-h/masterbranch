@@ -94,25 +94,40 @@ class App extends Component {
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     const image = this.state.fileUrl;
-    const importantDate = this.state.important ? new Date(ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim()) : '';
+    // const importantDate = this.state.important ? new Date(ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim()) : '';
+    var importantDate = this.state.important ? ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim() : '';
+    var impDateArr = importantDate.split('.');
+    importantDate = impDateArr[1]+'/'+impDateArr[0]+'/'+impDateArr[2];
 
     const entry = {
       countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
       text: this.parseEntry(text),
       image: image,
       important: this.state.important,
-      importantDate: importantDate,
+      importantDate: new Date(importantDate),
       private: this.state.private,
     }
 
     if (entry.text.length>0 || entry.image.length>0) {
       Meteor.call('entrys.insert', entry);
+      Notification.permission === 'granted' ? this.notification(entry) : '';
       this.onBlur(event);
     }
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
     this.setState({files: [], fileUrl: ''});
+  }
+
+  notification(entry) {
+    var icon = entry.image!=='' ? entry.image : '/favicon.ico';
+    var username = this.props.currentUser.username;
+    var options = {
+      body: entry.text,
+      icon: icon,
+    }
+    var n = new Notification(username+' schreibt',options);
+    setTimeout(n.close.bind(n), 5000); 
   }
 
   checkSecret(event) {
@@ -225,12 +240,43 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    moment.updateLocale('en', {
+      relativeTime : {
+        future: "in %s",
+        past:   "vor %s",
+        s:  "Sekunden",
+        m:  "einer Minute",
+        mm: "%d Minuten",
+        h:  "einer Stunde",
+        hh: "%d Stunden",
+        d:  "einem Tag",
+        dd: "%d Tage",
+        M:  "einem Monat",
+        MM: "%d Monaten",
+        y:  "einem Jahr",
+        yy: "%d Jahren"
+      }
+    });
+  }
+
   componentDidUpdate() {
     var $this = $(ReactDOM.findDOMNode(this));
     
     var offset = 0;
     $('.mainContent').width()>599 ? offset = 50 : offset = -10;
     $('.mainContent').css('margin-top', $('header').height()+offset);
+
+    $('.newImportantDate, .importantDate').datepicker({
+      format: "dd.mm.yyyy",
+      weekStart: 1,
+      todayBtn: "linked",
+      clearBtn: true,
+      language: "de",
+      autoclose: true,
+      todayHighlight: true,
+      toggleActive: true
+    });
 
     var linkifyOptions = {
       className: 'embed',
@@ -287,8 +333,7 @@ class App extends Component {
         </div>
 
         <header className={edited+' '+search}>
-          <h1>Rwgb</h1>
-
+          <h1>RWGB</h1>
 
           { this.props.currentUser || this.state.youShallPass ?
             <AccountsUIWrapper />
@@ -316,7 +361,7 @@ class App extends Component {
                 className="hide-unimportant-checkbox" 
                 id="hide-unimportant" 
                 checked={this.state.hideUnimportant}
-                onClick={this.toggleHideUnimportant.bind(this)}
+                onChange={this.toggleHideUnimportant.bind(this)}
                />
               <label className="hide-unimportant button icon-notifications" htmlFor="hide-unimportant">
                 {this.props.importantDatesCount>0 ? (
@@ -332,6 +377,11 @@ class App extends Component {
               onClick={ this.activateSearch.bind(this) } />
           ) : ''}
 
+          <span className="countdown">
+            <svg id="tent" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 82"><path className="tent" d="M51,25l8-14H57L50,23,43,11H41l8,14L13,85s17.13,8,37,8,38-8,38-8Z" transform="translate(-13 -11)"/></svg>
+            {moment('20170812', 'YYYYMMDD').fromNow()}
+          </span>
+
           { this.props.currentUser ?
             <div className="newEntry">
               <form className={'newEntryForm ' + edited} onKeyUp={this.altEnter.bind(this)} >
@@ -342,7 +392,11 @@ class App extends Component {
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
                   tabIndex="1"
-                />
+                  />
+                { this.state.edited ? (
+                  <i className="closeNewEntry icon-close"
+                     onClick={this.onBlur.bind(this)} />
+                ) : ''}
                 <div className="newEntryOptions">
                   <div className="checkbox green">
                     <input 
@@ -350,7 +404,7 @@ class App extends Component {
                       className="slider-checkbox" 
                       id="privateCheckbox" 
                       checked={this.state.private}
-                      onClick={this.togglePrivate.bind(this)}
+                      onChange={this.togglePrivate.bind(this)}
                      />
                     <label className="slider-v2" htmlFor="privateCheckbox"></label>
                     <div className="value">Privat</div>
@@ -361,16 +415,16 @@ class App extends Component {
                       className="slider-checkbox" 
                       id="importantCheckbox" 
                       checked={this.state.important}
-                      onClick={this.toggleImportant.bind(this)}
+                      onChange={this.toggleImportant.bind(this)}
                      />
                     <label className="slider-v2" htmlFor="importantCheckbox"></label>
                     <div className="value">Wichtig</div>
                   </div>
                   { this.state.important ? (
                     <div className="newImportantDateContainer">
-                      <i className="icon-today" />
+                      am&nbsp;
                       <input 
-                        type="date" 
+                        type="text" 
                         className="newImportantDate"
                         ref="newImportantDate" />
                     </div>
@@ -449,7 +503,7 @@ export default createContainer(() => {
     importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),
     importantDatesCount: Entrys.findFromPublication('importantEntrys', {"importantDate" : { 
         $lt: new Date(new Date().setDate(new Date().getDate()+7)), 
-        $gte: new Date(new Date().setDate(new Date().getDate()-3))
+        $gte: new Date(new Date().setDate(new Date().getDate()-1))
       }}).count(),
     currentUser: Meteor.user(),
     searchResults: Entrys.find({}, { sort: [["score", "desc"]] }).fetch(),

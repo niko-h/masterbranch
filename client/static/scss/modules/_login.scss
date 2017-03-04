@@ -43,7 +43,7 @@
   #login-username-label {
   	color: $transparent;
   	&:before {
-  		content: 'Benutzername';
+  		content: 'Benutzername (nicht änderbar)';
 			position: absolute;
 			color: $almostblack;
   	}
