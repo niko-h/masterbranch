@@ -95,7 +95,6 @@ Meteor.methods({
     console.info('insertEntry');
     check(entry.text, String);
     check(entry.image, String);
-    check(entry.importantDate, Date);
     
     // Make sure the user is logged in before inserting a entry
     if (! this.userId) {

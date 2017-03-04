@@ -94,7 +94,7 @@ class App extends Component {
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     const image = this.state.fileUrl;
-    const importantDate = new Date(ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim());
+    const importantDate = this.state.important ? new Date(ReactDOM.findDOMNode(this.refs.newImportantDate).value.trim()) : '';
 
     const entry = {
       countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
