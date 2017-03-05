@@ -29,7 +29,7 @@ class App extends Component {
       youShallPass: false,
       searchActive: false,
       birthdayNotificationSend: false,
-      firstNotificationSend: false,
+      firstNotificationSend: 0,
     };
   }
 
@@ -130,7 +130,7 @@ class App extends Component {
       body: entry.text.substring(0, 140)+'...',
       icon: icon,
     }
-    if ('Notification' in window && entry.username !== this.props.currentUser.username) {
+    if (this.props.currentUser && 'Notification' in window && entry.username !== this.props.currentUser.username) {
       var n = new Notification(username+' schreibt',options);
       setTimeout(n.close.bind(n), 5000); 
     }
@@ -150,8 +150,7 @@ class App extends Component {
   }
 
   checkSecret(event) {
-    console.info('checkSecret');
-    const secret = ReactDOM.findDOMNode(this.refs.regSecret).value.trim();
+    var secret = ReactDOM.findDOMNode(this.refs.regSecret).value.trim();
     if (secret.length>0) {
       Meteor.call('checksecret', secret, function(err, result) {
         if(!err && result) {
@@ -266,10 +265,10 @@ class App extends Component {
 
 componentWillReceiveProps(nextProps) {
   if (nextProps.entrys !== this.state.entrys && nextProps.entrys[0]) {
-    if ('Notification' in window && this.state.firstNotificationSend) {
+    if ('Notification' in window && this.state.firstNotificationSend===2) {
       Notification.permission === 'granted' ? this.notification(nextProps.entrys[0]) : '';
     }
-    this.setState({firstNotificationSend: true});
+    this.setState({firstNotificationSend: this.state.firstNotificationSend+1});
   }
 }
 
@@ -291,13 +290,14 @@ componentWillReceiveProps(nextProps) {
         yy: "%d Jahren"
       }
     });
-    if(!this.props.currentUser.emails[0].verified) {
-      alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
-    }
   }
 
   componentDidUpdate() {
     var $this = $(ReactDOM.findDOMNode(this));
+    
+    if(this.props.currentUser && !this.props.currentUser.emails[0].verified) {
+      alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
+    }
     
     var offset = 0;
     setTimeout(function() {
