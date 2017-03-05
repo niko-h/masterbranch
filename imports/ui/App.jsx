@@ -120,7 +120,7 @@ class App extends Component {
   }
 
   notification(entry) {
-    var icon = entry.image!=='' ? entry.image : '/favicon.ico';
+    var icon = entry.image!=='' ? entry.image : '/notification1.gif';
     var username = this.props.currentUser.username;
     var options = {
       body: entry.text.substring(0, 140)+'...',
