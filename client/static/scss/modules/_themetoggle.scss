@@ -7,7 +7,7 @@
 	@include box-sizing(border-box);
 	@include breakpoint(baby) {
 		position: relative;
-		display: none;
+		display: block;
 		left: auto;
 		right: auto;
 		margin: -10px 0 20px 0;

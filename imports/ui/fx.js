@@ -2,7 +2,6 @@
   var material;
   
   $(document).ready(function() {
-    Notification.requestPermission();
     // THEME COOKIE
     function createCookie(name,value,days) {
       var expires = "";
@@ -52,6 +51,8 @@
 
     // Matrial-Button-Effect
     return material.init();
+    
+    Notification.requestPermission();
   });
 
   $(document).bind('drop dragover', function (e) {

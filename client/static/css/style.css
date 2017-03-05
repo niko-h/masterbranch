@@ -547,7 +547,7 @@ img {
   /* line 1, ../scss/modules/_themetoggle.scss */
   .toggle {
     position: relative;
-    display: none;
+    display: block;
     left: auto;
     right: auto;
     margin: -10px 0 20px 0;

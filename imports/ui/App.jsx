@@ -111,8 +111,8 @@ class App extends Component {
     if (entry.text.length>0 || entry.image.length>0) {
       if(this.props.currentUser.emails[0].verified) {
         Meteor.call('entrys.insert', entry);
-        Notification.permission === 'granted' ? this.notification(entry) : '';
         this.onBlur(event);
+        Notification.permission === 'granted' ? this.notification(entry) : '';
       } else {
         alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
       }
@@ -180,7 +180,7 @@ class App extends Component {
       this.deactivateSearch(event);
     }
     const query = ReactDOM.findDOMNode(this.refs.searchInput).value.trim();
-    if(query.length>0) {
+    if(query.length>1) {
       Session.set('searchValue', query);
     }
   }
@@ -212,7 +212,7 @@ class App extends Component {
       important: false,
       private: false,
     });
-    $('.newEntry textarea').blur();
+    $('.newEntry textarea').val('').blur();
   }
 
   toggleHideUnimportant() {
@@ -404,7 +404,6 @@ class App extends Component {
               <form className={'newEntryForm ' + edited} onKeyUp={this.altEnter.bind(this)} >
                 <Textarea 
                   ref="textInput"
-                  // onBlur={ this.onBlur.bind(this) }
                   placeholder="Gib' hier einen neuen Eintrag ein..."
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
