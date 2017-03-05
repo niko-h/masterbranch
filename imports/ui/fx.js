@@ -1,9 +1,8 @@
 (function() {
   var material;
-
+  
   $(document).ready(function() {
     Notification.requestPermission();
-    
     // THEME COOKIE
     function createCookie(name,value,days) {
       var expires = "";
@@ -28,7 +27,7 @@
       createCookie(name,"",-1);
     }
     if(readCookie('day')!=='true' && readCookie('day')!=='false') {
-      createCookie('day','true',365);
+      createCookie('day','true', 360);
     } 
 
     if(readCookie('day')==='true') {
@@ -42,11 +41,11 @@
     $('.toggle.toggle--daynight input').change(function() {
       if(readCookie('day')==='true') {
         $('body').addClass('night');
-        createCookie('day', 'false', 356);
+        createCookie('day', 'false', 360);
         $(this).prop('checked', false);
       } else {
         $('body').removeClass('night');
-        createCookie('day', 'true', 356);
+        createCookie('day', 'true', 360);
         $(this).prop('checked', true);
       }
     });
@@ -54,6 +53,7 @@
     // Matrial-Button-Effect
     return material.init();
   });
+
   $(document).bind('drop dragover', function (e) {
     e.preventDefault();
   });
@@ -78,7 +78,7 @@
           width: size + 'px',
           height: size + 'px'
         }).addClass("animate");
-        return setTimeout(function() {
+        setTimeout(function() {
           return circle.remove();
         }, 500);
       });

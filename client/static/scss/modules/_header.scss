@@ -29,9 +29,6 @@ header {
     margin: 0;
     padding: 10px;
     border-radius: 0 !important;
-    &:not(.edited) + .mainContent {
-      margin-top: 130px !important;
-    }
   }
 
   h1 {

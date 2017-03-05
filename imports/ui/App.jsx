@@ -134,13 +134,15 @@ class App extends Component {
     setTimeout(n.close.bind(n), 5000); 
   }
   birthdayNotification(name) {
-    var options = {
-      body: 'Das Rwgb wünscht '+name+' alles Gute.',
-      icon: '/notification-birthday.gif',
+    if(!this.state.birthdayNotificationSend) {
+      var options = {
+        body: 'Das Rwgb wünscht '+name+' alles Gute.',
+        icon: '/notification-birthday.gif',
+      }
+      this.setState({birthdayNotificationSend: true,});
+      var n = new Notification(name+' hat Geburtstag!',options);
+      setTimeout(n.close.bind(n), 5000);   
     }
-    this.setState({birthdayNotificationSend: true,});
-    var n = new Notification(name+' hat Geburtstag!',options);
-    setTimeout(n.close.bind(n), 5000);   
   }
 
   checkSecret(event) {
@@ -277,8 +279,9 @@ class App extends Component {
     var $this = $(ReactDOM.findDOMNode(this));
     
     var offset = 0;
-    $('.mainContent').width()>599 ? offset = 50 : offset = -10;
-    $('.mainContent').css('margin-top', $('header').height()+offset);
+    // $('.mainContent').width()>599 ? offset = 50 : offset = -10;
+    // $('.mainContent').css('margin-top', $('header').height()+offset);
+    $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
 
     $('.newImportantDate, .importantDate').datepicker({
       format: "dd.mm.yyyy",
@@ -330,7 +333,6 @@ class App extends Component {
       'none' : ( !this.state.searchActive ),
     });
     let birthdays = this.props.birthdays;
-    var birthdayNotificationSend = this.state.birthdayNotificationSend;
     
     return (
       <div className="container">
@@ -478,7 +480,7 @@ class App extends Component {
             <div className="birthdays icon-cake">
               {
                 birthdays.map((birthday) => {
-                  !birthdayNotificationSend ? this.birthdayNotification(birthday.name) : '';
+                  this.birthdayNotification(birthday.name)
                   return (
                     <span key={birthday.name} className="birthday">{birthday.name}</span>
                   )

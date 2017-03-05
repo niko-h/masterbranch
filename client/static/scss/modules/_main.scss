@@ -11,7 +11,7 @@
   margin-top: 124px;
   @include breakpoint(baby) {
     width: 100%;
-    margin-top: 104px;
+    margin-top: 0;
     @include box-sizing(border-box);
   }
 
