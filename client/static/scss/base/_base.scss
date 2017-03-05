@@ -125,6 +125,10 @@ body {
   }
 }
 
+.datepicker {
+  z-index: 100;
+}
+
 textarea { 
   font-family: 'Titillium Web', sans-serif;
   cursor: text;
