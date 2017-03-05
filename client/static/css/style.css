@@ -1766,12 +1766,12 @@ ul#menu_list li {
   content: ', ';
 }
 /* line 43, ../scss/modules/_main.scss */
-.mainContent .birthdays .birthday:first-child:before {
-  content: '';
-}
-/* line 44, ../scss/modules/_main.scss */
 .mainContent .birthdays .birthday:nth-last-child(2):before {
   content: ' und ';
+}
+/* line 44, ../scss/modules/_main.scss */
+.mainContent .birthdays .birthday:first-child:before {
+  content: '';
 }
 /* line 48, ../scss/modules/_main.scss */
 .mainContent li {

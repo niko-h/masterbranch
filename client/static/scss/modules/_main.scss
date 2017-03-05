@@ -40,8 +40,8 @@
     }
     .birthday {
       &:before { content: ', '; }
-      &:first-child:before { content: ''; }
       &:nth-last-child(2):before { content: ' und '; }
+      &:first-child:before { content: ''; }
     }
   }
   

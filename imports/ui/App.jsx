@@ -480,9 +480,9 @@ class App extends Component {
             <div className="birthdays icon-cake">
               {
                 birthdays.map((birthday) => {
-                  this.birthdayNotification(birthday.name)
+                  this.birthdayNotification(birthday._id)
                   return (
-                    <span key={birthday.name} className="birthday">{birthday.name}</span>
+                    <span key={birthday._id} className="birthday">{birthday._id}</span>
                   )
                 })
               }
@@ -493,7 +493,7 @@ class App extends Component {
           {this.renderEntrys()}
         </ul>
         {!this.state.hideUnimportant ? (
-          <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Load more Entrys</button>
+          <button className="loadMoreBtn btn" onClick={this.loadMore.bind(this)}>Ältere Einträge laden</button>
         ) : ''}
 
         <div className="toggle toggle--daynight">

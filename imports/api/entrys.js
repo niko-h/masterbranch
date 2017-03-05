@@ -22,13 +22,6 @@ if (Meteor.isServer) {
     });
   });
 
-  // birthdays
-  Meteor.publish('birthdays', function () {
-    var day = new Date().getDate();
-    var month = new Date().getMonth()+1;
-    return Birthdays.find({birthday: day, birthmonth: month});
-  });
-
   // important entrys
   FindFromPublication.publish('importantEntrys', function () {
     return Entrys.find({important: true}, {
@@ -45,6 +38,12 @@ if (Meteor.isServer) {
     });
   });
 
+  // birthdays
+  Meteor.publish('birthdays', function () {
+    var day = new Date().getDate();
+    var month = new Date().getMonth()+1;
+    return Birthdays.find({birthday: day, birthmonth: month});
+  });
 
   // RSS
   RssFeed.publish( 'updates', function() {
@@ -68,27 +67,24 @@ if (Meteor.isServer) {
 
   // search
   Meteor.publish("search", function(searchValue) {
-  if (!searchValue) {
-    // return Entrys.find({});
-  }
-  return Entrys.find({ $text: {$search: searchValue} },
-    {
-      // sort: {createdAt: -1},
-      // `fields` is where we can add MongoDB projections. Here we're causing
-      // each document published to include a property named `score`, which
-      // contains the document's search rank, a numerical value, with more
-      // relevant documents having a higher score.
-      fields: {
-        score: { $meta: "textScore" }
-      },
-      // This indicates that we wish the publication to be sorted by the
-      // `score` property specified in the projection fields above.
-      sort: {
-        score: { $meta: "textScore" }
+    return Entrys.find({ $text: {$search: searchValue} },
+      {
+        // sort: {createdAt: -1},
+        // `fields` is where we can add MongoDB projections. Here we're causing
+        // each document published to include a property named `score`, which
+        // contains the document's search rank, a numerical value, with more
+        // relevant documents having a higher score.
+        fields: {
+          score: { $meta: "textScore" }
+        },
+        // This indicates that we wish the publication to be sorted by the
+        // `score` property specified in the projection fields above.
+        sort: {
+          score: { $meta: "textScore" }
+        }
       }
-    }
-  );
-});
+    );
+  });
 }
 
 Meteor.methods({
@@ -100,7 +96,6 @@ Meteor.methods({
     }
   },
   'entrys.insert'(entry) {
-    console.info('insertEntry');
     check(entry.text, String);
     check(entry.image, String);
     
@@ -124,7 +119,7 @@ Meteor.methods({
       private: entry.private,
       owner: this.userId,
       username: username,
-      //Todo: poll, date, answer, publicToFacebook, fromFacebook
+      //Todo: poll, answer, publishToFacebook, fromFacebook
     });
   },
   'entrys.updateText'(entryId, text) {

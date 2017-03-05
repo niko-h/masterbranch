@@ -1,9 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import '../imports/api/entrys.js';
+import { Birthdays } from '../imports/api/entrys.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
-
+  
   smtp = {
     username: 'post@nikolaushoefer.de',   // eg: server@gentlenode.com
     password: 'Bmbhime172342',   // eg: 3eeP1gtizk5eziohfervU
@@ -46,5 +48,12 @@ Meteor.startup(() => {
     }, 2 * 1000);
     return user;
   });
+
+  // Insert birthday data if the birthday collection is empty
+  if (Birthdays.find().count() === 0) {
+    JSON.parse(Assets.getText('birthdays.json')).birthday.forEach(function (doc) {
+      Birthdays.insert(doc);
+    })
+  };
 
 });
