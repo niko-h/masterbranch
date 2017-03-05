@@ -123,7 +123,7 @@ class App extends Component {
     var icon = entry.image!=='' ? entry.image : '/favicon.ico';
     var username = this.props.currentUser.username;
     var options = {
-      body: entry.text,
+      body: entry.text.substring(0, 140)+'...',
       icon: icon,
     }
     var n = new Notification(username+' schreibt',options);
@@ -388,7 +388,7 @@ class App extends Component {
                 <Textarea 
                   ref="textInput"
                   // onBlur={ this.onBlur.bind(this) }
-                  placeholder="Gib' einen neuen Eintrag ein..."
+                  placeholder="Gib' hier einen neuen Eintrag ein..."
                   onKeyUp={ this.escapeEdit.bind(this) }
                   onFocus={ this.toggleEdited.bind(this) }
                   tabIndex="1"

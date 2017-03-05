@@ -93,7 +93,6 @@ export default class Entry extends Component {
 
   setNewImportantDate(event) {
     event.preventDefault();
-    console.info('changeImportantDate');
     var date = this.refs[ `importantDate_${ this.props.entry._id}` ].value;
     var impDateArr = date.split('.');
     date = impDateArr[1]+'/'+impDateArr[0]+'/'+impDateArr[2];
@@ -172,6 +171,7 @@ export default class Entry extends Component {
                   ref={ `importantDate_${ this.props.entry._id }` }
                   value={importantDate}
                   onClick={this.setImpDateEdit.bind(this)}
+                  onChange={this.setImpDateEdit.bind(this)}
                   onKeyUp={this.escapeImpDate.bind(this)} />
                 <button 
                   className={'updateImportantDateBtn btn '+impDateEdit}

@@ -43,6 +43,9 @@
 .icon-add_circle:before {
   content: "\e147";
 }
+.icon-cake:before {
+  content: "\e7e9";
+}
 .icon-check:before {
   content: "\e5ca";
 }

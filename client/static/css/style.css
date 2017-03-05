@@ -2805,17 +2805,17 @@ body.night header .newEntry .newEntryForm .submitBtn .circle.animate {
 }
 /* line 198, ../scss/themes/_night.scss */
 body.night .mainContent li {
-  border-top: rgba(238, 238, 51, 0.2) solid 1px;
+  border-top: #202020 solid 1px;
   background: #252525;
   color: #e2e1e0;
 }
 /* line 202, ../scss/themes/_night.scss */
 body.night .mainContent li:first-child {
-  border-color: #252525;
+  border-color: #252525 !important;
 }
 /* line 206, ../scss/themes/_night.scss */
 body.night .mainContent li.private, body.night .mainContent li.important {
-  border-color: rgba(238, 238, 51, 0.2);
+  border-color: #202020;
 }
 /* line 209, ../scss/themes/_night.scss */
 body.night .mainContent li.private {
@@ -2852,7 +2852,7 @@ body.night .mainContent li .importantDateContainer .importantDate {
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
   border: 1px solid transparent;
-  position: absolute;
+  position: relative;
   margin-top: -2px;
   background: transparent;
   color: #c8c8c8;

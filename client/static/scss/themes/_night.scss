@@ -196,15 +196,15 @@ body.night {
    
   .mainContent {
     li {
-      border-top: rgba($darkyellow, .2) solid 1px;
+      border-top: $darkbg solid 1px;
       background: #252525;
       color: $lightgrey;
       &:first-child {
-        border-color: #252525;
+        border-color: #252525 !important;
       }
     
       &.private, &.important {
-        border-color: rgba($darkyellow, .2);
+        border-color: $darkbg;
       }
       &.private {
         // background: rgba($darkgreen, .01);
@@ -230,7 +230,7 @@ body.night {
         .importantDate {
           @include transition(background .1s linear);
           border: 1px solid $transparent;
-          position: absolute;
+          position: relative;
           margin-top: -2px;
           background: $transparent;
           color: $mediumgrey;
