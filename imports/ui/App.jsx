@@ -101,7 +101,7 @@ class App extends Component {
     importantDate = impDateArr[1]+'/'+impDateArr[0]+'/'+impDateArr[2];
 
     const entry = {
-      countId: parseInt($('.mainContent li:first-child').attr('id')) + 1,
+      countId: parseInt($('.mainContent li:first-of-type').attr('id')) + 1,
       text: this.parseEntry(text),
       image: image,
       important: this.state.important,

@@ -158,7 +158,7 @@ export default class Entry extends Component {
     var privateCheckboxId = 'privateCheckbox_'+this.props.entry._id;
     
     return (
-      <li className={entryClassName} id={this.props.entry.countId}>
+      <li className={'entry '+entryClassName} id={this.props.entry.countId}>
         <div className="entryTitle">{this.props.entry.username}</div>
 
         {this.props.entry.important ? (
