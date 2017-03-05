@@ -291,6 +291,9 @@ componentWillReceiveProps(nextProps) {
         yy: "%d Jahren"
       }
     });
+    if(!this.props.currentUser.emails[0].verified) {
+      alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
+    }
   }
 
   componentDidUpdate() {
