@@ -13,7 +13,37 @@
     width: 100%;
     margin-top: 104px;
     @include box-sizing(border-box);
-  }  
+  }
+
+  .birthdays {
+    display: block;
+    position: relative;
+    padding: 10px 15px;
+    background: $white;
+    border-bottom: $almostwhite solid 1px;
+    text-align: center;
+    margin-bottom: -1px;
+    z-index: 10;
+    font-size: 1.4rem;
+    color: $almostblack;
+    cursor: default;
+    &:before { 
+      cursor: default;
+      color: #ff1493;
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    * {
+      font-family: 'Titillium Web', sans-serif;
+      position: relative;
+      top: -3px;
+    }
+    .birthday {
+      &:before { content: ', '; }
+      &:first-child:before { content: ''; }
+      &:nth-last-child(2):before { content: ' und '; }
+    }
+  }
   
   li {
     position: relative;

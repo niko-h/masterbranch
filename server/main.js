@@ -21,7 +21,7 @@ Meteor.startup(() => {
         return 'Emailbestätigung für rwgb.de';
       },
       text: function(user, url) {
-        return 'Hi,\n' +
+        return 'Tach,\n\n' +
           'Rufe diesen Link auf um deine Email-Adresse für dein RWGB-Konto zu bestätigen:\n' + url +
           '\n\nWenn du mit dieser Email nichts anfangen kannst, ignoriere sie einfach.' +
           '\n\nGruuuß';
@@ -32,7 +32,7 @@ Meteor.startup(() => {
         return 'Passwort neu setzen für rwgb.de';
       },
       text: function(user, url) {
-        return 'Hi,\n' +
+        return 'Tach,\n\n' +
           'Rufe diesen Link auf um ein neues Passwort für dein RWGB-Konto zu setzen:\n' + url +
           '\n\nWenn du mit dieser Email nichts anfangen kannst, ignoriere sie einfach.' +
           '\n\nGruuuß';

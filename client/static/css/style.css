@@ -196,7 +196,7 @@ html, body {
 /* line 64, ../scss/base/_base.scss */
 body {
   color: #000;
-  background: #e2e1e0;
+  background: #efefef;
   font-size: 1.4em;
   font-family: 'Titillium Web', sans-serif;
   font: arial;
@@ -208,13 +208,69 @@ body {
   padding: 0;
   margin: 0;
 }
+/* line 81, ../scss/base/_base.scss */
+body:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  -webkit-animation: fadeBgDay 60s infinite;
+  -moz-animation: fadeBgDay 60s infinite;
+  animation: fadeBgDay 60s infinite;
+}
+@-webkit-keyframes fadeBgDay {
+  0%, 100% {
+    background-color: rgba(52, 152, 219, 0.05);
+  }
+  33% {
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+  66% {
+    background-color: rgba(0, 200, 0, 0.05);
+  }
+}
+@-moz-keyframes fadeBgDay {
+  0%, 100% {
+    background-color: rgba(52, 152, 219, 0.05);
+  }
+  33% {
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+  66% {
+    background-color: rgba(0, 200, 0, 0.05);
+  }
+}
+@keyframes fadeBgDay {
+  0%, 100% {
+    background-color: rgba(52, 152, 219, 0.05);
+  }
+  33% {
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+  66% {
+    background-color: rgba(0, 200, 0, 0.05);
+  }
+}
+@media (max-width: 610px) {
+  /* line 64, ../scss/base/_base.scss */
+  body {
+    background: #e2e1e0;
+  }
+  /* line 110, ../scss/base/_base.scss */
+  body:before {
+    display: none;
+  }
+}
 
-/* line 82, ../scss/base/_base.scss */
+/* line 116, ../scss/base/_base.scss */
 * {
   cursor: default;
 }
 
-/* line 84, ../scss/base/_base.scss */
+/* line 118, ../scss/base/_base.scss */
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -222,45 +278,45 @@ body {
   min-height: 100%;
 }
 @media (max-width: 610px) {
-  /* line 84, ../scss/base/_base.scss */
+  /* line 118, ../scss/base/_base.scss */
   .container {
     max-width: 100%;
   }
 }
 
-/* line 94, ../scss/base/_base.scss */
+/* line 128, ../scss/base/_base.scss */
 textarea {
   font-family: 'Titillium Web', sans-serif;
   cursor: text;
 }
 
-/* line 99, ../scss/base/_base.scss */
+/* line 133, ../scss/base/_base.scss */
 a {
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 103, ../scss/base/_base.scss */
+/* line 137, ../scss/base/_base.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 107, ../scss/base/_base.scss */
+/* line 141, ../scss/base/_base.scss */
 [class^="icon-"], [class*=" icon-"], label {
   cursor: pointer;
 }
 
-/* line 111, ../scss/base/_base.scss */
+/* line 145, ../scss/base/_base.scss */
 strong {
   font-weight: bold !important;
 }
 
-/* line 115, ../scss/base/_base.scss */
+/* line 149, ../scss/base/_base.scss */
 p {
   margin: 0;
 }
 
-/* line 119, ../scss/base/_base.scss */
+/* line 153, ../scss/base/_base.scss */
 img {
   max-width: 100%;
 }
@@ -1683,6 +1739,45 @@ ul#menu_list li {
   }
 }
 /* line 18, ../scss/modules/_main.scss */
+.mainContent .birthdays {
+  display: block;
+  position: relative;
+  padding: 10px 15px;
+  background: #fff;
+  border-bottom: #efefef solid 1px;
+  text-align: center;
+  margin-bottom: -1px;
+  z-index: 10;
+  font-size: 1.4rem;
+  color: #222;
+  cursor: default;
+}
+/* line 30, ../scss/modules/_main.scss */
+.mainContent .birthdays:before {
+  cursor: default;
+  color: #ff1493;
+  margin-right: 10px;
+  font-size: 2rem;
+}
+/* line 36, ../scss/modules/_main.scss */
+.mainContent .birthdays * {
+  font-family: 'Titillium Web', sans-serif;
+  position: relative;
+  top: -3px;
+}
+/* line 42, ../scss/modules/_main.scss */
+.mainContent .birthdays .birthday:before {
+  content: ', ';
+}
+/* line 43, ../scss/modules/_main.scss */
+.mainContent .birthdays .birthday:first-child:before {
+  content: '';
+}
+/* line 44, ../scss/modules/_main.scss */
+.mainContent .birthdays .birthday:nth-last-child(2):before {
+  content: ' und ';
+}
+/* line 48, ../scss/modules/_main.scss */
 .mainContent li {
   position: relative;
   list-style: none;
@@ -1697,7 +1792,7 @@ ul#menu_list li {
   transition: all 0.5s linear;
 }
 @media (max-width: 610px) {
-  /* line 18, ../scss/modules/_main.scss */
+  /* line 48, ../scss/modules/_main.scss */
   .mainContent li {
     padding: 10px 5px;
     width: 100%;
@@ -1706,17 +1801,17 @@ ul#menu_list li {
     box-sizing: border-box;
   }
 }
-/* line 34, ../scss/modules/_main.scss */
+/* line 64, ../scss/modules/_main.scss */
 .mainContent li:first-child {
   border-top: 1px solid transparent;
 }
 @media (max-width: 610px) {
-  /* line 34, ../scss/modules/_main.scss */
+  /* line 64, ../scss/modules/_main.scss */
   .mainContent li:first-child {
     margin-top: -130px;
   }
 }
-/* line 41, ../scss/modules/_main.scss */
+/* line 71, ../scss/modules/_main.scss */
 .mainContent li.private, .mainContent li.important {
   z-index: 1;
   border-color: #eee;
@@ -1725,36 +1820,36 @@ ul#menu_list li {
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear;
 }
-/* line 45, ../scss/modules/_main.scss */
+/* line 75, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle, .mainContent li.important .entryTitle {
   -moz-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
   transition: color 0.25s linear;
 }
-/* line 49, ../scss/modules/_main.scss */
+/* line 79, ../scss/modules/_main.scss */
 .mainContent li.private {
   background: #fafffa;
   -webkit-animation: green 4s ease-in-out 0.3s infinite alternate;
   -moz-animation: green 4s ease-in-out 0.3s infinite alternate;
   animation: green 4s ease-in-out 0.3s infinite alternate;
 }
-/* line 52, ../scss/modules/_main.scss */
+/* line 82, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle {
   color: #009600 !important;
 }
-/* line 56, ../scss/modules/_main.scss */
+/* line 86, ../scss/modules/_main.scss */
 .mainContent li.important {
   background: snow;
   -webkit-animation: red 4s ease-in-out 0.3s infinite alternate;
   -moz-animation: red 4s ease-in-out 0.3s infinite alternate;
   animation: red 4s ease-in-out 0.3s infinite alternate;
 }
-/* line 60, ../scss/modules/_main.scss */
+/* line 90, ../scss/modules/_main.scss */
 .mainContent li.important .entryTitle {
   color: #960000 !important;
 }
-/* line 65, ../scss/modules/_main.scss */
+/* line 95, ../scss/modules/_main.scss */
 .mainContent li .entryTitle {
   font-size: 1.8rem;
   font-weight: bold;
@@ -1769,12 +1864,12 @@ ul#menu_list li {
   box-sizing: border-box;
 }
 @media (max-width: 610px) {
-  /* line 65, ../scss/modules/_main.scss */
+  /* line 95, ../scss/modules/_main.scss */
   .mainContent li .entryTitle {
     font-size: 1.6rem;
   }
 }
-/* line 80, ../scss/modules/_main.scss */
+/* line 110, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer {
   display: inline;
   color: #666;
@@ -1782,13 +1877,13 @@ ul#menu_list li {
   top: -2px;
   position: relative;
 }
-/* line 87, ../scss/modules/_main.scss */
+/* line 117, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer i {
   font-size: 1.8rem;
   position: relative;
   top: 2px;
 }
-/* line 92, ../scss/modules/_main.scss */
+/* line 122, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate {
   -moz-transition: background 0.1s linear;
   -o-transition: background 0.1s linear;
@@ -1808,16 +1903,16 @@ ul#menu_list li {
   border-radius: 3px;
 }
 @media (max-width: 610px) {
-  /* line 92, ../scss/modules/_main.scss */
+  /* line 122, ../scss/modules/_main.scss */
   .mainContent li .importantDateContainer .importantDate {
     font-size: 16px;
   }
 }
-/* line 109, ../scss/modules/_main.scss */
+/* line 139, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate:focus {
   outline: none;
 }
-/* line 113, ../scss/modules/_main.scss */
+/* line 143, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button {
   position: relative;
   background-color: #3498db;
@@ -1862,7 +1957,7 @@ ul#menu_list li {
     opacity: 0;
   }
 }
-/* line 118, ../scss/modules/_main.scss */
+/* line 148, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button.edited {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1870,7 +1965,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 125, ../scss/modules/_main.scss */
+/* line 155, ../scss/modules/_main.scss */
 .mainContent li .timestamps {
   float: right;
   color: #c8c8c8;
@@ -1883,12 +1978,12 @@ ul#menu_list li {
   transition: opacity 0.1s linear;
 }
 @media (max-width: 610px) {
-  /* line 125, ../scss/modules/_main.scss */
+  /* line 155, ../scss/modules/_main.scss */
   .mainContent li .timestamps {
     display: none;
   }
 }
-/* line 136, ../scss/modules/_main.scss */
+/* line 166, ../scss/modules/_main.scss */
 .mainContent li:hover .timestamps {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1896,12 +1991,12 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 141, ../scss/modules/_main.scss */
+/* line 171, ../scss/modules/_main.scss */
 .mainContent li img {
   max-width: 100%;
   max-height: 300px;
 }
-/* line 146, ../scss/modules/_main.scss */
+/* line 176, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container {
   margin: 10px -2.6% 15px -2.6%;
   width: 105.4% !important;
@@ -1910,19 +2005,19 @@ ul#menu_list li {
   position: relative;
   display: none;
 }
-/* line 153, ../scss/modules/_main.scss */
+/* line 183, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container.yes {
   display: block;
 }
 @media (max-width: 610px) {
-  /* line 146, ../scss/modules/_main.scss */
+  /* line 176, ../scss/modules/_main.scss */
   .mainContent li .imgbg-container {
     width: 104% !important;
     min-width: 104% !important;
     margin: 10px 0 15px -2%;
   }
 }
-/* line 162, ../scss/modules/_main.scss */
+/* line 192, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .imgbg {
   margin: 0 -5%;
   height: 300px;
@@ -1938,7 +2033,7 @@ ul#menu_list li {
   -ms-filter: blur(10px);
   filter: blur(10px);
 }
-/* line 177, ../scss/modules/_main.scss */
+/* line 207, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img {
   margin: -300px 0 0 0;
   position: relative;
@@ -1948,7 +2043,7 @@ ul#menu_list li {
   max-width: 100%;
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 185, ../scss/modules/_main.scss */
+/* line 215, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img img {
   margin: auto;
   width: auto !important;
@@ -2065,7 +2160,7 @@ ul#menu_list li {
 .mainContent li .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 197, ../scss/modules/_main.scss */
+/* line 227, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm {
   display: block;
   -moz-transition: opacity 0.1s linear;
@@ -2085,7 +2180,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 210, ../scss/modules/_main.scss */
+/* line 240, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -2098,7 +2193,7 @@ ul#menu_list li {
   font-size: 1.8rem;
   text-align: center;
 }
-/* line 221, ../scss/modules/_main.scss */
+/* line 251, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone {
   width: 40px;
   line-height: 27px;
@@ -2106,12 +2201,12 @@ ul#menu_list li {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 227, ../scss/modules/_main.scss */
+/* line 257, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone div {
   line-height: 25px;
   height: 25px;
 }
-/* line 232, ../scss/modules/_main.scss */
+/* line 262, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .clearImgBtn {
   width: 30px;
   background: #ff3232;
@@ -2120,7 +2215,7 @@ ul#menu_list li {
   border-bottom-left-radius: 0;
   font-size: 1.5rem;
 }
-/* line 241, ../scss/modules/_main.scss */
+/* line 271, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no {
   opacity: .3;
   bottom: 13px;
@@ -2128,16 +2223,16 @@ ul#menu_list li {
   right: 17px;
 }
 @media (max-width: 610px) {
-  /* line 241, ../scss/modules/_main.scss */
+  /* line 271, ../scss/modules/_main.scss */
   .mainContent li .imageUploadForm.no {
     bottom: 5px;
   }
 }
-/* line 249, ../scss/modules/_main.scss */
+/* line 279, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no .dropzone {
   border-radius: 3px;
 }
-/* line 255, ../scss/modules/_main.scss */
+/* line 285, ../scss/modules/_main.scss */
 .mainContent li .entry {
   display: block;
   padding: 5px;
@@ -2160,56 +2255,56 @@ ul#menu_list li {
   transition: color 0.25s linear;
 }
 @media (max-width: 610px) {
-  /* line 255, ../scss/modules/_main.scss */
+  /* line 285, ../scss/modules/_main.scss */
   .mainContent li .entry {
     font-size: 1.4rem;
   }
 }
-/* line 276, ../scss/modules/_main.scss */
+/* line 306, ../scss/modules/_main.scss */
 .mainContent li .entry a {
   color: #2980b9;
 }
-/* line 279, ../scss/modules/_main.scss */
+/* line 309, ../scss/modules/_main.scss */
 .mainContent li .entry img {
   max-height: 300px;
   width: auto;
   display: block;
 }
-/* line 284, ../scss/modules/_main.scss */
+/* line 314, ../scss/modules/_main.scss */
 .mainContent li .entry iframe[src*="bandcamp"] {
   width: 100% !important;
 }
-/* line 289, ../scss/modules/_main.scss */
+/* line 319, ../scss/modules/_main.scss */
 .mainContent li > .entry {
   margin: 5px 20% 15px 0;
 }
 @media (max-width: 610px) {
-  /* line 289, ../scss/modules/_main.scss */
+  /* line 319, ../scss/modules/_main.scss */
   .mainContent li > .entry {
     margin: 5px 0 15px 0;
   }
 }
-/* line 296, ../scss/modules/_main.scss */
+/* line 326, ../scss/modules/_main.scss */
 .mainContent li .editEntry {
   position: relative;
 }
-/* line 300, ../scss/modules/_main.scss */
+/* line 330, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .textarea {
   display: inline;
 }
-/* line 303, ../scss/modules/_main.scss */
+/* line 333, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .entry {
   display: none;
 }
-/* line 306, ../scss/modules/_main.scss */
+/* line 336, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .editLastBtn {
   display: none;
 }
-/* line 312, ../scss/modules/_main.scss */
+/* line 342, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm {
   margin: 5px 0 15px 0;
 }
-/* line 314, ../scss/modules/_main.scss */
+/* line 344, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2239,13 +2334,13 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 314, ../scss/modules/_main.scss */
+  /* line 344, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .textarea {
     width: 100% !important;
     font-size: 16px;
   }
 }
-/* line 336, ../scss/modules/_main.scss */
+/* line 366, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus {
   border: 1px solid #c8c8c8;
   background: #e2e1e0;
@@ -2263,11 +2358,11 @@ ul#menu_list li {
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
-/* line 344, ../scss/modules/_main.scss */
+/* line 374, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus, .mainContent li .editEntry .editEntryForm .textarea:valid {
   outline: none;
 }
-/* line 350, ../scss/modules/_main.scss */
+/* line 380, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .entry {
   top: -5px;
   left: 0;
@@ -2290,12 +2385,12 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 350, ../scss/modules/_main.scss */
+  /* line 380, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .entry {
     padding-right: 5px;
   }
 }
-/* line 370, ../scss/modules/_main.scss */
+/* line 400, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editLastBtn {
   position: relative;
   background-color: #3498db;
@@ -2340,13 +2435,13 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 370, ../scss/modules/_main.scss */
+  /* line 400, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editLastBtn {
     top: -37px;
     right: -1px;
   }
 }
-/* line 383, ../scss/modules/_main.scss */
+/* line 413, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   background-color: #3498db;
@@ -2390,29 +2485,29 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 383, ../scss/modules/_main.scss */
+  /* line 413, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editBtn {
     margin: 5px 0 0 0;
   }
 }
-/* line 392, ../scss/modules/_main.scss */
+/* line 422, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Speichern';
 }
-/* line 395, ../scss/modules/_main.scss */
+/* line 425, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 398, ../scss/modules/_main.scss */
+/* line 428, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
   display: none;
 }
-/* line 401, ../scss/modules/_main.scss */
+/* line 431, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
   height: 33px;
   display: inline;
 }
-/* line 409, ../scss/modules/_main.scss */
+/* line 439, ../scss/modules/_main.scss */
 .mainContent li:hover .editEntry .entry, .mainContent li:hover .importantDate {
   border: 1px solid transparent;
   background: #efefef;
@@ -2421,7 +2516,7 @@ ul#menu_list li {
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 416, ../scss/modules/_main.scss */
+/* line 446, ../scss/modules/_main.scss */
 .mainContent li:hover .entryOptions, .mainContent li:hover .editLastBtn, .mainContent li:hover .imageUploadForm {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -2429,7 +2524,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 422, ../scss/modules/_main.scss */
+/* line 452, ../scss/modules/_main.scss */
 .mainContent li .entryOptions,
 .mainContent li .editLastBtn {
   opacity: .3;
@@ -2438,7 +2533,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 427, ../scss/modules/_main.scss */
+/* line 457, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn,
 .mainContent li .editLastBtn .deleteBtn {
   float: right;
@@ -2452,7 +2547,7 @@ ul#menu_list li {
   z-index: 100;
 }
 
-/* line 442, ../scss/modules/_main.scss */
+/* line 472, ../scss/modules/_main.scss */
 .loadMoreBtn {
   position: relative;
   background-color: #3498db;
@@ -2495,7 +2590,7 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 442, ../scss/modules/_main.scss */
+  /* line 472, ../scss/modules/_main.scss */
   .loadMoreBtn {
     width: 90%;
     left: 50%;
@@ -2549,7 +2644,8 @@ ul#menu_list li {
 
 /* line 5, ../scss/themes/_night.scss */
 body.night {
-  background: #202020;
+  background: #202020 url("/bgimg.jpg") top center;
+  background-attachment: fixed;
   /* ==========================================================================
      header
      ========================================================================== */
@@ -2558,6 +2654,54 @@ body.night {
    ========================================================================== */
   /* =Content
   -----------------------------------------------------------------------------*/
+}
+/* line 8, ../scss/themes/_night.scss */
+body.night:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background: #202020;
+  content: '';
+  -webkit-animation: fadeBg 4s ease-in-out .3s infinite alternate;
+  -moz-animation: fadeBg 4s ease-in-out .3s infinite alternate;
+  animation: fadeBg 4s ease-in-out .3s infinite alternate;
+}
+@-webkit-keyframes fadeBg {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+@-moz-keyframes fadeBg {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+@keyframes fadeBg {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+@media (max-width: 610px) {
+  /* line 5, ../scss/themes/_night.scss */
+  body.night {
+    background: #202020;
+  }
+  /* line 35, ../scss/themes/_night.scss */
+  body.night:before {
+    display: none;
+  }
 }
 /* line 2, ../scss/functions/_placeholder.scss */
 body.night * ::-webkit-input-placeholder {
@@ -2579,27 +2723,27 @@ body.night * :-moz-placeholder {
   /* Firefox 18- */
   color: #ee3;
 }
-/* line 12, ../scss/themes/_night.scss */
+/* line 44, ../scss/themes/_night.scss */
 body.night .register-secret input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #666;
 }
-/* line 15, ../scss/themes/_night.scss */
+/* line 47, ../scss/themes/_night.scss */
 body.night .register-secret input::-moz-placeholder {
   /* Firefox 19+ */
   color: #666;
 }
-/* line 18, ../scss/themes/_night.scss */
+/* line 50, ../scss/themes/_night.scss */
 body.night .register-secret input:-ms-input-placeholder {
   /* IE 10+ */
   color: #666;
 }
-/* line 21, ../scss/themes/_night.scss */
+/* line 53, ../scss/themes/_night.scss */
 body.night .register-secret input:-moz-placeholder {
   /* Firefox 18- */
   color: #666;
 }
-/* line 32, ../scss/themes/_night.scss */
+/* line 64, ../scss/themes/_night.scss */
 body.night header {
   background: #2c2c2c;
   color: #e2e1e0;
@@ -2607,153 +2751,153 @@ body.night header {
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 39, ../scss/themes/_night.scss */
+/* line 71, ../scss/themes/_night.scss */
 body.night header h1 {
   color: #fff;
 }
-/* line 45, ../scss/themes/_night.scss */
+/* line 77, ../scss/themes/_night.scss */
 body.night header .countdown #tent {
   fill: #c8c8c8;
 }
-/* line 50, ../scss/themes/_night.scss */
+/* line 82, ../scss/themes/_night.scss */
 body.night header #login-buttons {
   background-color: #ff0;
   color: #222;
 }
-/* line 55, ../scss/themes/_night.scss */
+/* line 87, ../scss/themes/_night.scss */
 body.night header #login-buttons #login-sign-in-link:before {
   color: #222;
 }
-/* line 61, ../scss/themes/_night.scss */
+/* line 93, ../scss/themes/_night.scss */
 body.night header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text {
   color: transparent;
 }
-/* line 63, ../scss/themes/_night.scss */
+/* line 95, ../scss/themes/_night.scss */
 body.night header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text:before {
   color: #222;
 }
-/* line 71, ../scss/themes/_night.scss */
+/* line 103, ../scss/themes/_night.scss */
 body.night header .hide-unimportant {
   background: transparent;
   color: #ff0;
 }
-/* line 74, ../scss/themes/_night.scss */
+/* line 106, ../scss/themes/_night.scss */
 body.night header .hide-unimportant:hover {
   color: #960000;
 }
-/* line 77, ../scss/themes/_night.scss */
+/* line 109, ../scss/themes/_night.scss */
 body.night header .hide-unimportant span {
   background: #ff3232;
   border: 1px solid #222;
 }
-/* line 83, ../scss/themes/_night.scss */
+/* line 115, ../scss/themes/_night.scss */
 body.night header .hide-unimportant-checkbox:checked + .hide-unimportant {
   color: #ff3232;
 }
-/* line 88, ../scss/themes/_night.scss */
+/* line 120, ../scss/themes/_night.scss */
 body.night header .openSearchBtn {
   background: transparent;
   color: #ff0;
 }
-/* line 91, ../scss/themes/_night.scss */
+/* line 123, ../scss/themes/_night.scss */
 body.night header .openSearchBtn:hover {
   color: #ee3;
 }
-/* line 98, ../scss/themes/_night.scss */
+/* line 130, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm textarea {
   background: transparent;
   color: #ff0;
 }
-/* line 103, ../scss/themes/_night.scss */
+/* line 135, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .closeNewEntry {
   color: #ff0;
 }
-/* line 110, ../scss/themes/_night.scss */
+/* line 142, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox label {
   margin-top: 6px;
 }
-/* line 112, ../scss/themes/_night.scss */
+/* line 144, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox label .value {
   margin-top: -24px;
   color: #666;
 }
-/* line 117, ../scss/themes/_night.scss */
+/* line 149, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox .slider-v2 {
   background: #999;
 }
-/* line 118, ../scss/themes/_night.scss */
+/* line 150, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox .slider-v2::after {
   background: #999;
 }
-/* line 119, ../scss/themes/_night.scss */
+/* line 151, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox .slider-v2::before {
   background: #666;
 }
-/* line 120, ../scss/themes/_night.scss */
+/* line 152, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox input:checked + .slider-v2::before {
   background: #666;
 }
-/* line 121, ../scss/themes/_night.scss */
+/* line 153, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox.green input:checked + .slider-v2::after {
   background: #00c800;
 }
-/* line 122, ../scss/themes/_night.scss */
+/* line 154, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .checkbox.red input:checked + .slider-v2::after {
   background: #ff3232;
 }
-/* line 125, ../scss/themes/_night.scss */
+/* line 157, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer {
   color: #666;
 }
-/* line 127, ../scss/themes/_night.scss */
+/* line 159, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer .newImportantDate {
   background: #666;
   color: #c8c8c8;
 }
-/* line 134, ../scss/themes/_night.scss */
+/* line 166, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   background: #ff0;
   color: #222;
 }
-/* line 137, ../scss/themes/_night.scss */
+/* line 169, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div {
   color: #222;
 }
-/* line 139, ../scss/themes/_night.scss */
+/* line 171, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div:hover {
   color: #666;
 }
-/* line 144, ../scss/themes/_night.scss */
+/* line 176, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   background: #ff0;
 }
-/* line 146, ../scss/themes/_night.scss */
+/* line 178, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dropzone {
   border-left: 1px solid #c8c8c8;
 }
-/* line 150, ../scss/themes/_night.scss */
+/* line 182, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview {
   border-right: 1px solid #c8c8c8;
 }
-/* line 152, ../scss/themes/_night.scss */
+/* line 184, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail {
   background: #e2e1e0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 155, ../scss/themes/_night.scss */
+/* line 187, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail:before {
   border-color: transparent transparent #e2e1e0 transparent;
 }
-/* line 161, ../scss/themes/_night.scss */
+/* line 193, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button {
   background: #ff0;
   color: #ff3232;
 }
-/* line 164, ../scss/themes/_night.scss */
+/* line 196, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button:hover {
   color: #960000;
 }
-/* line 172, ../scss/themes/_night.scss */
+/* line 204, ../scss/themes/_night.scss */
 body.night header .newEntry .newEntryForm .submitBtn {
   position: relative;
   background-color: #3498db;
@@ -2803,49 +2947,55 @@ body.night header .newEntry .newEntryForm .submitBtn .circle.animate {
     opacity: 0;
   }
 }
-/* line 198, ../scss/themes/_night.scss */
+/* line 231, ../scss/themes/_night.scss */
+body.night .mainContent .birthdays {
+  background: #252525;
+  border-bottom: #222 solid 1px;
+  color: #e2e1e0;
+}
+/* line 237, ../scss/themes/_night.scss */
 body.night .mainContent li {
   border-top: #202020 solid 1px;
   background: #252525;
   color: #e2e1e0;
 }
-/* line 202, ../scss/themes/_night.scss */
+/* line 241, ../scss/themes/_night.scss */
 body.night .mainContent li:first-child {
   border-color: #252525 !important;
 }
-/* line 206, ../scss/themes/_night.scss */
+/* line 245, ../scss/themes/_night.scss */
 body.night .mainContent li.private, body.night .mainContent li.important {
   border-color: #202020;
 }
-/* line 209, ../scss/themes/_night.scss */
+/* line 248, ../scss/themes/_night.scss */
 body.night .mainContent li.private {
   -webkit-animation: darkgreen 4s ease-in-out 0.3s infinite alternate;
   -moz-animation: darkgreen 4s ease-in-out 0.3s infinite alternate;
   animation: darkgreen 4s ease-in-out 0.3s infinite alternate;
 }
-/* line 212, ../scss/themes/_night.scss */
+/* line 251, ../scss/themes/_night.scss */
 body.night .mainContent li.private .entryTitle {
   color: #00c800 !important;
 }
-/* line 216, ../scss/themes/_night.scss */
+/* line 255, ../scss/themes/_night.scss */
 body.night .mainContent li.important {
   -webkit-animation: darkred 4s ease-in-out 0.3s infinite alternate;
   -moz-animation: darkred 4s ease-in-out 0.3s infinite alternate;
   animation: darkred 4s ease-in-out 0.3s infinite alternate;
 }
-/* line 219, ../scss/themes/_night.scss */
+/* line 258, ../scss/themes/_night.scss */
 body.night .mainContent li.important .entryTitle {
   color: #ff3232 !important;
 }
-/* line 224, ../scss/themes/_night.scss */
+/* line 263, ../scss/themes/_night.scss */
 body.night .mainContent li .entryTitle {
   color: #e2e1e0;
 }
-/* line 228, ../scss/themes/_night.scss */
+/* line 267, ../scss/themes/_night.scss */
 body.night .mainContent li .importantDateContainer {
   color: #c8c8c8;
 }
-/* line 230, ../scss/themes/_night.scss */
+/* line 269, ../scss/themes/_night.scss */
 body.night .mainContent li .importantDateContainer .importantDate {
   -moz-transition: background 0.1s linear;
   -o-transition: background 0.1s linear;
@@ -2857,58 +3007,58 @@ body.night .mainContent li .importantDateContainer .importantDate {
   background: transparent;
   color: #c8c8c8;
 }
-/* line 240, ../scss/themes/_night.scss */
+/* line 279, ../scss/themes/_night.scss */
 body.night .mainContent li .timestamps {
   color: #666;
 }
-/* line 245, ../scss/themes/_night.scss */
+/* line 284, ../scss/themes/_night.scss */
 body.night .mainContent li .imgbg-container .imgbg {
   color: #000;
 }
-/* line 248, ../scss/themes/_night.scss */
+/* line 287, ../scss/themes/_night.scss */
 body.night .mainContent li .imgbg-container .img {
   background: rgba(0, 0, 0, 0.5);
 }
-/* line 254, ../scss/themes/_night.scss */
+/* line 293, ../scss/themes/_night.scss */
 body.night .mainContent li .imageUploadForm div {
   background: #ff0;
   color: #222;
 }
-/* line 258, ../scss/themes/_night.scss */
+/* line 297, ../scss/themes/_night.scss */
 body.night .mainContent li .imageUploadForm .clearImgBtn {
   background: #ff3232;
 }
-/* line 263, ../scss/themes/_night.scss */
+/* line 302, ../scss/themes/_night.scss */
 body.night .mainContent li .entry {
   color: #e2e1e0;
 }
-/* line 265, ../scss/themes/_night.scss */
+/* line 304, ../scss/themes/_night.scss */
 body.night .mainContent li .entry a {
   color: #ee3;
 }
-/* line 272, ../scss/themes/_night.scss */
+/* line 311, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .textarea {
   border: 1px solid transparent;
   background: rgba(102, 102, 102, 0.2);
   color: #ff0;
 }
-/* line 277, ../scss/themes/_night.scss */
+/* line 316, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .textarea:focus {
   border: 1px solid rgba(0, 0, 0, 0.5);
   background: rgba(102, 102, 102, 0.2);
   box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
-/* line 284, ../scss/themes/_night.scss */
+/* line 323, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .entry {
   border: 1px solid transparent;
   background: transparent;
   color: #e2e1e0;
 }
-/* line 288, ../scss/themes/_night.scss */
+/* line 327, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .entry a {
   color: #ee3;
 }
-/* line 293, ../scss/themes/_night.scss */
+/* line 332, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editLastBtn {
   position: relative;
   background-color: #3498db;
@@ -2955,13 +3105,13 @@ body.night .mainContent li .editEntry .editEntryForm .editLastBtn .circle.animat
   }
 }
 @media (max-width: 610px) {
-  /* line 293, ../scss/themes/_night.scss */
+  /* line 332, ../scss/themes/_night.scss */
   body.night .mainContent li .editEntry .editEntryForm .editLastBtn {
     top: -37px;
     right: -1px;
   }
 }
-/* line 308, ../scss/themes/_night.scss */
+/* line 347, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   background-color: #3498db;
@@ -3007,67 +3157,67 @@ body.night .mainContent li .editEntry .editEntryForm .editBtn .circle.animate {
   }
 }
 @media (max-width: 610px) {
-  /* line 308, ../scss/themes/_night.scss */
+  /* line 347, ../scss/themes/_night.scss */
   body.night .mainContent li .editEntry .editEntryForm .editBtn {
     margin: 5px 0 0 0;
   }
 }
-/* line 319, ../scss/themes/_night.scss */
+/* line 358, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Speichern';
 }
-/* line 322, ../scss/themes/_night.scss */
+/* line 361, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 325, ../scss/themes/_night.scss */
+/* line 364, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editBtn.none {
   display: none;
 }
-/* line 328, ../scss/themes/_night.scss */
+/* line 367, ../scss/themes/_night.scss */
 body.night .mainContent li .editEntry .editEntryForm .editBtn.edited {
   height: 33px;
   display: inline;
 }
-/* line 336, ../scss/themes/_night.scss */
+/* line 375, ../scss/themes/_night.scss */
 body.night .mainContent li:hover .editEntry .entry, body.night .mainContent li:hover .importantDate {
   border: 1px solid transparent;
   background: rgba(102, 102, 102, 0.2);
 }
-/* line 343, ../scss/themes/_night.scss */
+/* line 382, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox label {
   margin-top: 6px;
 }
-/* line 345, ../scss/themes/_night.scss */
+/* line 384, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox label .value {
   margin-top: -24px;
   color: #666;
 }
-/* line 350, ../scss/themes/_night.scss */
+/* line 389, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox .slider-v2 {
   background: #999;
 }
-/* line 351, ../scss/themes/_night.scss */
+/* line 390, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox .slider-v2::after {
   background: #999;
 }
-/* line 352, ../scss/themes/_night.scss */
+/* line 391, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox .slider-v2::before {
   background: #666;
 }
-/* line 353, ../scss/themes/_night.scss */
+/* line 392, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox input:checked + .slider-v2::before {
   background: #666;
 }
-/* line 354, ../scss/themes/_night.scss */
+/* line 393, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox.green input:checked + .slider-v2::after {
   background: #00c800;
 }
-/* line 355, ../scss/themes/_night.scss */
+/* line 394, ../scss/themes/_night.scss */
 body.night .mainContent li .checkbox.red input:checked + .slider-v2::after {
   background: #ff3232;
 }
-/* line 360, ../scss/themes/_night.scss */
+/* line 399, ../scss/themes/_night.scss */
 body.night .loadMoreBtn {
   position: relative;
   background-color: #3498db;
@@ -3108,31 +3258,31 @@ body.night .loadMoreBtn .circle.animate {
     opacity: 0;
   }
 }
-/* line 366, ../scss/themes/_night.scss */
+/* line 405, ../scss/themes/_night.scss */
 body.night .searchForm {
   background: transparent;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), 0 0 0 15px #202020;
 }
 @media (max-width: 610px) {
-  /* line 366, ../scss/themes/_night.scss */
+  /* line 405, ../scss/themes/_night.scss */
   body.night .searchForm {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 }
-/* line 372, ../scss/themes/_night.scss */
+/* line 411, ../scss/themes/_night.scss */
 body.night .searchForm.searchActive {
   background: rgba(0, 0, 0, 0.5);
 }
-/* line 374, ../scss/themes/_night.scss */
+/* line 413, ../scss/themes/_night.scss */
 body.night .searchForm.searchActive .searchInput {
   color: #ff0;
   border-color: transparent;
 }
-/* line 379, ../scss/themes/_night.scss */
+/* line 418, ../scss/themes/_night.scss */
 body.night .searchForm .searchCloseBtn {
   color: #ff0;
 }
-/* line 381, ../scss/themes/_night.scss */
+/* line 420, ../scss/themes/_night.scss */
 body.night .searchForm .searchCloseBtn:hover {
   color: #ee3;
 }

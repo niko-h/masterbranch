@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Entrys = new Mongo.Collection('entrys');
+export const Birthdays = new Mongo.Collection('birthdays');
 
 if (Meteor.isServer) {
   // This code only runs on the server
@@ -19,6 +20,13 @@ if (Meteor.isServer) {
       limit: limit,
       sort: {createdAt: -1}
     });
+  });
+
+  // birthdays
+  Meteor.publish('birthdays', function () {
+    var day = new Date().getDate();
+    var month = new Date().getMonth()+1;
+    return Birthdays.find({birthday: day, birthmonth: month});
   });
 
   // important entrys

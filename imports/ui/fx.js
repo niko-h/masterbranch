@@ -28,7 +28,7 @@
       createCookie(name,"",-1);
     }
     if(readCookie('day')!=='true' && readCookie('day')!=='false') {
-      createCookie('day','true',1);
+      createCookie('day','true',365);
     } 
 
     if(readCookie('day')==='true') {
@@ -42,11 +42,11 @@
     $('.toggle.toggle--daynight input').change(function() {
       if(readCookie('day')==='true') {
         $('body').addClass('night');
-        createCookie('day', 'false', 1);
+        createCookie('day', 'false', 356);
         $(this).prop('checked', false);
       } else {
         $('body').removeClass('night');
-        createCookie('day', 'true', 1);
+        createCookie('day', 'true', 356);
         $(this).prop('checked', true);
       }
     });
@@ -170,4 +170,3 @@
     return this;
   }
 })(jQuery);
-

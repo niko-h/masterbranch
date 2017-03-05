@@ -5,7 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import Textarea from 'react-textarea-autosize';
 import classnames from 'classnames';
 import { check } from 'meteor/check';
-import { Entrys } from '../api/entrys.js';
+import { Entrys, Birthdays } from '../api/entrys.js';
 // import { Session } from 'meteor/session';
 import Dropzone from 'react-dropzone';
 import Entry from './Entry.jsx';
@@ -28,6 +28,7 @@ class App extends Component {
       fileUrl: '',
       youShallPass: false,
       searchActive: false,
+      birthdayNotificationSend: false,
     };
   }
 
@@ -88,7 +89,6 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.info('handleSubmit');
     check(this.state.fileUrl, String);
 
     // Find the text field via the React ref
@@ -109,9 +109,13 @@ class App extends Component {
     }
 
     if (entry.text.length>0 || entry.image.length>0) {
-      Meteor.call('entrys.insert', entry);
-      Notification.permission === 'granted' ? this.notification(entry) : '';
-      this.onBlur(event);
+      if(this.props.currentUser.emails[0].verified) {
+        Meteor.call('entrys.insert', entry);
+        Notification.permission === 'granted' ? this.notification(entry) : '';
+        this.onBlur(event);
+      } else {
+        alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
+      }
     }
 
     // Clear form
@@ -128,6 +132,15 @@ class App extends Component {
     }
     var n = new Notification(username+' schreibt',options);
     setTimeout(n.close.bind(n), 5000); 
+  }
+  birthdayNotification(name) {
+    var options = {
+      body: 'Das Rwgb wünscht '+name+' alles Gute.',
+      icon: '/notification-birthday.gif',
+    }
+    this.setState({birthdayNotificationSend: true,});
+    var n = new Notification(name+' hat Geburtstag!',options);
+    setTimeout(n.close.bind(n), 5000);   
   }
 
   checkSecret(event) {
@@ -316,6 +329,8 @@ class App extends Component {
       'searchActive' : ( this.state.searchActive ),
       'none' : ( !this.state.searchActive ),
     });
+    let birthdays = this.props.birthdays;
+    var birthdayNotificationSend = this.state.birthdayNotificationSend;
     
     return (
       <div className="container">
@@ -455,9 +470,24 @@ class App extends Component {
               </form>
             </div> : ''
           }
+
         </header>
 
         <ul className="mainContent">
+          {birthdays.length>0 ? (
+            <div className="birthdays icon-cake">
+              {
+                birthdays.map((birthday) => {
+                  !birthdayNotificationSend ? this.birthdayNotification(birthday.name) : '';
+                  return (
+                    <span key={birthday.name} className="birthday">{birthday.name}</span>
+                  )
+                })
+              }
+              <span className="info">{birthdays.length>1 ? ' haben Geburtstag!' : ' hat Geburtstag!'}</span>
+            </div>
+          ) : ''}
+
           {this.renderEntrys()}
         </ul>
         {!this.state.hideUnimportant ? (
@@ -480,6 +510,7 @@ App.propTypes = {
   importantDatesCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
   searchResults: PropTypes.array.isRequired,
+  birthdays: PropTypes.array.isRequired,
 };
 
 export default createContainer(() => {
@@ -488,16 +519,10 @@ export default createContainer(() => {
     Meteor.subscribe('entrys', Session.get('lazyloadLimit'));
   });
   Meteor.subscribe('importantEntrys');
-
-  Meteor.subscribe("search", Session.get("searchValue"));
-  if (Session.get("searchValue")) {
-    // return Messages.find({}, { sort: [["score", "desc"]] });
-  } else {
-    // return Messages.find({});
-  }
+  Meteor.subscribe('search', Session.get('searchValue'));
+  Meteor.subscribe('birthdays');
 
   return {
-    // search: Entrys.find({text:}, { sort: { createdAt: -1 } }).fetch(),
     entrys: Entrys.find({}, { sort: { createdAt: -1 }, limit: Session.get('lazyloadLimit') }).fetch(),
     importantEntrys: Entrys.findFromPublication('importantEntrys', {}, {sort: { createdAt: -1 }}).fetch(),
     importantEntrysCount: Entrys.findFromPublication('importantEntrys', {}).count(),
@@ -507,5 +532,6 @@ export default createContainer(() => {
       }}).count(),
     currentUser: Meteor.user(),
     searchResults: Entrys.find({}, { sort: [["score", "desc"]] }).fetch(),
+    birthdays: Birthdays.find({}).fetch(),
   };
 }, App);

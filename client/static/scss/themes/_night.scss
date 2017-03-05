@@ -3,7 +3,39 @@
 }
 
 body.night {
-  background: $darkbg;
+  background: $darkbg url('/bgimg.jpg') top center;
+  background-attachment: fixed;
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background: $darkbg;
+    content: '';
+    -webkit-animation: fadeBg 4s ease-in-out .3s infinite alternate;
+    -moz-animation: fadeBg 4s ease-in-out .3s infinite alternate;
+    animation: fadeBg 4s ease-in-out .3s infinite alternate;
+  }
+  @-webkit-keyframes fadeBg {
+    from { opacity: .8 }
+    to { opacity: .4 }
+  }
+  @-moz-keyframes fadeBg {
+    from { opacity: .8 }
+    to { opacity: .4 }
+  }
+  @keyframes fadeBg {
+    from { opacity: .8 }
+    to { opacity: .4 }
+  }
+  @include breakpoint(baby) {
+    background: $darkbg;
+    &:before {
+      display: none;
+    }
+  }
 
   * {
     @include placeholder($darkyellow);
@@ -195,6 +227,13 @@ body.night {
   -----------------------------------------------------------------------------*/
    
   .mainContent {
+
+    .birthdays {
+      background: #252525;
+      border-bottom: $almostblack solid 1px;
+      color: $lightgrey;
+    }
+
     li {
       border-top: $darkbg solid 1px;
       background: #252525;
