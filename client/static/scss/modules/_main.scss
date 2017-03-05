@@ -6,9 +6,8 @@
 -----------------------------------------------------------------------------*/
  
 .mainContent {
-  margin: 0;
+  margin: 124px 0 10px 0;
   padding: 0;
-  margin-top: 124px;
   @include breakpoint(baby) {
     width: 100%;
     margin-top: 0;
@@ -29,7 +28,7 @@
     cursor: default;
     &:before { 
       cursor: default;
-      color: #ff1493;
+      color: $darkgreen;//#ff1493;
       margin-right: 10px;
       font-size: 2rem;
     }
@@ -455,6 +454,7 @@
       @include transition(opacity .1s linear);
           
       .deleteBtn {
+        display: none;
         float: right;
         font-weight: bold;
         background: none;
@@ -471,12 +471,12 @@
 
 .loadMoreBtn {
   @include button($darkblue);
-  margin: 20px 0 0 0;
+  margin: 0 0 0 0;
   width: 100%;
   height: 30px;
   @include breakpoint(baby) {
     width: 90%;
     left: 50%;
-    margin: 20px 10px 10px -45%;
+    margin: 0 10px 10px -45%;
   }
 }

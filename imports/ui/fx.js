@@ -52,7 +52,9 @@
     // Matrial-Button-Effect
     return material.init();
     
-    Notification.requestPermission();
+    if ('Notification' in window) {
+      Notification.requestPermission();
+    }
   });
 
   $(document).bind('drop dragover', function (e) {

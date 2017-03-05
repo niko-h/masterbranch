@@ -11,9 +11,12 @@
 
 @font-face {
   font-family: 'head';
-  src: url('/fonts/head1.ttf') format('truetype');
+  src: url('/fonts/head2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [class^="icon-"], [class*=" icon-"] {

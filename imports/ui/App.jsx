@@ -29,6 +29,7 @@ class App extends Component {
       youShallPass: false,
       searchActive: false,
       birthdayNotificationSend: false,
+      firstNotificationSend: false,
     };
   }
 
@@ -112,7 +113,6 @@ class App extends Component {
       if(this.props.currentUser.emails[0].verified) {
         Meteor.call('entrys.insert', entry);
         this.onBlur(event);
-        Notification.permission === 'granted' ? this.notification(entry) : '';
       } else {
         alert('Bitte bestätige deine Email-Adresse. Rufe dazu den Link aus der Bestätigungs-Mail auf, die dir zugesandt wurde.');
       }
@@ -125,13 +125,15 @@ class App extends Component {
 
   notification(entry) {
     var icon = entry.image!=='' ? entry.image : '/notification1.gif';
-    var username = this.props.currentUser.username;
+    var username = entry.username;
     var options = {
       body: entry.text.substring(0, 140)+'...',
       icon: icon,
     }
-    var n = new Notification(username+' schreibt',options);
-    setTimeout(n.close.bind(n), 5000); 
+    if ('Notification' in window && entry.username !== this.props.currentUser.username) {
+      var n = new Notification(username+' schreibt',options);
+      setTimeout(n.close.bind(n), 5000); 
+    }
   }
   birthdayNotification(name) {
     if(!this.state.birthdayNotificationSend) {
@@ -139,9 +141,11 @@ class App extends Component {
         body: 'Das Rwgb wünscht '+name+' alles Gute.',
         icon: '/notification-birthday.gif',
       }
-      this.setState({birthdayNotificationSend: true,});
-      var n = new Notification(name+' hat Geburtstag!',options);
-      setTimeout(n.close.bind(n), 5000);   
+      if ('Notification' in window) {
+        this.setState({birthdayNotificationSend: true,});
+        var n = new Notification(name+' hat Geburtstag!',options);
+        setTimeout(n.close.bind(n), 5000);   
+      }
     }
   }
 
@@ -152,13 +156,12 @@ class App extends Component {
       Meteor.call('checksecret', secret, function(err, result) {
         if(!err && result) {
           this.setState({youShallPass: true});
-          console.log(this.state.youShallPass);
-          this.render()
+          window.scrollTo(0, 0);
         } else if(!result) {
           $('body').append($('<div id="wrongModal" />'))
           return setTimeout(function() {
             $('#wrongModal').remove();
-          }, 1500);
+          }, 2000);
         }
       }.bind(this));
     }
@@ -189,6 +192,8 @@ class App extends Component {
     event.preventDefault();
     if (event.keyCode == 13 && event.altKey) {
       this.handleSubmit(event);
+    } else if(event.keyCode == 13) {
+      $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
     }
   }
 
@@ -213,6 +218,9 @@ class App extends Component {
       private: false,
     });
     $('.newEntry textarea').val('').blur();
+    setTimeout(function() {
+      $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
+    }, 50);
   }
 
   toggleHideUnimportant() {
@@ -255,6 +263,16 @@ class App extends Component {
     });
   }
 
+
+componentWillReceiveProps(nextProps) {
+  if (nextProps.entrys !== this.state.entrys && nextProps.entrys[0]) {
+    if ('Notification' in window && this.state.firstNotificationSend) {
+      Notification.permission === 'granted' ? this.notification(nextProps.entrys[0]) : '';
+    }
+    this.setState({firstNotificationSend: true});
+  }
+}
+
   componentDidMount() {
     moment.updateLocale('en', {
       relativeTime : {
@@ -279,9 +297,9 @@ class App extends Component {
     var $this = $(ReactDOM.findDOMNode(this));
     
     var offset = 0;
-    // $('.mainContent').width()>599 ? offset = 50 : offset = -10;
-    // $('.mainContent').css('margin-top', $('header').height()+offset);
-    $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
+    setTimeout(function() {
+      $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
+    }, 50);
 
     $('.newImportantDate, .importantDate').datepicker({
       format: "dd.mm.yyyy",
@@ -367,6 +385,7 @@ class App extends Component {
                   autoFocus
                   onKeyUp={ this.enterSecret.bind(this) }
                 />
+                <button className="btn sendSecret" onClick={ this.checkSecret.bind(this) }>Enter</button>
               </span>
             </div>
           }
