@@ -10,7 +10,9 @@
   padding: 0;
   @include breakpoint(baby) {
     width: 100%;
-    margin-top: 0;
+    top: 6px;
+    position: relative;
+    margin: none 0 16px 0;
     @include box-sizing(border-box);
   }
 

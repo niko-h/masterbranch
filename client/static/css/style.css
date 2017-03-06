@@ -1645,13 +1645,15 @@ ul#menu_list li {
   /* line 8, ../scss/modules/_main.scss */
   .mainContent {
     width: 100%;
-    margin-top: 0;
+    top: 6px;
+    position: relative;
+    margin: none 0 16px 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
 }
-/* line 17, ../scss/modules/_main.scss */
+/* line 19, ../scss/modules/_main.scss */
 .mainContent .birthdays {
   display: block;
   position: relative;
@@ -1665,32 +1667,32 @@ ul#menu_list li {
   color: #222;
   cursor: default;
 }
-/* line 29, ../scss/modules/_main.scss */
+/* line 31, ../scss/modules/_main.scss */
 .mainContent .birthdays:before {
   cursor: default;
   color: #009600;
   margin-right: 10px;
   font-size: 2rem;
 }
-/* line 35, ../scss/modules/_main.scss */
+/* line 37, ../scss/modules/_main.scss */
 .mainContent .birthdays * {
   font-family: 'Titillium Web', sans-serif;
   position: relative;
   top: -3px;
 }
-/* line 41, ../scss/modules/_main.scss */
+/* line 43, ../scss/modules/_main.scss */
 .mainContent .birthdays .birthday:before {
   content: ', ';
 }
-/* line 42, ../scss/modules/_main.scss */
+/* line 44, ../scss/modules/_main.scss */
 .mainContent .birthdays .birthday:nth-last-child(2):before {
   content: ' und ';
 }
-/* line 43, ../scss/modules/_main.scss */
+/* line 45, ../scss/modules/_main.scss */
 .mainContent .birthdays .birthday:first-child:before {
   content: '';
 }
-/* line 47, ../scss/modules/_main.scss */
+/* line 49, ../scss/modules/_main.scss */
 .mainContent li {
   position: relative;
   list-style: none;
@@ -1705,7 +1707,7 @@ ul#menu_list li {
   transition: all 0.5s linear;
 }
 @media (max-width: 610px) {
-  /* line 47, ../scss/modules/_main.scss */
+  /* line 49, ../scss/modules/_main.scss */
   .mainContent li {
     padding: 10px 5px;
     width: 100%;
@@ -1714,35 +1716,35 @@ ul#menu_list li {
     box-sizing: border-box;
   }
 }
-/* line 63, ../scss/modules/_main.scss */
+/* line 65, ../scss/modules/_main.scss */
 .mainContent li:first-child {
   border-top: 1px solid transparent;
 }
 @media (max-width: 610px) {
-  /* line 63, ../scss/modules/_main.scss */
+  /* line 65, ../scss/modules/_main.scss */
   .mainContent li:first-child {
     margin-top: -130px;
   }
 }
-/* line 70, ../scss/modules/_main.scss */
+/* line 72, ../scss/modules/_main.scss */
 .mainContent li.private {
   background: #fafffa;
   border-color: #00c800;
 }
-/* line 74, ../scss/modules/_main.scss */
+/* line 76, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle {
   color: #009600 !important;
 }
-/* line 78, ../scss/modules/_main.scss */
+/* line 80, ../scss/modules/_main.scss */
 .mainContent li.important {
   background: snow;
   border-color: #ff3232;
 }
-/* line 83, ../scss/modules/_main.scss */
+/* line 85, ../scss/modules/_main.scss */
 .mainContent li.important .entryTitle {
   color: #960000 !important;
 }
-/* line 87, ../scss/modules/_main.scss */
+/* line 89, ../scss/modules/_main.scss */
 .mainContent li.private, .mainContent li.important {
   z-index: 1;
   border-width: 0 2px;
@@ -1753,14 +1755,14 @@ ul#menu_list li {
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear;
 }
-/* line 93, ../scss/modules/_main.scss */
+/* line 95, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle, .mainContent li.important .entryTitle {
   -moz-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
   transition: color 0.25s linear;
 }
-/* line 98, ../scss/modules/_main.scss */
+/* line 100, ../scss/modules/_main.scss */
 .mainContent li .entryTitle {
   font-size: 1.8rem;
   font-weight: bold;
@@ -1775,12 +1777,12 @@ ul#menu_list li {
   box-sizing: border-box;
 }
 @media (max-width: 610px) {
-  /* line 98, ../scss/modules/_main.scss */
+  /* line 100, ../scss/modules/_main.scss */
   .mainContent li .entryTitle {
     font-size: 1.6rem;
   }
 }
-/* line 113, ../scss/modules/_main.scss */
+/* line 115, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer {
   display: inline;
   color: #666;
@@ -1788,13 +1790,13 @@ ul#menu_list li {
   top: -2px;
   position: relative;
 }
-/* line 120, ../scss/modules/_main.scss */
+/* line 122, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer i {
   font-size: 1.8rem;
   position: relative;
   top: 2px;
 }
-/* line 125, ../scss/modules/_main.scss */
+/* line 127, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate {
   -moz-transition: background 0.1s linear;
   -o-transition: background 0.1s linear;
@@ -1814,16 +1816,16 @@ ul#menu_list li {
   border-radius: 3px;
 }
 @media (max-width: 610px) {
-  /* line 125, ../scss/modules/_main.scss */
+  /* line 127, ../scss/modules/_main.scss */
   .mainContent li .importantDateContainer .importantDate {
     font-size: 16px;
   }
 }
-/* line 142, ../scss/modules/_main.scss */
+/* line 144, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate:focus {
   outline: none;
 }
-/* line 146, ../scss/modules/_main.scss */
+/* line 148, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button {
   position: relative;
   background-color: #3498db;
@@ -1868,7 +1870,7 @@ ul#menu_list li {
     opacity: 0;
   }
 }
-/* line 151, ../scss/modules/_main.scss */
+/* line 153, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button.edited {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1876,7 +1878,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 158, ../scss/modules/_main.scss */
+/* line 160, ../scss/modules/_main.scss */
 .mainContent li .timestamps {
   float: right;
   color: #c8c8c8;
@@ -1889,12 +1891,12 @@ ul#menu_list li {
   transition: opacity 0.1s linear;
 }
 @media (max-width: 610px) {
-  /* line 158, ../scss/modules/_main.scss */
+  /* line 160, ../scss/modules/_main.scss */
   .mainContent li .timestamps {
     display: none;
   }
 }
-/* line 169, ../scss/modules/_main.scss */
+/* line 171, ../scss/modules/_main.scss */
 .mainContent li:hover .timestamps {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1902,12 +1904,12 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 174, ../scss/modules/_main.scss */
+/* line 176, ../scss/modules/_main.scss */
 .mainContent li img {
   max-width: 100%;
   max-height: 300px;
 }
-/* line 179, ../scss/modules/_main.scss */
+/* line 181, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container {
   margin: 10px -2.6% 15px -2.6%;
   width: 105.4% !important;
@@ -1916,19 +1918,19 @@ ul#menu_list li {
   position: relative;
   display: none;
 }
-/* line 186, ../scss/modules/_main.scss */
+/* line 188, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container.yes {
   display: block;
 }
 @media (max-width: 610px) {
-  /* line 179, ../scss/modules/_main.scss */
+  /* line 181, ../scss/modules/_main.scss */
   .mainContent li .imgbg-container {
     width: 104% !important;
     min-width: 104% !important;
     margin: 10px 0 15px -2%;
   }
 }
-/* line 195, ../scss/modules/_main.scss */
+/* line 197, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .imgbg {
   margin: 0 -5%;
   height: 300px;
@@ -1944,7 +1946,7 @@ ul#menu_list li {
   -ms-filter: blur(10px);
   filter: blur(10px);
 }
-/* line 210, ../scss/modules/_main.scss */
+/* line 212, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img {
   margin: -300px 0 0 0;
   position: relative;
@@ -1954,7 +1956,7 @@ ul#menu_list li {
   max-width: 100%;
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 218, ../scss/modules/_main.scss */
+/* line 220, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img img {
   margin: auto;
   width: auto !important;
@@ -2071,7 +2073,7 @@ ul#menu_list li {
 .mainContent li .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 230, ../scss/modules/_main.scss */
+/* line 232, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm {
   display: block;
   -moz-transition: opacity 0.1s linear;
@@ -2091,7 +2093,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 243, ../scss/modules/_main.scss */
+/* line 245, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -2104,7 +2106,7 @@ ul#menu_list li {
   font-size: 1.8rem;
   text-align: center;
 }
-/* line 254, ../scss/modules/_main.scss */
+/* line 256, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone {
   width: 40px;
   line-height: 27px;
@@ -2112,12 +2114,12 @@ ul#menu_list li {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 260, ../scss/modules/_main.scss */
+/* line 262, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone div {
   line-height: 25px;
   height: 25px;
 }
-/* line 265, ../scss/modules/_main.scss */
+/* line 267, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .clearImgBtn {
   width: 30px;
   background: #ff3232;
@@ -2126,7 +2128,7 @@ ul#menu_list li {
   border-bottom-left-radius: 0;
   font-size: 1.5rem;
 }
-/* line 274, ../scss/modules/_main.scss */
+/* line 276, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no {
   opacity: .3;
   bottom: 13px;
@@ -2134,16 +2136,16 @@ ul#menu_list li {
   right: 17px;
 }
 @media (max-width: 610px) {
-  /* line 274, ../scss/modules/_main.scss */
+  /* line 276, ../scss/modules/_main.scss */
   .mainContent li .imageUploadForm.no {
     bottom: 5px;
   }
 }
-/* line 282, ../scss/modules/_main.scss */
+/* line 284, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no .dropzone {
   border-radius: 3px;
 }
-/* line 288, ../scss/modules/_main.scss */
+/* line 290, ../scss/modules/_main.scss */
 .mainContent li .entry {
   display: block;
   padding: 5px;
@@ -2166,56 +2168,56 @@ ul#menu_list li {
   transition: color 0.25s linear;
 }
 @media (max-width: 610px) {
-  /* line 288, ../scss/modules/_main.scss */
+  /* line 290, ../scss/modules/_main.scss */
   .mainContent li .entry {
     font-size: 1.4rem;
   }
 }
-/* line 309, ../scss/modules/_main.scss */
+/* line 311, ../scss/modules/_main.scss */
 .mainContent li .entry a {
   color: #2980b9;
 }
-/* line 312, ../scss/modules/_main.scss */
+/* line 314, ../scss/modules/_main.scss */
 .mainContent li .entry img {
   max-height: 300px;
   width: auto;
   display: block;
 }
-/* line 317, ../scss/modules/_main.scss */
+/* line 319, ../scss/modules/_main.scss */
 .mainContent li .entry iframe[src*="bandcamp"] {
   width: 100% !important;
 }
-/* line 322, ../scss/modules/_main.scss */
+/* line 324, ../scss/modules/_main.scss */
 .mainContent li > .entry {
   margin: 5px 20% 15px 0;
 }
 @media (max-width: 610px) {
-  /* line 322, ../scss/modules/_main.scss */
+  /* line 324, ../scss/modules/_main.scss */
   .mainContent li > .entry {
     margin: 5px 0 15px 0;
   }
 }
-/* line 329, ../scss/modules/_main.scss */
+/* line 331, ../scss/modules/_main.scss */
 .mainContent li .editEntry {
   position: relative;
 }
-/* line 333, ../scss/modules/_main.scss */
+/* line 335, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .textarea {
   display: inline;
 }
-/* line 336, ../scss/modules/_main.scss */
+/* line 338, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .entry {
   display: none;
 }
-/* line 339, ../scss/modules/_main.scss */
+/* line 341, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .editLastBtn {
   display: none;
 }
-/* line 345, ../scss/modules/_main.scss */
+/* line 347, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm {
   margin: 5px 0 15px 0;
 }
-/* line 347, ../scss/modules/_main.scss */
+/* line 349, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2245,13 +2247,13 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 347, ../scss/modules/_main.scss */
+  /* line 349, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .textarea {
     width: 100% !important;
     font-size: 16px;
   }
 }
-/* line 369, ../scss/modules/_main.scss */
+/* line 371, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus {
   border: 1px solid #c8c8c8;
   background: #e2e1e0;
@@ -2269,11 +2271,11 @@ ul#menu_list li {
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
-/* line 377, ../scss/modules/_main.scss */
+/* line 379, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus, .mainContent li .editEntry .editEntryForm .textarea:valid {
   outline: none;
 }
-/* line 383, ../scss/modules/_main.scss */
+/* line 385, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .entry {
   top: -5px;
   left: 0;
@@ -2296,12 +2298,12 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 383, ../scss/modules/_main.scss */
+  /* line 385, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .entry {
     padding-right: 5px;
   }
 }
-/* line 403, ../scss/modules/_main.scss */
+/* line 405, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editLastBtn {
   position: relative;
   background-color: #3498db;
@@ -2346,13 +2348,13 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 403, ../scss/modules/_main.scss */
+  /* line 405, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editLastBtn {
     top: -37px;
     right: -1px;
   }
 }
-/* line 416, ../scss/modules/_main.scss */
+/* line 418, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   background-color: #3498db;
@@ -2396,29 +2398,29 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 416, ../scss/modules/_main.scss */
+  /* line 418, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editBtn {
     margin: 5px 0 0 0;
   }
 }
-/* line 425, ../scss/modules/_main.scss */
+/* line 427, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Speichern';
 }
-/* line 428, ../scss/modules/_main.scss */
+/* line 430, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 431, ../scss/modules/_main.scss */
+/* line 433, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
   display: none;
 }
-/* line 434, ../scss/modules/_main.scss */
+/* line 436, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
   height: 33px;
   display: inline;
 }
-/* line 442, ../scss/modules/_main.scss */
+/* line 444, ../scss/modules/_main.scss */
 .mainContent li:hover .editEntry .entry, .mainContent li:hover .importantDate {
   border: 1px solid transparent;
   background: #efefef;
@@ -2427,7 +2429,7 @@ ul#menu_list li {
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 449, ../scss/modules/_main.scss */
+/* line 451, ../scss/modules/_main.scss */
 .mainContent li:hover .entryOptions, .mainContent li:hover .editLastBtn, .mainContent li:hover .imageUploadForm {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -2435,7 +2437,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 455, ../scss/modules/_main.scss */
+/* line 457, ../scss/modules/_main.scss */
 .mainContent li .entryOptions,
 .mainContent li .editLastBtn {
   opacity: .3;
@@ -2444,7 +2446,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 460, ../scss/modules/_main.scss */
+/* line 462, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn,
 .mainContent li .editLastBtn .deleteBtn {
   display: none;
@@ -2459,7 +2461,7 @@ ul#menu_list li {
   z-index: 100;
 }
 
-/* line 476, ../scss/modules/_main.scss */
+/* line 478, ../scss/modules/_main.scss */
 .loadMoreBtn {
   position: relative;
   background-color: #3498db;
@@ -2502,7 +2504,7 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 476, ../scss/modules/_main.scss */
+  /* line 478, ../scss/modules/_main.scss */
   .loadMoreBtn {
     width: 90%;
     left: 50%;
