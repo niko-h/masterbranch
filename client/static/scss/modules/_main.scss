@@ -67,27 +67,31 @@
       }
     }
 
-    &.private, &.important {
-      z-index: 1;
-      border-color: $lightmediumgrey;
-      @include transition(background .25s linear);
-      .entryTitle {
-        @include transition(color .25s linear);
-      }
-    }
     &.private {
       background: rgba($lightgreen, 1);
-      @include neon(green);
+      border-color: $green;
+      // @include neon(green);
       .entryTitle {
         color: $darkgreen !important;
       }
     }
     &.important {
       background: rgba($lightred, 1);
-      @include neon(red);
+      border-color: $red;
+      // @include neon(red);
       
       .entryTitle {
         color: $darkred !important;
+      }
+    }
+    &.private, &.important {
+      z-index: 1;
+      border-width: 0 2px;
+      border-style: solid;
+      border-top: 1px solid $lightmediumgrey;
+      @include transition(background .25s linear);
+      .entryTitle {
+        @include transition(color .25s linear);
       }
     }
 

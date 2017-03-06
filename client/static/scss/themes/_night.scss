@@ -14,21 +14,7 @@ body.night {
     display: block;
     background: $darkbg;
     content: '';
-    -webkit-animation: fadeBg 4s ease-in-out .3s infinite alternate;
-    -moz-animation: fadeBg 4s ease-in-out .3s infinite alternate;
-    animation: fadeBg 4s ease-in-out .3s infinite alternate;
-  }
-  @-webkit-keyframes fadeBg {
-    from { opacity: .8 }
-    to { opacity: .4 }
-  }
-  @-moz-keyframes fadeBg {
-    from { opacity: .8 }
-    to { opacity: .4 }
-  }
-  @keyframes fadeBg {
-    from { opacity: .8 }
-    to { opacity: .4 }
+    opacity: .8;
   }
   @include breakpoint(baby) {
     background: $darkbg;
@@ -242,22 +228,20 @@ body.night {
         border-color: #252525 !important;
       }
     
-      &.private, &.important {
-        border-color: $darkbg;
-      }
       &.private {
-        // background: rgba($darkgreen, .01);
-        @include neon(darkgreen);
+        border-color: $darkgreen;
         .entryTitle {
           color: $green !important;
         }
       }
       &.important {
-        // background: rgba($darkred, .01);
-        @include neon(darkred);
+        border-color: $darkred;
         .entryTitle {
           color: $red !important;
         }
+      }
+      &.private, &.important {
+        border-top: 1px solid $darkbg;
       }
 
       .entryTitle {

@@ -86,25 +86,8 @@ body {
     bottom: 0;
     display: block;
     content: '';
-    -webkit-animation: fadeBgDay 60s infinite;
-    -moz-animation: fadeBgDay 60s infinite;
-    animation: fadeBgDay 60s infinite;
   }
-  @-webkit-keyframes fadeBgDay {
-    0%, 100% {background-color: rgba($blue, .05);}
-    33%  {background-color: rgba($yellow, .05);}
-    66%  {background-color: rgba($green, .05);}
-  }
-  @-moz-keyframes fadeBgDay {
-    0%, 100% {background-color: rgba($blue, .05);}
-    33%  {background-color: rgba($yellow, .05);}
-    66%  {background-color: rgba($green, .05);}
-  }
-  @keyframes fadeBgDay {
-    0%, 100% {background-color: rgba($blue, .05);}
-    33%  {background-color: rgba($yellow, .05);}
-    66%  {background-color: rgba($green, .05);}
-  }
+  
   @include breakpoint(baby) {
     background: $lightgrey;
     &:before {
@@ -126,7 +109,7 @@ body {
 }
 
 .datepicker {
-  z-index: 100;
+  z-index: 100 !important;
 }
 
 textarea { 

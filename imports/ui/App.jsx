@@ -219,7 +219,7 @@ class App extends Component {
     $('.newEntry textarea').val('').blur();
     setTimeout(function() {
       $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
-    }, 50);
+    }, 20);
   }
 
   toggleHideUnimportant() {
@@ -263,14 +263,14 @@ class App extends Component {
   }
 
 
-componentWillReceiveProps(nextProps) {
-  if (nextProps.entrys !== this.state.entrys && nextProps.entrys[0]) {
-    if ('Notification' in window && this.state.firstNotificationSend===2) {
-      Notification.permission === 'granted' ? this.notification(nextProps.entrys[0]) : '';
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.entrys[0] && this.props.entrys[0] && nextProps.entrys[0].text !== this.props.entrys[0].text) {
+      if ('Notification' in window && this.state.firstNotificationSend >= 2) {
+        Notification.permission === 'granted' ? this.notification(nextProps.entrys[0]) : '';
+      }
+      this.state.firstNotificationSend<2 ? this.setState({firstNotificationSend: this.state.firstNotificationSend+1}) : '';
     }
-    this.setState({firstNotificationSend: this.state.firstNotificationSend+1});
   }
-}
 
   componentDidMount() {
     moment.updateLocale('en', {
@@ -302,7 +302,7 @@ componentWillReceiveProps(nextProps) {
     var offset = 0;
     setTimeout(function() {
       $('.mainContent').width()>599 ? $('.mainContent').css('margin-top', $('header').height()+50) : '';
-    }, 50);
+    }, 20);
 
     $('.newImportantDate, .importantDate').datepicker({
       format: "dd.mm.yyyy",
