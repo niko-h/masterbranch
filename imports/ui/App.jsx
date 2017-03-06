@@ -481,7 +481,7 @@ class App extends Component {
                       activeClassName="accept"
                       rejectClassName="reject"
                       multiple={false}
-                      maxSize={1000*1000}
+                      maxSize={1000*2000}
                       >
                       <div className="icon-add_a_photo">
                       </div>

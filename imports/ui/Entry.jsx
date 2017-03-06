@@ -202,13 +202,13 @@ export default class Entry extends Component {
           <div className={'imageUploadForm ' + imgClass}>
             <Dropzone 
               ref={(node) => { this.dropzone = node; }} 
-              accept=".jpg, .png, .gif"
+              accept="image/*"
               onDrop={this.onDrop.bind(this)}
               className="dropzone"
               activeClassName="active"
               rejectClassName="reject"
               multiple={false}
-              maxSize={1000*1000}
+              maxSize={1000*2000}
               >
               <div className="icon-add_a_photo"></div>
             </Dropzone>
