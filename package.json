@@ -1,7 +1,6 @@
 {
   "name": "rwgb",
   "private": true,
-  "version" "1.0",
   "scripts": {
     "start": "meteor run"
   },

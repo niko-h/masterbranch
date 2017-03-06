@@ -42,7 +42,7 @@ class App extends Component {
   onDrop(acceptedFiles, rejectedFiles) {
     // todo: warn about rejected files
     if(typeof(acceptedFiles[0]) === "undefined") {
-      alert('too large or not accepted file type');
+      alert('Das Bild darf nicht größer sein als 1MB.');
     } else {
       this.setState({ files: acceptedFiles }, () => {
         this.readFile(this.state.files[0], function(e) {
@@ -83,8 +83,6 @@ class App extends Component {
                       '<iframe src="//player.vimeo.com/video/$1" width="100%" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
               .replace(/(?:http:|https:)?(?:\/\/)(?:www\.|w\.|m\.)?(?:snd\.sc)\/(.*)/g, 
                       '<iframe width="100%" height="125" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/$1&amp;color=cccccc&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>')
-              // .replace(/(\&lt\;iframe){1}(.*bandcamp.*)(\&gt\;){1}(.*)(&lt;\/iframe\&gt\;){1}/g,
-              //         '<iframe$2>$4</iframe>')
               ;
   }
 
@@ -124,7 +122,7 @@ class App extends Component {
   }
 
   notification(entry) {
-    var icon = entry.image!=='' ? entry.image : '/notification1.gif';
+    var icon = entry.image!=='' ? entry.image : '/notification1.png';
     var username = entry.username;
     var options = {
       body: entry.text.substring(0, 140)+'...',
@@ -139,7 +137,7 @@ class App extends Component {
     if(!this.state.birthdayNotificationSend) {
       var options = {
         body: 'Das Rwgb wünscht '+name+' alles Gute.',
-        icon: '/notification-birthday.gif',
+        icon: '/notification-birthday.png',
       }
       if ('Notification' in window) {
         this.setState({birthdayNotificationSend: true,});
@@ -265,10 +263,11 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.entrys[0] && this.props.entrys[0] && nextProps.entrys[0].text !== this.props.entrys[0].text) {
-      if ('Notification' in window && this.state.firstNotificationSend >= 2) {
+      // if ('Notification' in window && this.state.firstNotificationSend >= 2) {
+      if ('Notification' in window) {
         Notification.permission === 'granted' ? this.notification(nextProps.entrys[0]) : '';
       }
-      this.state.firstNotificationSend<2 ? this.setState({firstNotificationSend: this.state.firstNotificationSend+1}) : '';
+      // this.state.firstNotificationSend<2 ? this.setState({firstNotificationSend: this.state.firstNotificationSend+1}) : '';
     }
   }
 
