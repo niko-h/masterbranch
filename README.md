@@ -11,7 +11,17 @@ a dev-branch of rwgb
 
 * install meteor: 'curl https://install.meteor.com/ | sh'
 * go to rwgb-dir
+* run 'meteor npm install'
 * run 'meteor'
+
+### How do I edit CSS? ###
+
+* go to 'client/static/'
+* install grunt:
+	* 'npm install grunt'
+	* 'npm install grunt-contrib-compass'
+	* 'npm install grunt-contrib-watch'
+* run 'grunt'
 
 ### Contribution guidelines ###
 

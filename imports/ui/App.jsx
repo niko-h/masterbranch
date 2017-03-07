@@ -338,7 +338,15 @@ class App extends Component {
     $('.mainContent .entry').linkify(linkifyOptions);
 
     $('a.embed[href$=".jpg"], a.embed[href$=".png"], a.embed[href$=".gif"]').each(function() {
-        $(this).replaceWith($('<img>').attr('src', this.href));
+        $(this).replaceWith($('<span>').attr({'class':'img', 'data-toggle':'lightbox'}).append($('<img>').attr('src', this.href)));
+    });
+
+    // delegate calls to data-toggle="lightbox"
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        console.log('lightbox');
+        return $(this).hasClass('lightbox') ? $(this).removeClass('lightbox') : $(this).addClass('lightbox');
+        // return $(this).ekkoLightbox();
     });
   }
 

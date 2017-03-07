@@ -21,6 +21,7 @@ header {
   &.searchActive {
     @include transition(filter .2s ease-in-out);
     filter: blur(10px);
+    overflow: hidden;
   }
   @include breakpoint(baby) {
     width: 100% !important;
