@@ -825,6 +825,7 @@ header.searchActive {
   -webkit-transition: filter 0.2s ease-in-out;
   transition: filter 0.2s ease-in-out;
   filter: blur(10px);
+  overflow: hidden;
 }
 @media (max-width: 610px) {
   /* line 8, ../scss/modules/_header.scss */
@@ -837,7 +838,7 @@ header.searchActive {
     border-radius: 0 !important;
   }
 }
-/* line 34, ../scss/modules/_header.scss */
+/* line 35, ../scss/modules/_header.scss */
 header h1 {
   font-size: 2.5em;
   margin: -3px 10px 10px 0;
@@ -847,7 +848,7 @@ header h1 {
   font-family: 'head', 'Titillium Web', sans-serif;
   text-shadow: 0 0 5px #fff;
 }
-/* line 44, ../scss/modules/_header.scss */
+/* line 45, ../scss/modules/_header.scss */
 header .countdown {
   position: relative;
   top: -1px;
@@ -858,12 +859,12 @@ header .countdown {
   margin-right: 3px;
 }
 @media (max-width: 610px) {
-  /* line 44, ../scss/modules/_header.scss */
+  /* line 45, ../scss/modules/_header.scss */
   header .countdown {
     display: none;
   }
 }
-/* line 55, ../scss/modules/_header.scss */
+/* line 56, ../scss/modules/_header.scss */
 header .countdown #tent {
   vertical-align: text-top;
   height: 20px;
@@ -871,7 +872,7 @@ header .countdown #tent {
   fill: #666;
   margin-right: 2px;
 }
-/* line 64, ../scss/modules/_header.scss */
+/* line 65, ../scss/modules/_header.scss */
 header .register-secret {
   position: fixed;
   left: 0;
@@ -886,12 +887,12 @@ header .register-secret {
   overflow-y: hidden;
 }
 @media (max-width: 610px) {
-  /* line 64, ../scss/modules/_header.scss */
+  /* line 65, ../scss/modules/_header.scss */
   header .register-secret {
     background: #efefef url("/start-bg2.gif") center no-repeat;
   }
 }
-/* line 79, ../scss/modules/_header.scss */
+/* line 80, ../scss/modules/_header.scss */
 header .register-secret > span {
   text-align: center;
   margin: 0;
@@ -905,18 +906,18 @@ header .register-secret > span {
   transform: translate(-50%, -50%);
 }
 @media (max-width: 610px) {
-  /* line 79, ../scss/modules/_header.scss */
+  /* line 80, ../scss/modules/_header.scss */
   header .register-secret > span {
     width: 200px;
   }
 }
-/* line 93, ../scss/modules/_header.scss */
+/* line 94, ../scss/modules/_header.scss */
 header .register-secret > span span {
   font-family: 'Titillium Web', sans-serif;
   text-align: left;
   display: block;
 }
-/* line 98, ../scss/modules/_header.scss */
+/* line 99, ../scss/modules/_header.scss */
 header .register-secret > span input {
   height: 80px;
   width: 100%;
@@ -935,18 +936,18 @@ header .register-secret > span input {
   color: #222;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 113, ../scss/modules/_header.scss */
+/* line 114, ../scss/modules/_header.scss */
 header .register-secret > span input:focus {
   outline: none;
 }
 @media (max-width: 610px) {
-  /* line 98, ../scss/modules/_header.scss */
+  /* line 99, ../scss/modules/_header.scss */
   header .register-secret > span input {
     font-size: 1.5em;
     height: 50px;
   }
 }
-/* line 119, ../scss/modules/_header.scss */
+/* line 120, ../scss/modules/_header.scss */
 header .register-secret > span button {
   position: relative;
   background-color: #3498db;
@@ -990,7 +991,7 @@ header .register-secret > span button .circle.animate {
     opacity: 0;
   }
 }
-/* line 130, ../scss/modules/_header.scss */
+/* line 131, ../scss/modules/_header.scss */
 header #login-buttons {
   float: right;
   margin-left: 10px;
@@ -1034,11 +1035,11 @@ header #login-buttons .circle.animate {
     opacity: 0;
   }
 }
-/* line 137, ../scss/modules/_header.scss */
+/* line 138, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list {
   position: static;
 }
-/* line 139, ../scss/modules/_header.scss */
+/* line 140, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   position: absolute;
   top: 20px;
@@ -1050,28 +1051,28 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 @media (max-width: 610px) {
-  /* line 139, ../scss/modules/_header.scss */
+  /* line 140, ../scss/modules/_header.scss */
   header #login-buttons .login-link-and-dropdown-list #login-dropdown-list {
     top: 15px;
     right: 20px;
   }
 }
-/* line 152, ../scss/modules/_header.scss */
+/* line 153, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-button {
   border: none;
 }
-/* line 156, ../scss/modules/_header.scss */
+/* line 157, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list:before {
   content: "Konto";
 }
-/* line 159, ../scss/modules/_header.scss */
+/* line 160, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text {
   float: right;
   color: transparent;
   padding-bottom: 0;
   margin-top: -3px;
 }
-/* line 164, ../scss/modules/_header.scss */
+/* line 165, ../scss/modules/_header.scss */
 header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-close-text:before {
   color: #222;
   content: '+';
@@ -1081,11 +1082,11 @@ header #login-buttons .login-link-and-dropdown-list #login-dropdown-list .login-
   font-weight: bold;
   transform: rotate(45deg);
 }
-/* line 176, ../scss/modules/_header.scss */
+/* line 177, ../scss/modules/_header.scss */
 header #login-buttons a {
   text-decoration: none;
 }
-/* line 181, ../scss/modules/_header.scss */
+/* line 182, ../scss/modules/_header.scss */
 header .hide-unimportant {
   float: right;
   position: relative;
@@ -1096,11 +1097,11 @@ header .hide-unimportant {
   padding: 0 10px 0 0;
   line-height: 25px;
 }
-/* line 190, ../scss/modules/_header.scss */
+/* line 191, ../scss/modules/_header.scss */
 header .hide-unimportant:hover {
   color: #960000;
 }
-/* line 193, ../scss/modules/_header.scss */
+/* line 194, ../scss/modules/_header.scss */
 header .hide-unimportant span {
   position: absolute;
   right: 2px;
@@ -1116,16 +1117,16 @@ header .hide-unimportant span {
   border: 1px solid #fff;
   font-weight: bold;
 }
-/* line 209, ../scss/modules/_header.scss */
+/* line 210, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox {
   position: absolute;
   left: -9999px;
 }
-/* line 212, ../scss/modules/_header.scss */
+/* line 213, ../scss/modules/_header.scss */
 header .hide-unimportant-checkbox:checked + .hide-unimportant {
   color: #960000;
 }
-/* line 217, ../scss/modules/_header.scss */
+/* line 218, ../scss/modules/_header.scss */
 header .openSearchBtn {
   float: right;
   background: transparent;
@@ -1139,31 +1140,31 @@ header .openSearchBtn {
   margin: 0;
 }
 @media (max-width: 610px) {
-  /* line 217, ../scss/modules/_header.scss */
+  /* line 218, ../scss/modules/_header.scss */
   header .openSearchBtn {
     padding-right: 0;
   }
 }
-/* line 229, ../scss/modules/_header.scss */
+/* line 230, ../scss/modules/_header.scss */
 header .openSearchBtn:focus {
   outline: none;
 }
-/* line 232, ../scss/modules/_header.scss */
+/* line 233, ../scss/modules/_header.scss */
 header .openSearchBtn:hover {
   color: #222;
 }
-/* line 241, ../scss/modules/_header.scss */
+/* line 242, ../scss/modules/_header.scss */
 header .newEntry {
   position: relative;
 }
-/* line 244, ../scss/modules/_header.scss */
+/* line 245, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm {
   margin: 0;
   position: relative;
   width: 100%;
   display: inline-block;
 }
-/* line 250, ../scss/modules/_header.scss */
+/* line 251, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea {
   box-sizing: border-box;
   background: transparent;
@@ -1175,18 +1176,18 @@ header .newEntry .newEntryForm textarea {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 250, ../scss/modules/_header.scss */
+  /* line 251, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm textarea {
     padding: 10px 25px 10px 0px;
     font-size: 16px;
     z-index: 0;
   }
 }
-/* line 266, ../scss/modules/_header.scss */
+/* line 267, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm textarea:focus {
   outline: 0;
 }
-/* line 271, ../scss/modules/_header.scss */
+/* line 272, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .closeNewEntry {
   position: absolute;
   right: 0;
@@ -1197,12 +1198,12 @@ header .newEntry .newEntryForm .closeNewEntry {
   z-index: 1;
 }
 @media (max-width: 610px) {
-  /* line 271, ../scss/modules/_header.scss */
+  /* line 272, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .closeNewEntry {
     top: 12px;
   }
 }
-/* line 284, ../scss/modules/_header.scss */
+/* line 285, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions {
   display: none;
   width: 80%;
@@ -1210,32 +1211,32 @@ header .newEntry .newEntryForm .newEntryOptions {
   line-height: 28px;
 }
 @media (max-width: 610px) {
-  /* line 284, ../scss/modules/_header.scss */
+  /* line 285, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions {
     width: 100%;
   }
 }
-/* line 297, ../scss/modules/_header.scss */
+/* line 298, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox label {
   margin-top: 6px;
 }
-/* line 300, ../scss/modules/_header.scss */
+/* line 301, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .checkbox .value {
   margin-top: -24px;
 }
-/* line 305, ../scss/modules/_header.scss */
+/* line 306, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer {
   display: inline;
   color: #666;
   margin-left: -5px;
 }
 @media (max-width: 610px) {
-  /* line 305, ../scss/modules/_header.scss */
+  /* line 306, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer {
     margin: 0 -10px 0 -5px;
   }
 }
-/* line 312, ../scss/modules/_header.scss */
+/* line 313, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer .newImportantDate {
   border: none;
   vertical-align: top;
@@ -1251,13 +1252,13 @@ header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer .newI
   font-family: 'Titillium Web', sans-serif;
 }
 @media (max-width: 610px) {
-  /* line 312, ../scss/modules/_header.scss */
+  /* line 313, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer .newImportantDate {
     margin: 0 0 5px 5px;
     font-size: 16px;
   }
 }
-/* line 330, ../scss/modules/_header.scss */
+/* line 331, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .newImportantDateContainer .newImportantDate:focus {
   outline: none;
 }
@@ -1369,7 +1370,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.accep
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 337, ../scss/modules/_header.scss */
+/* line 338, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
   display: inline-block;
   height: 25px;
@@ -1378,13 +1379,13 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
   margin-top: 3px;
 }
 @media (max-width: 610px) {
-  /* line 337, ../scss/modules/_header.scss */
+  /* line 338, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .newEntryOptions .imageUploadForm {
     display: block;
     margin-top: 0px;
   }
 }
-/* line 348, ../scss/modules/_header.scss */
+/* line 349, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   margin-top: 1px;
   display: inline-block;
@@ -1393,17 +1394,17 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone {
   font-weight: bold;
   height: 25px;
 }
-/* line 355, ../scss/modules/_header.scss */
+/* line 356, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone:hover {
   background: #2980b9;
 }
-/* line 358, ../scss/modules/_header.scss */
+/* line 359, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .dropzone div {
   line-height: 25px;
   font-size: 1.8rem;
   color: #efefef;
 }
-/* line 364, ../scss/modules/_header.scss */
+/* line 365, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   display: inline-block;
   position: relative;
@@ -1415,7 +1416,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview {
   vertical-align: inherit;
   background: #e2e1e0;
 }
-/* line 374, ../scss/modules/_header.scss */
+/* line 375, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dropzone {
   height: 25px;
   top: -1px;
@@ -1424,11 +1425,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview + .dro
   border-radius: 0 3px 3px 0;
   border-left: 1px solid #c8c8c8;
 }
-/* line 382, ../scss/modules/_header.scss */
+/* line 383, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span {
   position: relative;
 }
-/* line 384, ../scss/modules/_header.scss */
+/* line 385, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview {
   display: inline-block;
   position: relative;
@@ -1436,7 +1437,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-radius: 3px 0 0 3px;
   border-right: 1px solid #c8c8c8;
 }
-/* line 390, ../scss/modules/_header.scss */
+/* line 391, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail {
   display: block;
   position: absolute;
@@ -1447,7 +1448,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   background: #e2e1e0;
   box-shadow: 0 2px 2px #666;
 }
-/* line 399, ../scss/modules/_header.scss */
+/* line 400, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail:before {
   position: absolute;
   content: '';
@@ -1460,7 +1461,7 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   border-width: 0 5px 5px 5px;
   border-color: transparent transparent #e2e1e0 transparent;
 }
-/* line 411, ../scss/modules/_header.scss */
+/* line 412, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .smallPreview:hover + .previewDetail img {
   position: relative;
   width: 100%;
@@ -1468,11 +1469,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .
   height: auto;
   margin: 0 auto -7px auto;
 }
-/* line 420, ../scss/modules/_header.scss */
+/* line 421, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview span .previewDetail {
   display: none;
 }
-/* line 424, ../scss/modules/_header.scss */
+/* line 425, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button {
   display: inline-block;
   position: relative;
@@ -1490,11 +1491,11 @@ header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button
   padding: 0px 4px;
   font-size: 2rem;
 }
-/* line 438, ../scss/modules/_header.scss */
+/* line 439, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .newEntryOptions .imageUploadForm .preview button:hover {
   color: #ff3232;
 }
-/* line 446, ../scss/modules/_header.scss */
+/* line 447, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn {
   position: relative;
   background-color: #3498db;
@@ -1544,23 +1545,23 @@ header .newEntry .newEntryForm .submitBtn .circle.animate {
   }
 }
 @media (max-width: 610px) {
-  /* line 446, ../scss/modules/_header.scss */
+  /* line 447, ../scss/modules/_header.scss */
   header .newEntry .newEntryForm .submitBtn {
     margin: -23px 0 0 0 !important;
   }
 }
-/* line 463, ../scss/modules/_header.scss */
+/* line 464, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:after {
   content: 'Eintragen';
   font-family: 'Titillium Web', sans-serif;
   font-size: 1.4rem;
   font-weight: normal;
 }
-/* line 469, ../scss/modules/_header.scss */
+/* line 470, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm .submitBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 475, ../scss/modules/_header.scss */
+/* line 476, ../scss/modules/_header.scss */
 header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm.edited .newEntryOptions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1571,7 +1572,7 @@ header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm
 /* ==========================================================================
    wrongModal
    ========================================================================== */
-/* line 489, ../scss/modules/_header.scss */
+/* line 490, ../scss/modules/_header.scss */
 #wrongModal {
   position: absolute;
   top: 0;
@@ -1585,7 +1586,7 @@ header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm
   z-index: 99999999999;
   padding: 0;
 }
-/* line 501, ../scss/modules/_header.scss */
+/* line 502, ../scss/modules/_header.scss */
 #wrongModal:before {
   display: block;
   width: 70%;
@@ -1597,7 +1598,7 @@ header .newEntry .newEntryForm.edited .submitBtn, header .newEntry .newEntryForm
   margin: 0;
   content: "D'oh!";
 }
-/* line 513, ../scss/modules/_header.scss */
+/* line 514, ../scss/modules/_header.scss */
 #wrongModal:after {
   display: block;
   width: 70%;
@@ -1700,7 +1701,6 @@ ul#menu_list li {
   border-top: #efefef solid 1px;
   margin-bottom: 0;
   background: #fff;
-  z-index: 2;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
@@ -1731,22 +1731,21 @@ ul#menu_list li {
   background: #fafffa;
   border-color: #00c800;
 }
-/* line 76, ../scss/modules/_main.scss */
+/* line 75, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle {
   color: #009600 !important;
 }
-/* line 80, ../scss/modules/_main.scss */
+/* line 79, ../scss/modules/_main.scss */
 .mainContent li.important {
   background: snow;
   border-color: #ff3232;
 }
-/* line 85, ../scss/modules/_main.scss */
+/* line 83, ../scss/modules/_main.scss */
 .mainContent li.important .entryTitle {
   color: #960000 !important;
 }
-/* line 89, ../scss/modules/_main.scss */
+/* line 87, ../scss/modules/_main.scss */
 .mainContent li.private, .mainContent li.important {
-  z-index: 1;
   border-width: 0 2px;
   border-style: solid;
   border-top: 1px solid #eee;
@@ -1755,14 +1754,14 @@ ul#menu_list li {
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear;
 }
-/* line 95, ../scss/modules/_main.scss */
+/* line 92, ../scss/modules/_main.scss */
 .mainContent li.private .entryTitle, .mainContent li.important .entryTitle {
   -moz-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
   transition: color 0.25s linear;
 }
-/* line 100, ../scss/modules/_main.scss */
+/* line 97, ../scss/modules/_main.scss */
 .mainContent li .entryTitle {
   font-size: 1.8rem;
   font-weight: bold;
@@ -1777,12 +1776,12 @@ ul#menu_list li {
   box-sizing: border-box;
 }
 @media (max-width: 610px) {
-  /* line 100, ../scss/modules/_main.scss */
+  /* line 97, ../scss/modules/_main.scss */
   .mainContent li .entryTitle {
     font-size: 1.6rem;
   }
 }
-/* line 115, ../scss/modules/_main.scss */
+/* line 112, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer {
   display: inline;
   color: #666;
@@ -1790,13 +1789,13 @@ ul#menu_list li {
   top: -2px;
   position: relative;
 }
-/* line 122, ../scss/modules/_main.scss */
+/* line 119, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer i {
   font-size: 1.8rem;
   position: relative;
   top: 2px;
 }
-/* line 127, ../scss/modules/_main.scss */
+/* line 124, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate {
   -moz-transition: background 0.1s linear;
   -o-transition: background 0.1s linear;
@@ -1816,16 +1815,16 @@ ul#menu_list li {
   border-radius: 3px;
 }
 @media (max-width: 610px) {
-  /* line 127, ../scss/modules/_main.scss */
+  /* line 124, ../scss/modules/_main.scss */
   .mainContent li .importantDateContainer .importantDate {
     font-size: 16px;
   }
 }
-/* line 144, ../scss/modules/_main.scss */
+/* line 141, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer .importantDate:focus {
   outline: none;
 }
-/* line 148, ../scss/modules/_main.scss */
+/* line 145, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button {
   position: relative;
   background-color: #3498db;
@@ -1870,7 +1869,7 @@ ul#menu_list li {
     opacity: 0;
   }
 }
-/* line 153, ../scss/modules/_main.scss */
+/* line 150, ../scss/modules/_main.scss */
 .mainContent li .importantDateContainer button.edited {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1878,7 +1877,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 160, ../scss/modules/_main.scss */
+/* line 157, ../scss/modules/_main.scss */
 .mainContent li .timestamps {
   float: right;
   color: #c8c8c8;
@@ -1891,12 +1890,12 @@ ul#menu_list li {
   transition: opacity 0.1s linear;
 }
 @media (max-width: 610px) {
-  /* line 160, ../scss/modules/_main.scss */
+  /* line 157, ../scss/modules/_main.scss */
   .mainContent li .timestamps {
     display: none;
   }
 }
-/* line 171, ../scss/modules/_main.scss */
+/* line 168, ../scss/modules/_main.scss */
 .mainContent li:hover .timestamps {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -1904,12 +1903,44 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 176, ../scss/modules/_main.scss */
-.mainContent li img {
+/* line 174, ../scss/modules/_main.scss */
+.mainContent li .img img {
   max-width: 100%;
   max-height: 300px;
+  cursor: pointer;
 }
-/* line 181, ../scss/modules/_main.scss */
+/* line 179, ../scss/modules/_main.scss */
+.mainContent li .img.lightbox {
+  margin: 0;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: visible;
+  background: rgba(32, 32, 32, 0.9) !important;
+  cursor: url(/close.png) 25 25, pointer;
+}
+/* line 190, ../scss/modules/_main.scss */
+.mainContent li .img.lightbox:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  content: '+';
+  color: #fff;
+  transform: rotate(45deg);
+  font-size: 3rem;
+}
+/* line 199, ../scss/modules/_main.scss */
+.mainContent li .img.lightbox img {
+  max-width: 90%;
+  max-height: 90% !important;
+  margin: 5% auto;
+  cursor: url(/close.png) 25 25, pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+/* line 210, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container {
   margin: 10px -2.6% 15px -2.6%;
   width: 105.4% !important;
@@ -1918,19 +1949,19 @@ ul#menu_list li {
   position: relative;
   display: none;
 }
-/* line 188, ../scss/modules/_main.scss */
+/* line 217, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container.yes {
   display: block;
 }
 @media (max-width: 610px) {
-  /* line 181, ../scss/modules/_main.scss */
+  /* line 210, ../scss/modules/_main.scss */
   .mainContent li .imgbg-container {
     width: 104% !important;
     min-width: 104% !important;
     margin: 10px 0 15px -2%;
   }
 }
-/* line 197, ../scss/modules/_main.scss */
+/* line 226, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .imgbg {
   margin: 0 -5%;
   height: 300px;
@@ -1946,7 +1977,7 @@ ul#menu_list li {
   -ms-filter: blur(10px);
   filter: blur(10px);
 }
-/* line 212, ../scss/modules/_main.scss */
+/* line 241, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img {
   margin: -300px 0 0 0;
   position: relative;
@@ -1955,8 +1986,9 @@ ul#menu_list li {
   width: 100%;
   max-width: 100%;
   background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }
-/* line 220, ../scss/modules/_main.scss */
+/* line 250, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img img {
   margin: auto;
   width: auto !important;
@@ -1964,6 +1996,39 @@ ul#menu_list li {
   display: block !important;
   max-height: 300px !important;
   height: auto !important;
+  cursor: pointer;
+}
+/* line 259, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .img.lightbox {
+  margin: 0;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: visible;
+  background: rgba(32, 32, 32, 0.9) !important;
+  cursor: url(/close.png) 25 25, pointer;
+}
+/* line 270, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .img.lightbox:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  content: '+';
+  color: #fff;
+  transform: rotate(45deg);
+  font-size: 3rem;
+  z-index: 10;
+}
+/* line 280, ../scss/modules/_main.scss */
+.mainContent li .imgbg-container .img.lightbox img {
+  max-width: 90%;
+  max-height: 90% !important;
+  top: 5%;
+  cursor: url(/close.png) 25 25, pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 /* line 2, ../scss/modules/_dropzone.scss */
 .mainContent li .imageUploadForm {
@@ -2073,7 +2138,7 @@ ul#menu_list li {
 .mainContent li .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 232, ../scss/modules/_main.scss */
+/* line 292, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm {
   display: block;
   -moz-transition: opacity 0.1s linear;
@@ -2093,7 +2158,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 245, ../scss/modules/_main.scss */
+/* line 305, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -2106,7 +2171,7 @@ ul#menu_list li {
   font-size: 1.8rem;
   text-align: center;
 }
-/* line 256, ../scss/modules/_main.scss */
+/* line 316, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone {
   width: 40px;
   line-height: 27px;
@@ -2114,12 +2179,12 @@ ul#menu_list li {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 262, ../scss/modules/_main.scss */
+/* line 322, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone div {
   line-height: 25px;
   height: 25px;
 }
-/* line 267, ../scss/modules/_main.scss */
+/* line 327, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .clearImgBtn {
   width: 30px;
   background: #ff3232;
@@ -2128,7 +2193,7 @@ ul#menu_list li {
   border-bottom-left-radius: 0;
   font-size: 1.5rem;
 }
-/* line 276, ../scss/modules/_main.scss */
+/* line 336, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no {
   opacity: .3;
   bottom: 13px;
@@ -2136,16 +2201,16 @@ ul#menu_list li {
   right: 17px;
 }
 @media (max-width: 610px) {
-  /* line 276, ../scss/modules/_main.scss */
+  /* line 336, ../scss/modules/_main.scss */
   .mainContent li .imageUploadForm.no {
     bottom: 5px;
   }
 }
-/* line 284, ../scss/modules/_main.scss */
+/* line 344, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no .dropzone {
   border-radius: 3px;
 }
-/* line 290, ../scss/modules/_main.scss */
+/* line 350, ../scss/modules/_main.scss */
 .mainContent li .entry {
   display: block;
   padding: 5px;
@@ -2168,56 +2233,56 @@ ul#menu_list li {
   transition: color 0.25s linear;
 }
 @media (max-width: 610px) {
-  /* line 290, ../scss/modules/_main.scss */
+  /* line 350, ../scss/modules/_main.scss */
   .mainContent li .entry {
     font-size: 1.4rem;
   }
 }
-/* line 311, ../scss/modules/_main.scss */
+/* line 371, ../scss/modules/_main.scss */
 .mainContent li .entry a {
   color: #2980b9;
 }
-/* line 314, ../scss/modules/_main.scss */
+/* line 374, ../scss/modules/_main.scss */
 .mainContent li .entry img {
   max-height: 300px;
   width: auto;
   display: block;
 }
-/* line 319, ../scss/modules/_main.scss */
+/* line 379, ../scss/modules/_main.scss */
 .mainContent li .entry iframe[src*="bandcamp"] {
   width: 100% !important;
 }
-/* line 324, ../scss/modules/_main.scss */
+/* line 384, ../scss/modules/_main.scss */
 .mainContent li > .entry {
   margin: 5px 20% 15px 0;
 }
 @media (max-width: 610px) {
-  /* line 324, ../scss/modules/_main.scss */
+  /* line 384, ../scss/modules/_main.scss */
   .mainContent li > .entry {
     margin: 5px 0 15px 0;
   }
 }
-/* line 331, ../scss/modules/_main.scss */
+/* line 391, ../scss/modules/_main.scss */
 .mainContent li .editEntry {
   position: relative;
 }
-/* line 335, ../scss/modules/_main.scss */
+/* line 395, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .textarea {
   display: inline;
 }
-/* line 338, ../scss/modules/_main.scss */
+/* line 398, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .entry {
   display: none;
 }
-/* line 341, ../scss/modules/_main.scss */
+/* line 401, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .editLastBtn {
   display: none;
 }
-/* line 347, ../scss/modules/_main.scss */
+/* line 407, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm {
   margin: 5px 0 15px 0;
 }
-/* line 349, ../scss/modules/_main.scss */
+/* line 409, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2247,13 +2312,13 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 349, ../scss/modules/_main.scss */
+  /* line 409, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .textarea {
     width: 100% !important;
     font-size: 16px;
   }
 }
-/* line 371, ../scss/modules/_main.scss */
+/* line 431, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus {
   border: 1px solid #c8c8c8;
   background: #e2e1e0;
@@ -2271,11 +2336,11 @@ ul#menu_list li {
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
-/* line 379, ../scss/modules/_main.scss */
+/* line 439, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus, .mainContent li .editEntry .editEntryForm .textarea:valid {
   outline: none;
 }
-/* line 385, ../scss/modules/_main.scss */
+/* line 445, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .entry {
   top: -5px;
   left: 0;
@@ -2298,12 +2363,12 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 385, ../scss/modules/_main.scss */
+  /* line 445, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .entry {
     padding-right: 5px;
   }
 }
-/* line 405, ../scss/modules/_main.scss */
+/* line 465, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editLastBtn {
   position: relative;
   background-color: #3498db;
@@ -2348,13 +2413,13 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 405, ../scss/modules/_main.scss */
+  /* line 465, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editLastBtn {
     top: -37px;
     right: -1px;
   }
 }
-/* line 418, ../scss/modules/_main.scss */
+/* line 478, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   background-color: #3498db;
@@ -2398,29 +2463,29 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 418, ../scss/modules/_main.scss */
+  /* line 478, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editBtn {
     margin: 5px 0 0 0;
   }
 }
-/* line 427, ../scss/modules/_main.scss */
+/* line 487, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Speichern';
 }
-/* line 430, ../scss/modules/_main.scss */
+/* line 490, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 433, ../scss/modules/_main.scss */
+/* line 493, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
   display: none;
 }
-/* line 436, ../scss/modules/_main.scss */
+/* line 496, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
   height: 33px;
   display: inline;
 }
-/* line 444, ../scss/modules/_main.scss */
+/* line 504, ../scss/modules/_main.scss */
 .mainContent li:hover .editEntry .entry, .mainContent li:hover .importantDate {
   border: 1px solid transparent;
   background: #efefef;
@@ -2429,7 +2494,7 @@ ul#menu_list li {
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 451, ../scss/modules/_main.scss */
+/* line 511, ../scss/modules/_main.scss */
 .mainContent li:hover .entryOptions, .mainContent li:hover .editLastBtn, .mainContent li:hover .imageUploadForm {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -2437,7 +2502,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 457, ../scss/modules/_main.scss */
+/* line 517, ../scss/modules/_main.scss */
 .mainContent li .entryOptions,
 .mainContent li .editLastBtn {
   opacity: .3;
@@ -2446,7 +2511,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 462, ../scss/modules/_main.scss */
+/* line 522, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn,
 .mainContent li .editLastBtn .deleteBtn {
   display: none;
@@ -2461,7 +2526,7 @@ ul#menu_list li {
   z-index: 100;
 }
 
-/* line 478, ../scss/modules/_main.scss */
+/* line 538, ../scss/modules/_main.scss */
 .loadMoreBtn {
   position: relative;
   background-color: #3498db;
@@ -2504,7 +2569,7 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 478, ../scss/modules/_main.scss */
+  /* line 538, ../scss/modules/_main.scss */
   .loadMoreBtn {
     width: 90%;
     left: 50%;

@@ -192,7 +192,7 @@ export default class Entry extends Component {
         {image ? (
           <div className={'imgbg-container ' + imgClass}>
             <div className="imgbg" style={style}></div>
-            <div className="img">
+            <div className="img" data-toggle="lightbox">
               <img src={this.props.entry.image} />
             </div>
           </div>

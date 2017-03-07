@@ -53,7 +53,7 @@
     border-top: $almostwhite solid 1px;
     margin-bottom: 0;
     background: $white;
-    z-index: 2;
+    // z-index: 2;
     @include transition(all .5s linear);
 
     @include breakpoint(baby) {
@@ -72,7 +72,6 @@
     &.private {
       background: rgba($lightgreen, 1);
       border-color: $green;
-      // @include neon(green);
       .entryTitle {
         color: $darkgreen !important;
       }
@@ -80,14 +79,12 @@
     &.important {
       background: rgba($lightred, 1);
       border-color: $red;
-      // @include neon(red);
       
       .entryTitle {
         color: $darkred !important;
       }
     }
     &.private, &.important {
-      z-index: 1;
       border-width: 0 2px;
       border-style: solid;
       border-top: 1px solid $lightmediumgrey;
@@ -173,9 +170,41 @@
       @include transition(opacity .1s linear);
     }
 
-    img {
-      max-width: 100%;
-      max-height: 300px;
+    .img {
+      img {
+        max-width: 100%;
+        max-height: 300px;
+        cursor: pointer;
+      }
+      &.lightbox {
+        margin: 0;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: visible;
+        background: rgba($darkbg, .9) !important;
+        cursor: url(/close.png) 25 25, pointer;
+        &:before {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          content: '+';
+          color: $white;
+          transform: rotate(45deg);
+          font-size: 3rem;
+        }
+        img {
+          max-width: 90%;
+          max-height: 90% !important;
+          margin: 5% auto;
+          cursor: url(/close.png) 25 25, pointer;
+          box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+
+        }
+      }
     }
 
     .imgbg-container {
@@ -217,6 +246,7 @@
         width: 100%;
         max-width: 100%;
         background: rgba($white, 0.5);
+        cursor: pointer;
         img {
           margin: auto;
           width: auto !important;
@@ -224,6 +254,36 @@
           display: block !important;
           max-height: 300px !important;
           height: auto !important;
+          cursor: pointer;
+        }
+        &.lightbox {
+          margin: 0;
+          position: fixed;
+          z-index: 100;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          overflow: visible;
+          background: rgba($darkbg, .9) !important;
+          cursor: url(/close.png) 25 25, pointer;
+          &:before {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            content: '+';
+            color: $white;
+            transform: rotate(45deg);
+            font-size: 3rem;
+            z-index: 10;
+          }
+          img {
+            max-width: 90%;
+            max-height: 90% !important;
+            top: 5%;
+            cursor: url(/close.png) 25 25, pointer;
+            box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
+          }
         }
       }
     }
