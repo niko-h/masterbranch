@@ -1903,13 +1903,17 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 174, ../scss/modules/_main.scss */
+/* line 173, ../scss/modules/_main.scss */
+.mainContent li .img {
+  cursor: pointer;
+}
+/* line 175, ../scss/modules/_main.scss */
 .mainContent li .img img {
   max-width: 100%;
   max-height: 300px;
   cursor: pointer;
 }
-/* line 179, ../scss/modules/_main.scss */
+/* line 180, ../scss/modules/_main.scss */
 .mainContent li .img.lightbox {
   margin: 0;
   position: fixed;
@@ -1922,7 +1926,7 @@ ul#menu_list li {
   background: rgba(32, 32, 32, 0.9) !important;
   cursor: url(/close.png) 25 25, pointer;
 }
-/* line 190, ../scss/modules/_main.scss */
+/* line 191, ../scss/modules/_main.scss */
 .mainContent li .img.lightbox:before {
   position: absolute;
   top: 10px;
@@ -1932,7 +1936,7 @@ ul#menu_list li {
   transform: rotate(45deg);
   font-size: 3rem;
 }
-/* line 199, ../scss/modules/_main.scss */
+/* line 200, ../scss/modules/_main.scss */
 .mainContent li .img.lightbox img {
   max-width: 90%;
   max-height: 90% !important;
@@ -1940,7 +1944,7 @@ ul#menu_list li {
   cursor: url(/close.png) 25 25, pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-/* line 210, ../scss/modules/_main.scss */
+/* line 211, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container {
   margin: 10px -2.6% 15px -2.6%;
   width: 105.4% !important;
@@ -1949,19 +1953,19 @@ ul#menu_list li {
   position: relative;
   display: none;
 }
-/* line 217, ../scss/modules/_main.scss */
+/* line 218, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container.yes {
   display: block;
 }
 @media (max-width: 610px) {
-  /* line 210, ../scss/modules/_main.scss */
+  /* line 211, ../scss/modules/_main.scss */
   .mainContent li .imgbg-container {
     width: 104% !important;
     min-width: 104% !important;
     margin: 10px 0 15px -2%;
   }
 }
-/* line 226, ../scss/modules/_main.scss */
+/* line 227, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .imgbg {
   margin: 0 -5%;
   height: 300px;
@@ -1977,7 +1981,7 @@ ul#menu_list li {
   -ms-filter: blur(10px);
   filter: blur(10px);
 }
-/* line 241, ../scss/modules/_main.scss */
+/* line 242, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img {
   margin: -300px 0 0 0;
   position: relative;
@@ -1988,7 +1992,7 @@ ul#menu_list li {
   background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
-/* line 250, ../scss/modules/_main.scss */
+/* line 251, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img img {
   margin: auto;
   width: auto !important;
@@ -1998,7 +2002,7 @@ ul#menu_list li {
   height: auto !important;
   cursor: pointer;
 }
-/* line 259, ../scss/modules/_main.scss */
+/* line 260, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img.lightbox {
   margin: 0;
   position: fixed;
@@ -2011,7 +2015,7 @@ ul#menu_list li {
   background: rgba(32, 32, 32, 0.9) !important;
   cursor: url(/close.png) 25 25, pointer;
 }
-/* line 270, ../scss/modules/_main.scss */
+/* line 271, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img.lightbox:before {
   position: absolute;
   top: 10px;
@@ -2022,7 +2026,7 @@ ul#menu_list li {
   font-size: 3rem;
   z-index: 10;
 }
-/* line 280, ../scss/modules/_main.scss */
+/* line 281, ../scss/modules/_main.scss */
 .mainContent li .imgbg-container .img.lightbox img {
   max-width: 90%;
   max-height: 90% !important;
@@ -2138,7 +2142,7 @@ ul#menu_list li {
 .mainContent li .imageUploadForm .dropzone.reject {
   background-color: #ff3232 !important;
 }
-/* line 292, ../scss/modules/_main.scss */
+/* line 293, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm {
   display: block;
   -moz-transition: opacity 0.1s linear;
@@ -2158,7 +2162,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 305, ../scss/modules/_main.scss */
+/* line 306, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone, .mainContent li .imageUploadForm .clearImgBtn {
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -2171,7 +2175,7 @@ ul#menu_list li {
   font-size: 1.8rem;
   text-align: center;
 }
-/* line 316, ../scss/modules/_main.scss */
+/* line 317, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone {
   width: 40px;
   line-height: 27px;
@@ -2179,12 +2183,12 @@ ul#menu_list li {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 322, ../scss/modules/_main.scss */
+/* line 323, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .dropzone div {
   line-height: 25px;
   height: 25px;
 }
-/* line 327, ../scss/modules/_main.scss */
+/* line 328, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm .clearImgBtn {
   width: 30px;
   background: #ff3232;
@@ -2193,7 +2197,7 @@ ul#menu_list li {
   border-bottom-left-radius: 0;
   font-size: 1.5rem;
 }
-/* line 336, ../scss/modules/_main.scss */
+/* line 337, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no {
   opacity: .3;
   bottom: 13px;
@@ -2201,16 +2205,16 @@ ul#menu_list li {
   right: 17px;
 }
 @media (max-width: 610px) {
-  /* line 336, ../scss/modules/_main.scss */
+  /* line 337, ../scss/modules/_main.scss */
   .mainContent li .imageUploadForm.no {
     bottom: 5px;
   }
 }
-/* line 344, ../scss/modules/_main.scss */
+/* line 345, ../scss/modules/_main.scss */
 .mainContent li .imageUploadForm.no .dropzone {
   border-radius: 3px;
 }
-/* line 350, ../scss/modules/_main.scss */
+/* line 351, ../scss/modules/_main.scss */
 .mainContent li .entry {
   display: block;
   padding: 5px;
@@ -2233,56 +2237,56 @@ ul#menu_list li {
   transition: color 0.25s linear;
 }
 @media (max-width: 610px) {
-  /* line 350, ../scss/modules/_main.scss */
+  /* line 351, ../scss/modules/_main.scss */
   .mainContent li .entry {
     font-size: 1.4rem;
   }
 }
-/* line 371, ../scss/modules/_main.scss */
+/* line 372, ../scss/modules/_main.scss */
 .mainContent li .entry a {
   color: #2980b9;
 }
-/* line 374, ../scss/modules/_main.scss */
+/* line 375, ../scss/modules/_main.scss */
 .mainContent li .entry img {
   max-height: 300px;
   width: auto;
   display: block;
 }
-/* line 379, ../scss/modules/_main.scss */
+/* line 380, ../scss/modules/_main.scss */
 .mainContent li .entry iframe[src*="bandcamp"] {
   width: 100% !important;
 }
-/* line 384, ../scss/modules/_main.scss */
+/* line 385, ../scss/modules/_main.scss */
 .mainContent li > .entry {
   margin: 5px 20% 15px 0;
 }
 @media (max-width: 610px) {
-  /* line 384, ../scss/modules/_main.scss */
+  /* line 385, ../scss/modules/_main.scss */
   .mainContent li > .entry {
     margin: 5px 0 15px 0;
   }
 }
-/* line 391, ../scss/modules/_main.scss */
+/* line 392, ../scss/modules/_main.scss */
 .mainContent li .editEntry {
   position: relative;
 }
-/* line 395, ../scss/modules/_main.scss */
+/* line 396, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .textarea {
   display: inline;
 }
-/* line 398, ../scss/modules/_main.scss */
+/* line 399, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .entry {
   display: none;
 }
-/* line 401, ../scss/modules/_main.scss */
+/* line 402, ../scss/modules/_main.scss */
 .mainContent li .editEntry.edited .editEntryForm .editLastBtn {
   display: none;
 }
-/* line 407, ../scss/modules/_main.scss */
+/* line 408, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm {
   margin: 5px 0 15px 0;
 }
-/* line 409, ../scss/modules/_main.scss */
+/* line 410, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2312,13 +2316,13 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 409, ../scss/modules/_main.scss */
+  /* line 410, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .textarea {
     width: 100% !important;
     font-size: 16px;
   }
 }
-/* line 431, ../scss/modules/_main.scss */
+/* line 432, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus {
   border: 1px solid #c8c8c8;
   background: #e2e1e0;
@@ -2336,11 +2340,11 @@ ul#menu_list li {
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
-/* line 439, ../scss/modules/_main.scss */
+/* line 440, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .textarea:focus, .mainContent li .editEntry .editEntryForm .textarea:valid {
   outline: none;
 }
-/* line 445, ../scss/modules/_main.scss */
+/* line 446, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .entry {
   top: -5px;
   left: 0;
@@ -2363,12 +2367,12 @@ ul#menu_list li {
   color: #222;
 }
 @media (max-width: 610px) {
-  /* line 445, ../scss/modules/_main.scss */
+  /* line 446, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .entry {
     padding-right: 5px;
   }
 }
-/* line 465, ../scss/modules/_main.scss */
+/* line 466, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editLastBtn {
   position: relative;
   background-color: #3498db;
@@ -2413,13 +2417,13 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 465, ../scss/modules/_main.scss */
+  /* line 466, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editLastBtn {
     top: -37px;
     right: -1px;
   }
 }
-/* line 478, ../scss/modules/_main.scss */
+/* line 479, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn {
   position: relative;
   background-color: #3498db;
@@ -2463,29 +2467,29 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 478, ../scss/modules/_main.scss */
+  /* line 479, ../scss/modules/_main.scss */
   .mainContent li .editEntry .editEntryForm .editBtn {
     margin: 5px 0 0 0;
   }
 }
-/* line 487, ../scss/modules/_main.scss */
+/* line 488, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:after {
   content: 'Speichern';
 }
-/* line 490, ../scss/modules/_main.scss */
+/* line 491, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn:hover:after {
   content: 'Alt + Enter';
 }
-/* line 493, ../scss/modules/_main.scss */
+/* line 494, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.none {
   display: none;
 }
-/* line 496, ../scss/modules/_main.scss */
+/* line 497, ../scss/modules/_main.scss */
 .mainContent li .editEntry .editEntryForm .editBtn.edited {
   height: 33px;
   display: inline;
 }
-/* line 504, ../scss/modules/_main.scss */
+/* line 505, ../scss/modules/_main.scss */
 .mainContent li:hover .editEntry .entry, .mainContent li:hover .importantDate {
   border: 1px solid transparent;
   background: #efefef;
@@ -2494,7 +2498,7 @@ ul#menu_list li {
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 511, ../scss/modules/_main.scss */
+/* line 512, ../scss/modules/_main.scss */
 .mainContent li:hover .entryOptions, .mainContent li:hover .editLastBtn, .mainContent li:hover .imageUploadForm {
   opacity: 1;
   -moz-transition: opacity 0.1s linear;
@@ -2502,7 +2506,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 517, ../scss/modules/_main.scss */
+/* line 518, ../scss/modules/_main.scss */
 .mainContent li .entryOptions,
 .mainContent li .editLastBtn {
   opacity: .3;
@@ -2511,7 +2515,7 @@ ul#menu_list li {
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 522, ../scss/modules/_main.scss */
+/* line 523, ../scss/modules/_main.scss */
 .mainContent li .entryOptions .deleteBtn,
 .mainContent li .editLastBtn .deleteBtn {
   display: none;
@@ -2526,7 +2530,7 @@ ul#menu_list li {
   z-index: 100;
 }
 
-/* line 538, ../scss/modules/_main.scss */
+/* line 539, ../scss/modules/_main.scss */
 .loadMoreBtn {
   position: relative;
   background-color: #3498db;
@@ -2569,7 +2573,7 @@ ul#menu_list li {
   }
 }
 @media (max-width: 610px) {
-  /* line 538, ../scss/modules/_main.scss */
+  /* line 539, ../scss/modules/_main.scss */
   .loadMoreBtn {
     width: 90%;
     left: 50%;
