@@ -45,18 +45,15 @@ body.night {
      header
      ========================================================================== */
 
-  // @include checkbox();
-
   header {
     background: #2c2c2c;
     color: $lightgrey;
     box-shadow: none;
     border-radius: 1px;
-    box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
 
     h1 {
       color: $white;
-      // text-shadow: 1px 0 0px rgba($black, 1), -1px 0 0px rgba($black, 1);
+      text-shadow: 0 0 5px $mediumgrey;
     }
 
     .countdown {
@@ -66,7 +63,6 @@ body.night {
     }
 
     #login-buttons {
-      // @include button($darkblue);
       background-color: $yellow;
       color: $almostblack;
       #login-sign-in-link {
@@ -123,7 +119,6 @@ body.night {
         }
         
         .newEntryOptions {
-          // @include dropzone();
           .checkbox {
             label {
               margin-top: 6px;
@@ -388,7 +383,6 @@ body.night {
 
   .searchForm {
     background: $transparent;
-    box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
     @include breakpoint(baby) {
       box-shadow: 0 1px 3px rgba($black, .12), 0 1px 2px rgba($black, .24);
     }
