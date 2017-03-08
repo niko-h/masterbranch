@@ -7,9 +7,9 @@ Meteor.startup(() => {
   // code to run on server at startup
   
   smtp = {
-    username: 'post@nikolaushoefer.de',   // eg: server@gentlenode.com
-    password: 'Bmbhime172342',   // eg: 3eeP1gtizk5eziohfervU
-    server:   'smtp.mailbox.org',  // eg: mail.gandi.net
+    username: '',   // eg: server@gentlenode.com
+    password: '',   // eg: 3eeP1gtizk5eziohfervU
+    server:   '',  // eg: mail.gandi.net
     port: 25
   }
 
