@@ -548,7 +548,7 @@ App.propTypes = {
 };
 
 export default createContainer(() => {
-  Session.setDefault('lazyloadLimit', 10);
+  Session.setDefault('lazyloadLimit', 20);
   Tracker.autorun(function(){
     Meteor.subscribe('entrys', Session.get('lazyloadLimit'));
   });
