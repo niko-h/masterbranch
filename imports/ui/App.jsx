@@ -293,9 +293,7 @@ class App extends Component {
     // delegate calls to data-toggle="lightbox"
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
-        console.log('lightbox');
         return $(this).hasClass('lightbox') ? $(this).removeClass('lightbox') : $(this).addClass('lightbox');
-        // return $(this).ekkoLightbox();
     });
   }
 
@@ -352,9 +350,7 @@ class App extends Component {
     // delegate calls to data-toggle="lightbox"
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
-        console.log('lightbox');
         return $(this).hasClass('lightbox') ? $(this).removeClass('lightbox') : $(this).addClass('lightbox');
-        // return $(this).ekkoLightbox();
     });
   }
 
