@@ -1,11 +1,6 @@
-# rwgb with meteor+react #
+# masterbranch (meteor+react) #
 
-a dev-branch of rwgb
-
-### What is this repository for? ###
-
-* rwgb
-* Version 0
+A one-thread/single-timeline social-platform
 
 ### How do I get set up? ###
 
@@ -31,6 +26,3 @@ a dev-branch of rwgb
 
 * Code review
 
-### Who do I talk to? ###
-
-* Repo owner or admin
